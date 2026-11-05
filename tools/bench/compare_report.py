@@ -29,7 +29,7 @@ ORDER = ["MDM", "IDM", "ABDM", "FDM", "Gopeed", "Prism", "XDM", "aria2", "curl"]
 # average while it lasted (other programs compiling, say); medians are given with and without.
 BUSY_CORES = 2.0
 METRICS = ["e2e_ms", "startup_ms", "transfer_ms", "finish_ms", "cpu_s", "cpu_avg_cores", "cpu_peak_cores", "peak_mem_mb", "idle_after_mb", "connections",
-           "requests"]
+           "requests", "peak_parallel"]
 
 
 def describe(x):
@@ -79,6 +79,13 @@ def main():
         reqs = [e for n in r["files"] for e in by_name.get(n, []) if e.get("method") == "GET"]
         r["requests"] = len(reqs)
         r["connections"] = len({e["peer"] for e in reqs})
+        # The most requests the server was answering at once for this run.
+        ev = sorted([(e["t_start_ms"], 1) for e in reqs] + [(e["t_end_ms"], -1) for e in reqs])
+        cur = peak = 0
+        for _, d in ev:
+            cur += d
+            peak = max(peak, cur)
+        r["peak_parallel"] = peak
         r["bytes_sent"] = sum(e["bytes_sent"] for e in reqs)
         cal = by_name.get("cal-" + r["files"][0], [])
         sent = [e for e in reqs if e["status"] in (200, 206)]
@@ -89,6 +96,13 @@ def main():
             r["startup_ms"] = round(first - r["t0_ms"], 1)
             r["transfer_ms"] = round(last - first, 1)
             r["finish_ms"] = round(r["done_ms"] - last, 1)
+            # Anything else the server answered meanwhile (another program using it) would
+            # share its bandwidth and connection limit: counted, and such runs are marked.
+            a0, a1 = r["t0_ms"] - off, r["done_ms"] - off
+            mine = set(r["files"])
+            r["foreign_requests"] = sum(1 for e in log if e["t_start_ms"] < a1 and e["t_end_ms"] > a0
+                                        and e["path"].rsplit("/", 1)[-1] not in mine
+                                        and not e["path"].rsplit("/", 1)[-1].startswith("cal-"))
 
     for c, e in env.get("clients", {}).items():
         if c == "curl" and e["version"].startswith("curl "):
@@ -112,7 +126,8 @@ def main():
                         sc["clients"]["IDM"] = dict(idm["scenarios"][sid], source="run5")
                     continue
                 good = [r for r in cr if r["ok"] and r["sha_ok"]]
-                quiet = [r for r in good if (r.get("others_avg_cores") or 0) <= BUSY_CORES]
+                quiet = [r for r in good if (r.get("others_avg_cores") or 0) <= BUSY_CORES
+                         and not r.get("foreign_requests")]
                 sc["clients"][c] = {
                     "busy_runs": len(good) - len(quiet),
                     "e2e_ms_quiet": describe([r["e2e_ms"] for r in quiet]),
@@ -127,8 +142,8 @@ def main():
             out["scenarios"].append(sc)
     out["runs"] = [{k: r.get(k) for k in ("profile", "scenario", "client", "run", "warmup", "ok", "sha_ok", "error",
                                           "e2e_ms", "startup_ms", "transfer_ms", "finish_ms", "cpu_s", "cpu_avg_cores",
-                                          "cpu_peak_cores", "peak_mem_mb", "idle_after_mb", "connections", "requests", "connections_setting",
-                                          "others_avg_cores", "others_peak_cores", "position")}
+                                          "cpu_peak_cores", "peak_mem_mb", "idle_after_mb", "connections", "requests", "peak_parallel", "connections_setting",
+                                          "others_avg_cores", "others_peak_cores", "position", "foreign_requests")}
                    for r in runs]
     (run / "results.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
 
@@ -153,7 +168,7 @@ def main():
     lines.append(f"| Internet Download Manager | {idm['version']} (run5, {idm['date'][:10]}, not re-run) | 8 |")
     for sc in out["scenarios"]:
         lines += ["", f"## {sc['title']} — {'8 connections each' if sc['profile'] == 'matched' else 'each app at its defaults'}",
-                  "", "| App | Runs ok | Time, median (IQR) | min–max | Quiet runs: median | CPU s | avg / peak cores | Peak MB | Idle after MB | Connections | Requests |",
+                  "", "| App | Runs ok | Time, median (IQR) | min–max | Quiet runs: median | CPU s | avg / peak cores | Peak MB | Idle after MB | Connections (most at once) | Requests |",
                   "|---|---|---|---|---|---|---|---|---|---|---|"]
         for c, s in sc["clients"].items():
             st = s["stats"]["e2e_ms"]
@@ -172,7 +187,8 @@ def main():
                 f"| {c}{src} | {okn}/{s['runs']}{note} | {t} | {mm} | {quiet} | {cell(s, 'cpu_s', lambda v: f'{v:.2f}')} | "
                 f"{cell(s, 'cpu_avg_cores', lambda v: f'{v:.2f}')} / {cell(s, 'cpu_peak_cores', lambda v: f'{v:.2f}')} | "
                 f"{cell(s, 'peak_mem_mb', lambda v: f'{v:.0f}')} | {cell(s, 'idle_after_mb', lambda v: f'{v:.0f}')} | "
-                f"{cell(s, 'connections', lambda v: f'{v:.0f}')} | {cell(s, 'requests', lambda v: f'{v:.0f}')} |")
+                f"{cell(s, 'connections', lambda v: f'{v:.0f}')} ({cell(s, 'peak_parallel', lambda v: f'{v:.0f}')}) | "
+                f"{cell(s, 'requests', lambda v: f'{v:.0f}')} |")
     errs = sorted({(r["client"], r["scenario"], r["error"]) for r in runs if r["error"] and not r["warmup"]})
     if errs:
         lines += ["", "## Failures", ""] + [f"- {c}, {s}: {e}" for c, s, e in errs]

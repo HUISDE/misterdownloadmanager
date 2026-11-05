@@ -56,7 +56,9 @@ LAB_EXE = TARGET / "labserver.exe"
 BENCH = Path(os.environ.get("MDM_BENCH_DIR", r"C:\mdm-bench"))
 APPS = BENCH / "apps"
 DEST = BENCH / "dl"
-PORT = 8097
+# Not run5's 8097: other tools and tests on the same PC use that one, and a busy server (or one
+# whose connection limit another program uses up) would be timed instead of the apps.
+PORT = int(os.environ.get("MDM_BENCH_PORT", "8197"))
 bench.PORT = PORT
 LAB = f"http://127.0.0.1:{PORT}"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
@@ -147,6 +149,22 @@ class Client:
 
     def stop(self):
         pass
+
+
+class Grace:
+    """An app may report an error and then retry by itself: the run fails only when the error
+    is still there `seconds` later."""
+
+    def __init__(self, seconds=30):
+        self.seconds, self.since = seconds, None
+
+    def check(self, failing, what):
+        if not failing:
+            self.since = None
+        elif self.since is None:
+            self.since = time.perf_counter()
+        elif time.perf_counter() - self.since > self.seconds:
+            raise RuntimeError(f"{what} (for {self.seconds} s)")
 
 
 def kill_tree(pid):
@@ -254,6 +272,7 @@ class Abdm(Client):
                       {"downloadSource": {"link": url}, "folder": DEST.as_posix(), "name": name,
                        "startDownload": True}, {"X-Api-Key": self.key}, timeout=60)
 
+        self.grace = Grace()
         with ThreadPoolExecutor(max_workers=len(items)) as pool:
             list(pool.map(one, items))
         return None, []
@@ -272,8 +291,7 @@ class Abdm(Client):
 
     def done(self, state, items):
         e = self._entries(items)
-        if any(d.get("status") == "Error" for d in e.values()):
-            raise RuntimeError("ABDM reports an error")
+        self.grace.check(any(d.get("status") == "Error" for d in e.values()), "ABDM reports an error")
         return len(e) == len(items) and all(d.get("status") == "Completed" for d in e.values())
 
     def finished_ms(self, state, items):
@@ -323,6 +341,7 @@ class Gopeed(Client):
 
     def add(self, items, conns):
         ids, helpers = [], []
+        self.grace = Grace()
         for url, name in items:
             # One host per hand-off, as a browser's one-shot message starts one.
             h = NativeHost(self.dir / "host.exe", self.origin)
@@ -343,8 +362,7 @@ class Gopeed(Client):
         self._asked = now
         while state:
             st = self.forward(self.poll_host, "GET", f"/api/v1/tasks/{state[0]}")["status"]
-            if st == "error":
-                raise RuntimeError("Gopeed reports an error")
+            self.grace.check(st == "error", "Gopeed reports an error")
             if st != "done":
                 return False
             state.pop(0)
@@ -419,6 +437,9 @@ class Fdm(Client):
     db = Path(os.environ["LOCALAPPDATA"]) / "Softdeluxe" / "Free Download Manager" / "db.sqlite"
     origin = "chrome-extension://ahmpjcflkgiildlgicmcieglgoilbfdp/"
     default_conns = 15
+    # Its connections per server belong to its traffic mode's preset ("High": 15), which it
+    # restores on every start; only its Options window changes it. So 15 in every profile.
+    fixed_conns = 15
 
     def version(self):
         return file_version(self.dir / "fdm.exe")
@@ -431,7 +452,7 @@ class Fdm(Client):
                      ("NotifyOfFinishedDownloads", "0"), ("NotifyOfFailedDownloads", "0"),
                      ("EnableSoundNotifications", "0"), ("CheckUpdatesAutomatically", "0"),
                      ("InstallUpdatesAutomatically", "0"), ("UpdatePluginsAutomatically", "0"),
-                     ("ShowSpecialOffers", "0"), ("MaxConnectionsPerServer", str(conns))]:
+                     ("ShowSpecialOffers", "0")]:
             c.execute("insert or replace into Settings(Name,Value) values(?,?)", (k, v))
         c.commit()
         c.close()
@@ -532,6 +553,7 @@ class Curl(Cli):
     name, label = "curl", "curl"
     exe = Path(os.environ["SystemRoot"]) / "System32" / "curl.exe"
     default_conns = 1
+    fixed_conns = 1  # no segmenting
 
     def version(self):
         out = subprocess.run([str(self.exe), "--version"], capture_output=True, text=True).stdout
@@ -836,13 +858,13 @@ def main():
             for sid, title, size, nfiles, faults, n, timeout in scen:
                 if profile == "defaults" and sid not in ("fast-1g", "capped-100m"):
                     continue
-                # curl has no connection setting: one profile says it all.
-                active = [c for c in clients if profile == "matched" or (c.default_conns != 8 and c.name != "curl")]
+                # Apps whose connections can't be set run once: one profile says it all.
+                active = [c for c in clients if profile == "matched" or
+                          (c.default_conns != 8 and not getattr(c, "fixed_conns", None))]
                 if not active:
                     continue
                 n = n if a.runs is None else a.runs
-                # curl has one connection whatever it is asked.
-                conns = {c.name: (1 if c.name == "curl" else 8 if profile == "matched" else c.default_conns)
+                conns = {c.name: getattr(c, "fixed_conns", None) or (8 if profile == "matched" else c.default_conns)
                          for c in active}
                 print(f"== {profile} / {sid}: {title} ({n} runs + warm-up) {', '.join(c.name for c in active)}",
                       flush=True)

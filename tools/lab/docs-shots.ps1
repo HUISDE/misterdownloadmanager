@@ -1,4 +1,6 @@
-# Screenshots for the README and docs/ (docs/images/<name>.png), at 1x: MDM_ZOOM=2 draws the content
+# Screenshots for the README and docs/ (docs/images/<name>.png). The published ones are taken on
+# GitHub's Windows runner (.github/workflows/docs-shots.yml), a stock Windows whose file icons are
+# Windows' own; a run here shows this PC's. At 1x: MDM_ZOOM=2 draws the content
 # twice as large but Windows keeps the title bar at the display's scale, out of proportion. Runs its
 # own Mister Download Manager instance (its own data folder, MDM_DATA_DIR) and its own labserver,
 # both addressed by process id: the user's own instance and anything else running are never

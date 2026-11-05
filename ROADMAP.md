@@ -92,6 +92,8 @@ Everything below ships together, in one release.
   inside their list, with their place in it ([#102](https://github.com/anefzaoui/misterdownloadmanager/issues/102));
   the Categories pane, the menu bar and every right-click menu too, with Shift+F10 and the Menu key
   ([#113](https://github.com/anefzaoui/misterdownloadmanager/issues/113))
+- ✅ The README's, the docs' and the website's screenshots are taken on a stock Windows (GitHub's
+  runner), so the file icons in them are Windows' own
 - ✅ Website in European Portuguese, and an [intended use](https://misterdownloadmanager.com/intended-use.html) page
 - ✅ Website: the [free IDM alternative](https://misterdownloadmanager.com/idm-alternative.html) page compares
   MDM with IDM and with nine other free download managers, each checked on its own site, with

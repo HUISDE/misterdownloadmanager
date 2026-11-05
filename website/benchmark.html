@@ -90,6 +90,41 @@
       </div>
     </section>
 
+    <section class="sec" id="others" aria-labelledby="others-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 id="others-title">And against the others.</h2>
+          <p>The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.</p>
+        </div>
+        <div class="others" data-others>
+          <div class="race-tabs others-tabs" role="tablist" aria-label="Scenario" data-others-tabs></div>
+          <div class="others-sheet sheet-labelled">
+            <p class="sheet-band"><b>Median time, from hand-off to finished file</b><span data-others-sub>5 runs each. Shorter is faster.</span></p>
+            <div class="others-rows" data-others-rows role="tabpanel" aria-live="polite"></div>
+            <p class="others-foot" data-others-foot></p>
+          </div>
+          <p class="bench-status" data-others-status hidden></p>
+          <details class="bench-details">
+            <summary>All the numbers</summary>
+            <div class="table-wrap">
+              <table data-others-table>
+                <thead>
+                  <tr><th scope="col">Scenario</th><th scope="col">App</th><th scope="col">Correct runs</th><th scope="col">Time, median (IQR)</th><th scope="col">Network</th><th scope="col">CPU, average / peak</th><th scope="col">Peak memory</th><th scope="col">Memory after</th><th scope="col">Connections</th></tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="fine" data-others-env></p>
+          </details>
+          <div class="page-tools">
+            <a href="{{REPO}}/blob/main/docs/bench/README.md"><svg aria-hidden="true"><use href="#i-code"/></svg>How it was measured</a>
+            <a href="{{REPO}}/tree/main/tools/bench"><svg aria-hidden="true"><use href="#i-code"/></svg>The harness</a>
+            <a href="/bench/compare.json"><svg aria-hidden="true"><use href="#i-out"/></svg>compare.json</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="sec bench" id="bench" aria-labelledby="bench-title">
       <div class="wrap">
         <div class="sec-head">

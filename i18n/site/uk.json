@@ -198,9 +198,9 @@
    "source": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>",
    "text": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>"
   },
-  "04ec5358d75ceff7": {
-   "source": "Point at a video on a web page and a small <g1>Download video</g1> button appears at its edge. Click it and MDM's <g2>Download video from a page</g2> window opens and looks up the qualities it can download. It takes the video you clicked: its own file when it plays one, or the stream the player loaded (HLS or DASH), else the page. Embedded players work too, and your sign-in for the site, the page that embeds the player and your browser's User-Agent go with it, so videos for members, or that play only on the site that embeds them, can be downloaded. Sound players get the button too.",
-   "text": "Наведіть курсор на відео на веб-сторінці, і на його краю з'явиться невелика кнопка <g1>Завантажити відео</g1>. Натисніть її, і відкриється вікно <g2>Завантажити відео зі сторінки</g2> MDM, яке шукає доступні якості для завантаження. Воно перехоплює відео, на яке ви натиснули: його власний файл, якщо воно відтворює його, або потік, завантажений плеєром (HLS або DASH), інакше сторінку. Вбудовані плеєри також працюють, і ваші дані для входу на сайт, сторінка, яка вбудовує плеєр, і User-Agent вашого браузера передаються разом з ним, тому відео для учасників або ті, що відтворюються лише на сайті, який їх вбудовує, можуть бути завантажені. Кнопка також з'являється на аудіоплеєрах."
+  "04ebcf1715ef6084": {
+   "source": "Correct runs",
+   "text": "Успішні запуски"
   },
   "050edc04316dd70a": {
    "source": "On the command line",
@@ -418,6 +418,10 @@
    "source": "Version 0.2.4 · free and open source · no ads, no spyware, nothing bundled. <g1>What's new</g1>",
    "text": "Версія 0.2.4 · безкоштовна та з відкритим кодом · без реклами, шпигунського ПЗ, нічого зайвого. <g1>Що нового</g1>"
   },
+  "09b6d0a9dbaf55e1": {
+   "source": "{name}, at defaults",
+   "text": "{name}, за замовчуванням"
+  },
   "09baf9aefa050aee": {
    "source": "Tick <g1>Start download at</g1> and set the time, for example 1:00:00 AM. Click the hours and use the arrows or type the number.",
    "text": "Поставте позначку <g1>Почати завантаження о</g1> та встановіть час, наприклад 1:00:00 AM. Клацніть години та використовуйте стрілки або введіть число."
@@ -529,6 +533,10 @@
   "0bb0e3dc72ae2345": {
    "source": "Before you start",
    "text": "Перед початком"
+  },
+  "0bf25272dd906225": {
+   "source": "Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.",
+   "text": "Тимчасово: ці запуски були зроблені, коли інші програми були зайняті на тому ж ПК. Запуск на вільному комп'ютері замінить їх."
   },
   "0c1ddab7d81578c6": {
    "source": "<g1>Options → General → Use advanced browser integration</g1> must be on. Turn it off to send nothing to MDM.",
@@ -741,6 +749,10 @@
   "131c434c36b2d6f9": {
    "source": "Click <g1>Load unpacked</g1>.",
    "text": "Натисніть <g1>Завантажити розпаковане</g1>."
+  },
+  "131f6c6af936dd3a": {
+   "source": "1 GiB from a server with no limits: as fast as the loopback and the disk allow.",
+   "text": "1 GiB із сервера без обмежень: так швидко, як дозволяє зворотний зв’язок та диск."
   },
   "13382c1e6ceae711": {
    "source": "<g1>The video button over a Drive video</g1> downloads the original file, not one of the player's smaller copies.",
@@ -1009,6 +1021,10 @@
   "19ef176da302a2b4": {
    "source": "When the browser can't hand a download to MDM, it keeps the download itself, so nothing is lost. The extension's toolbar button then shows a red !. Click it…",
    "text": "Коли браузер не може передати завантаження MDM, він зберігає завантаження сам, тому нічого не втрачається. Кнопка розширення на панелі інструментів тоді показує червоний !. Натисніть її..."
+  },
+  "19f9c2c64f700479": {
+   "source": "compare.json",
+   "text": "compare.json"
   },
   "1a0500523dbbbc89": {
    "source": "On a Mac or Linux",
@@ -1698,6 +1714,10 @@
    "source": "Download limits",
    "text": "Обмеження завантаження"
   },
+  "29e14750a75c3ab2": {
+   "source": "{n} of {m} with a wrong file",
+   "text": "{n} з {m} з неправильним файлом"
+  },
   "29ea1d92cca7773f": {
    "source": "If the queue didn't start →",
    "text": "Якщо черга не запустилася →"
@@ -2078,6 +2098,10 @@
    "source": "not to use it to break copy protection (DRM): MDM doesn't do this and isn't meant to;",
    "text": "не використовувати його для обходу захисту від копіювання (DRM): MDM цього не робить і не призначений для цього;"
   },
+  "3321f21fb30215eb": {
+   "source": "Each app at its own default number of connections.",
+   "text": "Кожна програма використовує власну кількість з'єднань за замовчуванням."
+  },
   "335ddbe14ee4164c": {
    "source": "Closing the window with its close box keeps the download running.",
    "text": "Закриття вікна за допомогою кнопки закриття залишає завантаження працюючим."
@@ -2097,6 +2121,10 @@
   "338575eefc8880a1": {
    "source": "Type part of the file's name.",
    "text": "Введіть частину імені файлу."
+  },
+  "33bd7ec498f74ef6": {
+   "source": "No run finished with the right file.",
+   "text": "Жоден запуск не завершився правильним файлом."
   },
   "33e932958a661bfe": {
    "source": "<g1>Category</g1> — choose a category to see and change its settings below.",
@@ -2142,10 +2170,6 @@
    "source": "Connections to this computer itself (<x1/>) aren't bound. A proxy on this computer carries the downloads, and where it sends them is up to it.",
    "text": "З'єднання з цим комп'ютером (<x1/>) не прив'язуються. Проксі-сервер на цьому комп'ютері здійснює завантаження, і куди він їх надсилає, залежить від нього."
   },
-  "3549f28b5c3a4fb8": {
-   "source": "Videos protected with DRM (most paid streaming services) can't be downloaded, and MDM doesn't try.",
-   "text": "Відео, захищені DRM (більшість платних потокових сервісів), не можуть бути завантажені, і MDM не намагається цього робити."
-  },
   "3569ffbab6981371": {
    "source": "Choosing a language on first start",
    "text": "Вибір мови при першому запуску"
@@ -2173,6 +2197,10 @@
   "3640bc6fe07d3428": {
    "source": "<g1>macOS 11</g1> or later on Apple Silicon or Intel (experimental).",
    "text": "<g1>macOS 11</g1> або новіша версія на Apple Silicon або Intel (експериментально)."
+  },
+  "364fa2fc8f5bcc9e": {
+   "source": "32 small files",
+   "text": "32 невеликі файли"
   },
   "3688ea6bb5b2fe83": {
    "source": "Right-click the list's blank space for <g1>Add new download</g1>, <g2>Select all</g2>, <g3>Arrange files</g3>, <g4>Clear all filters</g4> and <g5>Delete All Completed</g5>.",
@@ -2325,6 +2353,10 @@
   "39c6e3069cb8cc85": {
    "source": "Click <g1>OK</g1>.",
    "text": "Натисніть <g1>OK</g1>."
+  },
+  "39d6924fe82b5e69": {
+   "source": "Every app at 8 connections where that can be set.",
+   "text": "Кожна програма з 8 з’єднаннями, де це можна налаштувати."
   },
   "39f0061bac128459": {
    "source": "<g1>Options → Archives</g1> says whether 7-Zip was found. Without it, a 7z or RAR archive isn't extracted, and the <g2>7-Zip needed</g2> window says so, with a <g3>Get 7-Zip</g3> button.",
@@ -2986,6 +3018,10 @@
    "source": "Turn on <g1>Developer mode</g1>.",
    "text": "Увімкніть <g1>Режим розробника</g1>."
   },
+  "4c682b25c467f254": {
+   "source": "Time, median (IQR)",
+   "text": "Час, медіана (IQR)"
+  },
   "4c75f1e3123da2b1": {
    "source": "— plain FTP.",
    "text": "— звичайний FTP."
@@ -3330,6 +3366,10 @@
    "source": "Click <g1>Yes</g1> to delete, or <g2>No</g2> to keep everything.",
    "text": "Натисніть <g1>Так</g1>, щоб видалити, або <g2>Ні</g2>, щоб зберегти все."
   },
+  "558add5a46e69125": {
+   "source": "2 connections allowed",
+   "text": "Дозволено 2 з’єднання"
+  },
   "558bb1c07f16684f": {
    "source": "It notes the addresses of video streams (HLS and DASH playlists) a page's player loads, in memory for that tab, so the <g1>Download video</g1> button can pass the stream on. Its button reads the page only to find video and sound players and place itself. Clicking it passes the page's address, the video's address, the page's title, the site's cookies, the page that embeds the player and your browser's User-Agent to MDM.",
    "text": "Воно зберігає адреси відеопотоків (списки відтворення HLS і DASH), які завантажує плеєр сторінки, у пам'яті для цієї вкладки, щоб кнопка <g1>Завантажити відео</g1> могла передати потік. Її кнопка читає сторінку лише для того, щоб знайти відеоплеєри та аудіоплеєри та розмістити себе. Натискання на неї передає адресу сторінки, адресу відео, заголовок сторінки, файли cookie сайту, сторінку, яка вбудовує плеєр, і User-Agent вашого браузера до MDM."
@@ -3470,6 +3510,10 @@
    "source": "Sizes are in bytes (<x1/> while unknown), speeds in bytes per second. A failure prints <x2/> and exits with code 1. For example:",
    "text": "Розміри в байтах (<x1/>, якщо невідомо), швидкості в байтах за секунду. При збої виводиться <x2/> і програма завершується з кодом 1. Наприклад:"
   },
+  "597f5a93ee5c3935": {
+   "source": "32 different files of 256 KiB, handed over one after another.",
+   "text": "32 різні файли по 256 KiB, передані один за одним."
+  },
   "59920ff7101c276f": {
    "source": "Fix the translation in the row's third column and delete its <x1/> line.",
    "text": "Виправте переклад у третьому стовпці рядка та видаліть рядок <x1/>."
@@ -3545,6 +3589,10 @@
   "5bc4b6e9ef830d3c": {
    "source": "<g1>Linux and macOS</g1>: in MDM's settings, in a data folder only you may read (0700), not yet in the system's keychain. Keeping it in the keychain is planned.",
    "text": "<g1>Linux та macOS</g1>: у налаштуваннях MDM, у папці даних, яку можете читати лише ви (0700), ще не в системному сховищі ключів. Зберігання в сховищі ключів планується."
+  },
+  "5bd3c760b64b1916": {
+   "source": "run5",
+   "text": "запуск 5"
   },
   "5bf2df1735e69b20": {
    "source": "<g1>Paste</g1> from other programs into any text box (Ctrl+V, ⌘V): MDM kept a clipboard of its own.",
@@ -3918,6 +3966,10 @@
    "source": "The free download managers people reach for instead of IDM, checked on their own websites and code in November 2026. Each is good at something. We make the first one, so judge the rest by their own links.",
    "text": "Безкоштовні менеджери завантажень, які люди обирають замість IDM, перевірені на їхніх власних вебсайтах та за кодом у листопаді 2026 року. Кожен з них має свої переваги. Ми розробляємо перший, тому оцінюйте решту за їхніми власними посиланнями."
   },
+  "64215b3d499445a9": {
+   "source": "{n} (run5)",
+   "text": "{n} (запуск 5)"
+  },
   "64254df81bae2d98": {
    "source": "<g1>Installation help</g1><g2>Importing from IDM</g2><g3>The benchmark</g3>",
    "text": "<g1>Допомога з встановлення</g1><g2>Імпорт з IDM</g2><g3>Тест продуктивності</g3>"
@@ -4102,6 +4154,10 @@
    "source": "Tick <g1>Use Speed Limiter</g1> and type the speed in <g2>Maximum download speed</g2>.",
    "text": "Поставте прапорець <g1>Використовувати обмежувач швидкості</g1> та введіть швидкість у <g2>Максимальна швидкість завантаження</g2>."
   },
+  "69fd84f8fcd6b3c8": {
+   "source": "Cut connections",
+   "text": "Розрив з’єднань"
+  },
   "6a03943201e9c5c8": {
    "source": "Downloading may be against some sites' terms; that is up to you to check.",
    "text": "Завантаження може суперечити умовам деяких сайтів; це ви повинні перевірити."
@@ -4170,6 +4226,10 @@
    "source": "Linux, the AppImage or the .tar.gz",
    "text": "Linux, AppImage або .tar.gz"
   },
+  "6b0b6731867bf61c": {
+   "source": "{n} runs each. Shorter is faster.",
+   "text": "По {n} запусків кожен. Коротше — швидше."
+  },
   "6b0ef8e85512f319": {
    "source": "Runs the new setup without its windows. An installation for all users asks for the administrator's permission.",
    "text": "Запускає нову програму встановлення без її вікон. Встановлення для всіх користувачів вимагає дозволу адміністратора."
@@ -4213,6 +4273,10 @@
   "6c0ec44709800dba": {
    "source": "<g1>Mister Download Manager</g1><g2>Free and open source · GPL-3.0</g2>",
    "text": "<g1>Mister Download Manager</g1><g2>Безкоштовно та з відкритим кодом · GPL-3.0</g2>"
+  },
+  "6c0fdb3cfb96e29c": {
+   "source": "100 MiB from a server that sends at most 2 MB/s on each connection.",
+   "text": "100 MiB із сервера, який надсилає щонайбільше 2 МБ/с на кожне з’єднання."
   },
   "6c562dbba37bfe77": {
    "source": "results.json",
@@ -4430,6 +4494,10 @@
    "source": "<g1>MDM asks to create a folder:</g1> the folder doesn't exist yet. Click <g2>Yes</g2>.",
    "text": "<g1>MDM просить створити папку:</g1> папка ще не існує. Натисніть <g2>Так</g2>."
   },
+  "719c8ad7b82e2c86": {
+   "source": "100 MiB from a server that ignores ranges and always sends the whole file.",
+   "text": "100 MiB із сервера, який ігнорує діапазони та завжди надсилає весь файл."
+  },
   "71e90b70c32a4238": {
    "source": "<g1>Download list</g1> (right). One row per download. See <g2>The download list</g2>.",
    "text": "<g1>Список завантажень</g1> (праворуч). Один рядок на одне завантаження. Дивіться <g2>Список завантажень</g2>."
@@ -4618,6 +4686,10 @@
    "source": "<g1>Synchronization queue</g1> — finished downloads stay in it instead of leaving. It is the only queue that takes finished downloads.",
    "text": "<g1>Черга синхронізації</g1> — завершені завантаження залишаються в ній замість того, щоб виходити. Це єдина черга, яка приймає завершені завантаження."
   },
+  "76c2453dbe3586aa": {
+   "source": "2 MB/s per connection",
+   "text": "2 МБ/с на з’єднання"
+  },
   "76ca1f61789efab8": {
    "source": "MDM didn't start in time",
    "text": "MDM не запустився вчасно"
@@ -4714,6 +4786,10 @@
    "source": "Questions and answers — Mister Download Manager",
    "text": "Запитання та відповіді — Mister Download Manager"
   },
+  "7978d9d1f23553cc": {
+   "source": "The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.",
+   "text": "Той самий тестовий сервер і той самий ПК, з AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 та curl. Кожен був налаштований на 8 з’єднань, де це можливо (у кожному рядку вказано, скільки він використовував), і кожен файл перевірявся байт за байтом. Час IDM — це той, що вище; його не запускали повторно."
+  },
   "798a534b6b549e15": {
    "source": "<g1>Things that fail say why</g1>: opening a file that was moved, a file that can't be deleted or moved, the list that can't be saved, a computer that won't shut down, a check closed early.",
    "text": "<g1>Речі, які не вдаються, пояснюють причину</g1>: відкриття файлу, який було переміщено, файлу, який не можна видалити або перемістити, списку, який не можна зберегти, комп'ютера, який не вимикається, перевірки, закритої раніше."
@@ -4757,6 +4833,10 @@
   "7a6ff9503edd25ad": {
    "source": "Is the site in <g1>Don't start downloading automatically from the following sites</g1>?",
    "text": "Чи є сайт у <g1>Не починати завантаження автоматично з наступних сайтів</g1>?"
+  },
+  "7a74681889007141": {
+   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42, and <g3>against the others</g3> on the same PC and test server: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl.",
+   "text": "Mister Download Manager: <g1>його вихідний код</g1> та <g2>наш тест</g2> проти IDM 6.42, а також <g3>проти інших</g3> на тому ж ПК та тестовому сервері: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 та curl."
   },
   "7a8b05b164a2ebec": {
    "source": "Can it download overnight or on a schedule? — Mister Download Manager",
@@ -5850,6 +5930,14 @@
    "source": "Unzip the file to a folder you can write to (not straight into <x1/>).",
    "text": "Розпакуйте файл у папку, до якої ви можете записувати (не безпосередньо в <x1/>)."
   },
+  "96e2ef971fcfc675": {
+   "source": "<g1>Median time, from hand-off to finished file</g1><g2>5 runs each. Shorter is faster.</g2>",
+   "text": "<g1>Медіанний час, від передачі до завершення файлу</g1><g2>По 5 запусків кожного. Чим менше, тим швидше.</g2>"
+  },
+  "96ecd3b45b4c84ad": {
+   "source": "50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more.",
+   "text": "50 MiB із сервера, який дозволяє 2 з’єднання одночасно, по 2 МБ/с кожне, і відмовляє у більшій кількості."
+  },
   "970430e3defd4e45": {
    "source": "Browser integration →",
    "text": "Інтеграція з браузером →"
@@ -6125,6 +6213,10 @@
   "9e343096f9189eb2": {
    "source": "Seven downloads, each run at least seven times by both apps. The bar is the middle half of the runs, the line the median.",
    "text": "Сім завантажень, кожне виконано щонайменше сім разів обома програмами. Стовпчик — це середня половина запусків, лінія — медіана."
+  },
+  "9e538e2ea50f45d7": {
+   "source": "1 connection",
+   "text": "1 з'єднання"
   },
   "9e5f6ea1de61f755": {
    "source": "Blocking addresses",
@@ -6650,6 +6742,10 @@
    "source": "AB Download Manager",
    "text": "AB Download Manager"
   },
+  "ac10c1349c520d45": {
+   "source": "CPU, average / peak",
+   "text": "ЦП, середнє / пікове"
+  },
   "ac1acb5254f1187e": {
    "source": "What video a page holds (YouTube, Vimeo, ...), and the qualities to choose from.",
    "text": "Яке відео містить сторінка (YouTube, Vimeo, ...), та якості на вибір."
@@ -6830,6 +6926,10 @@
    "source": "Queues",
    "text": "Черги"
   },
+  "b0044c55e061b1c2": {
+   "source": "Memory after",
+   "text": "Пам'ять після"
+  },
   "b0c0ef4ee0008226": {
    "source": "— FTP secured with TLS from the start of the session (explicit FTPS, <x1/>, usually port 21). Use it when the server says it supports TLS.",
    "text": "— FTP, захищений TLS з початку сесії (явний FTPS, <x1/>, зазвичай порт 21). Використовуйте його, коли сервер заявляє про підтримку TLS."
@@ -6889,10 +6989,6 @@
   "b1b2249661e1c4a9": {
    "source": "Keep changes focused and match the code around them. A few rules hold everywhere:",
    "text": "Зберігайте зміни сфокусованими та відповідними навколишньому коду. Кілька правил діють скрізь:"
-  },
-  "b1d90b3e9d2a1cd5": {
-   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparison; its raw data is in <x3/>.",
-   "text": "запускає модульні тести та наскрізні завантаження проти <x1/> з впровадженими помилками (повільні, відкинуті та відхилені з'єднання, сервери без діапазонів, файли, що змінюються). <x2/> запускає опубліковане порівняння швидкості; його необроблені дані знаходяться в <x3/>."
   },
   "b208caa24e13c211": {
    "source": "<g1>Shift+Up / Shift+Down</g1> makes the selection longer or shorter.",
@@ -7034,6 +7130,10 @@
    "source": "256 KiB file",
    "text": "Файл 256 КіБ"
   },
+  "b57da88051558deb": {
+   "source": "And against the others.",
+   "text": "І проти інших."
+  },
   "b585eac57a3ace26": {
    "source": "On another computer",
    "text": "На іншому комп'ютері"
@@ -7117,6 +7217,10 @@
   "b7c0190ca4719975": {
    "source": "The assistant can't change MDM's options, see your browser, or turn the automation API on by itself.",
    "text": "Помічник не може змінювати налаштування MDM, переглядати ваш браузер або самостійно вмикати API автоматизації."
+  },
+  "b7c70a77d0281344": {
+   "source": "from the run above, {date}",
+   "text": "з попереднього запуску, {date}"
   },
   "b7cf37766b3a4159": {
    "source": "On <g1>Q</g1>, tick <g2>In a queue</g2> or <g3>Not in a queue</g3>.",
@@ -7574,6 +7678,10 @@
    "source": "<g1>Torrents and magnet links.</g1> In the same list, with a file tree to pick from. IDM's website doesn't mention BitTorrent.",
    "text": "<g1>Торренти та магніт-посилання.</g1> В тому ж списку, з деревом файлів для вибору. Вебсайт IDM не згадує BitTorrent."
   },
+  "c57753035a57cd80": {
+   "source": "Network",
+   "text": "Мережа"
+  },
   "c5951459908e695f": {
    "source": "A table with one row per connection: its number, how much it has downloaded, and what it is doing right now.",
    "text": "Таблиця з одним рядком для кожного з’єднання: його номер, скільки воно завантажило та що воно робить зараз."
@@ -7682,6 +7790,10 @@
    "source": "MDM median ms (IQR)",
    "text": "Медіана MDM, мс (IQR)"
   },
+  "c8578958d7e75c64": {
+   "source": "50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB.",
+   "text": "50 MiB зі швидкістю 4 МБ/с на з’єднання; сервер розриває кожне друге з’єднання після 2 MiB."
+  },
   "c8637f7ebeaab90f": {
    "source": "The software is free of charge. Anyone selling it to you, or asking you to pay to \"unlock\" it, is not us.",
    "text": "Програмне забезпечення є безкоштовним. Будь-хто, хто продає його вам або просить заплатити за його \"розблокування\", не є нами."
@@ -7726,10 +7838,6 @@
    "source": "The plain programs, for any distribution.",
    "text": "Звичайні програми для будь-якого дистрибутива."
   },
-  "c981c23fd3b23966": {
-   "source": "MDM reads the torrent and shows its files as a folder tree. A <x1/> file is read at once. A magnet link first has to get the file list from other peers, which can take a minute or two.",
-   "text": "MDM зчитує торрент і показує його файли у вигляді дерева папок. Файл <x1/> зчитується одразу. Magnet-посилання спочатку має отримати список файлів від інших пірів, що може зайняти хвилину-дві."
-  },
   "c991e64b857c5509": {
    "source": "<g1>Reannounce</g1> — asks the torrent's trackers for peers again now, instead of waiting for their next round. It works while the torrent runs or is shared.",
    "text": "<g1>Повторне оголошення</g1> — знову запитує у трекерів торрента пірів зараз, замість того, щоб чекати їхнього наступного раунду. Це працює, поки торрент працює або розповсюджується."
@@ -7753,6 +7861,10 @@
   "ca3ccb8cc16abc18": {
    "source": "<g1>Installation help</g1><g2>User guide</g2><g3>Report an issue</g3>",
    "text": "<g1>Допомога з встановленням</g1><g2>Посібник користувача</g2><g3>Повідомити про проблему</g3>"
+  },
+  "ca4285dd397e5809": {
+   "source": "{n} of {m} failed",
+   "text": "{n} з {m} не вдалося"
   },
   "ca593f72a01b7baf": {
    "source": "User guide",
@@ -7845,6 +7957,14 @@
   "ccf432f5c2c618e6": {
    "source": "Want subtitles? Pick a language in <g1>Subtitles</g1>. They're saved beside the video, or inside it if you tick <g2>Put them into the video</g2> (see <g3>Subtitles</g3>).",
    "text": "Потрібні субтитри? Виберіть мову в <g1>Субтитри</g1>. Вони зберігаються поруч із відео, або всередині нього, якщо ви позначите <g2>Вставити у відео</g2> (див. <g3>Субтитри</g3>)."
+  },
+  "ccff9c325c408997": {
+   "source": "No range support",
+   "text": "Без підтримки діапазону"
+  },
+  "cd11402498e46414": {
+   "source": "The whisker spans the middle half of the runs.",
+   "text": "Вусик охоплює середню половину запусків."
   },
   "cd259ac663c10ccb": {
    "source": "Download a gallery",
@@ -8298,6 +8418,10 @@
    "source": "Each product's own website, linked above, and for the open-source ones their code on GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; licences and latest releases as GitHub shows them, 4 November 2026",
    "text": "Вебсайти кожного продукту, посилання вище, а для відкритих — їхній код на GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; ліцензії та останні випуски, як їх показує GitHub, 4 листопада 2026 року"
   },
+  "d8fddf13e98b6e23": {
+   "source": "{n} connections",
+   "text": "{n} з'єднань"
+  },
   "d9012cd2cc61f595": {
    "source": "Choose <g1>Tasks → Add batch download</g1>. (<g2>Tasks → Add batch download from clipboard</g2> fills in a copied address.)",
    "text": "Оберіть <g1>Завдання → Додати пакетне завантаження</g1>. (<g2>Завдання → Додати пакетне завантаження з буфера обміну</g2> заповнює скопійовану адресу.)"
@@ -8725,10 +8849,6 @@
   "e571a12e9be69853": {
    "source": "Move through an open menu",
    "text": "Переміщення по відкритому меню"
-  },
-  "e574864546b1a3c8": {
-   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42. We haven't benchmarked the others yet; until we do, this page makes no speed claim about them.",
-   "text": "Mister Download Manager: <g1>вихідний код</g1> та <g2>наш тест</g2> проти IDM 6.42. Ми ще не тестували інші; доки ми цього не зробимо, ця сторінка не робить жодних заяв щодо їхньої швидкості."
   },
   "e57582f3a7df8548": {
    "source": "Download for Windows",
@@ -9282,6 +9402,10 @@
    "source": "Switches can start with <x1/> or <x2/>, in any case. If MDM is running, the command goes to it; if not, MDM starts and carries it out. For example:",
    "text": "Перемикачі можуть починатися з <x1/> або <x2/>, у будь-якому випадку. Якщо MDM запущено, команда надходить до нього; якщо ні, MDM запускається та виконує її. Наприклад:"
   },
+  "f443b336d27668f9": {
+   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparisons, against IDM (<x3/>) and against other download managers (<x4/>, method in <x5/>); their raw data is in <x6/>.",
+   "text": "запускає модульні тести та наскрізне завантаження з <x1/> з імітацією збоїв (повільні, розірвані та відхилені з’єднання, сервери без діапазонів, файли, що змінюються). <x2/> запускає опубліковані порівняння швидкості з IDM (<x3/>) та з іншими менеджерами завантажень (<x4/>, метод у <x5/>); їхні необроблені дані знаходяться в <x6/>."
+  },
   "f47d19d2ae313a6b": {
    "source": "<g1>MDM as an IDM alternative</g1><g2>Spot something wrong? Tell us</g2>",
    "text": "<g1>MDM як альтернатива IDM</g1><g2>Помітили щось не так? Повідомте нам</g2>"
@@ -9321,6 +9445,10 @@
   "f575c52354f70221": {
    "source": "Free forever, no ads, no trial",
    "text": "Завжди безкоштовно, без реклами, без пробного періоду"
+  },
+  "f5a2a44dad341b4f": {
+   "source": "1 GiB",
+   "text": "1 GiB"
   },
   "f5d0db4c9a23ece3": {
    "source": "<g1><g2>Adding downloads</g2></g1> — Add URL, the clipboard, the drop target, batch downloads and lists of links, and Start Download versus Download Later.",

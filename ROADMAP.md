@@ -120,6 +120,10 @@ Everything below ships together, in one release.
 - ✅ Website: the [free IDM alternative](https://misterdownloadmanager.com/idm-alternative.html) page compares
   MDM with IDM and with nine other free download managers, each checked on its own site, with
   their logos, a feature-by-feature form and an MDM-vs-IDM label with the benchmark's times to scale
+- ✅ [Benchmark](https://misterdownloadmanager.com/benchmark.html#others) against other download
+  managers: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager,
+  aria2 and curl, on the same PC and test server, with every file checked and the harness to re-run
+  it ([#71](https://github.com/anefzaoui/misterdownloadmanager/issues/71))
 
 ### Being built
 
@@ -160,5 +164,3 @@ Everything below ships together, in one release.
 
 - 📋 Themes: colours, accent, pywal and Base16, with the layout kept
   ([#45](https://github.com/anefzaoui/misterdownloadmanager/issues/45))
-- 📋 Benchmarks against other download managers
-  ([#71](https://github.com/anefzaoui/misterdownloadmanager/issues/71))

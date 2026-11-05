@@ -198,9 +198,9 @@
    "source": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>",
    "text": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>"
   },
-  "04ec5358d75ceff7": {
-   "source": "Point at a video on a web page and a small <g1>Download video</g1> button appears at its edge. Click it and MDM's <g2>Download video from a page</g2> window opens and looks up the qualities it can download. It takes the video you clicked: its own file when it plays one, or the stream the player loaded (HLS or DASH), else the page. Embedded players work too, and your sign-in for the site, the page that embeds the player and your browser's User-Agent go with it, so videos for members, or that play only on the site that embeds them, can be downloaded. Sound players get the button too.",
-   "text": "Zeigen Sie auf ein Video auf einer Webseite, und eine kleine Schaltfläche <g1>Video herunterladen</g1> erscheint am Rand. Klicken Sie darauf, und das MDM-Fenster <g2>Video von einer Seite herunterladen</g2> öffnet sich und sucht nach den Qualitäten, die es herunterladen kann. Es nimmt das Video, das Sie angeklickt haben: seine eigene Datei, wenn es eine abspielt, oder den Stream, den der Player geladen hat (HLS oder DASH), sonst die Seite. Eingebettete Player funktionieren ebenfalls, und Ihre Anmeldung für die Seite, die Seite, die den Player einbettet, und der User-Agent Ihres Browsers werden mitgesendet, sodass Videos für Mitglieder oder solche, die nur auf der Seite abgespielt werden, die sie einbettet, heruntergeladen werden können. Sound-Player erhalten die Schaltfläche ebenfalls."
+  "04ebcf1715ef6084": {
+   "source": "Correct runs",
+   "text": "Korrekte Durchläufe"
   },
   "050edc04316dd70a": {
    "source": "On the command line",
@@ -418,6 +418,10 @@
    "source": "Version 0.2.4 · free and open source · no ads, no spyware, nothing bundled. <g1>What's new</g1>",
    "text": "Version 0.2.4 · kostenlos und Open Source · keine Werbung, keine Spyware, nichts zusätzlich gebündelt. <g1>Was ist neu</g1>"
   },
+  "09b6d0a9dbaf55e1": {
+   "source": "{name}, at defaults",
+   "text": "{name}, Standardeinstellungen"
+  },
   "09baf9aefa050aee": {
    "source": "Tick <g1>Start download at</g1> and set the time, for example 1:00:00 AM. Click the hours and use the arrows or type the number.",
    "text": "<g1>Download starten um</g1> anhaken und die Zeit einstellen, zum Beispiel 1:00:00 Uhr. Auf die Stunden klicken und die Pfeile verwenden oder die Zahl eingeben."
@@ -529,6 +533,10 @@
   "0bb0e3dc72ae2345": {
    "source": "Before you start",
    "text": "Bevor Sie beginnen"
+  },
+  "0bf25272dd906225": {
+   "source": "Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.",
+   "text": "Vorläufig: Diese Läufe wurden durchgeführt, während andere Programme auf demselben PC aktiv waren. Ein Lauf auf einem ruhigen Rechner wird sie ersetzen."
   },
   "0c1ddab7d81578c6": {
    "source": "<g1>Options → General → Use advanced browser integration</g1> must be on. Turn it off to send nothing to MDM.",
@@ -741,6 +749,10 @@
   "131c434c36b2d6f9": {
    "source": "Click <g1>Load unpacked</g1>.",
    "text": "Klicken Sie auf <g1>Entpackte Erweiterung laden</g1>."
+  },
+  "131f6c6af936dd3a": {
+   "source": "1 GiB from a server with no limits: as fast as the loopback and the disk allow.",
+   "text": "1 GiB von einem Server ohne Limits: so schnell, wie Loopback und Festplatte es zulassen."
   },
   "13382c1e6ceae711": {
    "source": "<g1>The video button over a Drive video</g1> downloads the original file, not one of the player's smaller copies.",
@@ -1009,6 +1021,10 @@
   "19ef176da302a2b4": {
    "source": "When the browser can't hand a download to MDM, it keeps the download itself, so nothing is lost. The extension's toolbar button then shows a red !. Click it…",
    "text": "Wenn der Browser einen Download nicht an MDM übergeben kann, behält er den Download selbst, sodass nichts verloren geht. Die Schaltfläche der Erweiterung in der Symbolleiste zeigt dann ein rotes Ausrufezeichen an. Klicken Sie darauf…"
+  },
+  "19f9c2c64f700479": {
+   "source": "compare.json",
+   "text": "compare.json"
   },
   "1a0500523dbbbc89": {
    "source": "On a Mac or Linux",
@@ -1698,6 +1714,10 @@
    "source": "Download limits",
    "text": "Download-Limits"
   },
+  "29e14750a75c3ab2": {
+   "source": "{n} of {m} with a wrong file",
+   "text": "{n} von {m} mit falscher Datei"
+  },
   "29ea1d92cca7773f": {
    "source": "If the queue didn't start →",
    "text": "Wenn die Warteschlange nicht gestartet wurde →"
@@ -2078,6 +2098,10 @@
    "source": "not to use it to break copy protection (DRM): MDM doesn't do this and isn't meant to;",
    "text": "es nicht zum Umgehen von Kopierschutz (DRM) zu verwenden: MDM tut dies nicht und ist nicht dafür vorgesehen;"
   },
+  "3321f21fb30215eb": {
+   "source": "Each app at its own default number of connections.",
+   "text": "Jede App mit ihrer eigenen Standardanzahl von Verbindungen."
+  },
   "335ddbe14ee4164c": {
    "source": "Closing the window with its close box keeps the download running.",
    "text": "Das Schließen des Fensters mit der Schließen-Schaltfläche lässt den Download weiterlaufen."
@@ -2097,6 +2121,10 @@
   "338575eefc8880a1": {
    "source": "Type part of the file's name.",
    "text": "Geben Sie einen Teil des Dateinamens ein."
+  },
+  "33bd7ec498f74ef6": {
+   "source": "No run finished with the right file.",
+   "text": "Kein Lauf wurde mit der richtigen Datei beendet."
   },
   "33e932958a661bfe": {
    "source": "<g1>Category</g1> — choose a category to see and change its settings below.",
@@ -2142,10 +2170,6 @@
    "source": "Connections to this computer itself (<x1/>) aren't bound. A proxy on this computer carries the downloads, and where it sends them is up to it.",
    "text": "Verbindungen zu diesem Computer selbst (<x1/>) sind nicht gebunden. Ein Proxy auf diesem Computer übernimmt die Downloads, und wohin er sie sendet, liegt bei ihm."
   },
-  "3549f28b5c3a4fb8": {
-   "source": "Videos protected with DRM (most paid streaming services) can't be downloaded, and MDM doesn't try.",
-   "text": "Mit DRM geschützte Videos (die meisten kostenpflichtigen Streaming-Dienste) können nicht heruntergeladen werden, und MDM versucht es auch nicht."
-  },
   "3569ffbab6981371": {
    "source": "Choosing a language on first start",
    "text": "Sprachauswahl beim ersten Start"
@@ -2173,6 +2197,10 @@
   "3640bc6fe07d3428": {
    "source": "<g1>macOS 11</g1> or later on Apple Silicon or Intel (experimental).",
    "text": "<g1>macOS 11</g1> oder neuer auf Apple Silicon oder Intel (experimentell)."
+  },
+  "364fa2fc8f5bcc9e": {
+   "source": "32 small files",
+   "text": "32 kleine Dateien"
   },
   "3688ea6bb5b2fe83": {
    "source": "Right-click the list's blank space for <g1>Add new download</g1>, <g2>Select all</g2>, <g3>Arrange files</g3>, <g4>Clear all filters</g4> and <g5>Delete All Completed</g5>.",
@@ -2325,6 +2353,10 @@
   "39c6e3069cb8cc85": {
    "source": "Click <g1>OK</g1>.",
    "text": "Klicken Sie auf <g1>OK</g1>."
+  },
+  "39d6924fe82b5e69": {
+   "source": "Every app at 8 connections where that can be set.",
+   "text": "Jede App mit 8 Verbindungen, wo dies eingestellt werden kann."
   },
   "39f0061bac128459": {
    "source": "<g1>Options → Archives</g1> says whether 7-Zip was found. Without it, a 7z or RAR archive isn't extracted, and the <g2>7-Zip needed</g2> window says so, with a <g3>Get 7-Zip</g3> button.",
@@ -2986,6 +3018,10 @@
    "source": "Turn on <g1>Developer mode</g1>.",
    "text": "Aktivieren Sie den <g1>Entwicklermodus</g1>."
   },
+  "4c682b25c467f254": {
+   "source": "Time, median (IQR)",
+   "text": "Zeit, Median (IQR)"
+  },
   "4c75f1e3123da2b1": {
    "source": "— plain FTP.",
    "text": "— einfaches FTP."
@@ -3330,6 +3366,10 @@
    "source": "Click <g1>Yes</g1> to delete, or <g2>No</g2> to keep everything.",
    "text": "Klicken Sie auf <g1>Ja</g1> zum Löschen oder auf <g2>Nein</g2>, um alles zu behalten."
   },
+  "558add5a46e69125": {
+   "source": "2 connections allowed",
+   "text": "2 Verbindungen erlaubt"
+  },
   "558bb1c07f16684f": {
    "source": "It notes the addresses of video streams (HLS and DASH playlists) a page's player loads, in memory for that tab, so the <g1>Download video</g1> button can pass the stream on. Its button reads the page only to find video and sound players and place itself. Clicking it passes the page's address, the video's address, the page's title, the site's cookies, the page that embeds the player and your browser's User-Agent to MDM.",
    "text": "Sie speichert die Adressen von Videostreams (HLS- und DASH-Playlists), die der Player einer Seite lädt, im Arbeitsspeicher für diesen Tab, damit die Schaltfläche <g1>Video herunterladen</g1> den Stream weitergeben kann. Ihre Schaltfläche liest die Seite nur, um Video- und Audioplayer zu finden und sich selbst zu platzieren. Ein Klick darauf übergibt die Adresse der Seite, die Adresse des Videos, den Titel der Seite, die Cookies der Website, die Seite, die den Player einbettet, und den User-Agent Ihres Browsers an MDM."
@@ -3470,6 +3510,10 @@
    "source": "Sizes are in bytes (<x1/> while unknown), speeds in bytes per second. A failure prints <x2/> and exits with code 1. For example:",
    "text": "Größen sind in Bytes (<x1/> während unbekannt), Geschwindigkeiten in Bytes pro Sekunde. Ein Fehler gibt <x2/> aus und beendet sich mit Code 1. Zum Beispiel:"
   },
+  "597f5a93ee5c3935": {
+   "source": "32 different files of 256 KiB, handed over one after another.",
+   "text": "32 verschiedene Dateien von 256 KiB, nacheinander übergeben."
+  },
   "59920ff7101c276f": {
    "source": "Fix the translation in the row's third column and delete its <x1/> line.",
    "text": "Korrigieren Sie die Übersetzung in der dritten Spalte der Zeile und löschen Sie die <x1/>-Zeile."
@@ -3545,6 +3589,10 @@
   "5bc4b6e9ef830d3c": {
    "source": "<g1>Linux and macOS</g1>: in MDM's settings, in a data folder only you may read (0700), not yet in the system's keychain. Keeping it in the keychain is planned.",
    "text": "<g1>Linux und macOS</g1>: in den MDM-Einstellungen, in einem Datenordner, den nur Sie lesen dürfen (0700), noch nicht im System-Schlüsselbund. Die Speicherung im Schlüsselbund ist geplant."
+  },
+  "5bd3c760b64b1916": {
+   "source": "run5",
+   "text": "Lauf 5"
   },
   "5bf2df1735e69b20": {
    "source": "<g1>Paste</g1> from other programs into any text box (Ctrl+V, ⌘V): MDM kept a clipboard of its own.",
@@ -3918,6 +3966,10 @@
    "source": "The free download managers people reach for instead of IDM, checked on their own websites and code in November 2026. Each is good at something. We make the first one, so judge the rest by their own links.",
    "text": "Die kostenlosen Download-Manager, die anstelle von IDM verwendet werden, überprüft auf ihren eigenen Websites und im Code im November 2026. Jeder ist in etwas gut. Wir erstellen den ersten, also beurteilen Sie den Rest anhand ihrer eigenen Links."
   },
+  "64215b3d499445a9": {
+   "source": "{n} (run5)",
+   "text": "{n} (Lauf 5)"
+  },
   "64254df81bae2d98": {
    "source": "<g1>Installation help</g1><g2>Importing from IDM</g2><g3>The benchmark</g3>",
    "text": "<g1>Installationshilfe</g1><g2>Importieren von IDM</g2><g3>Der Benchmark</g3>"
@@ -4102,6 +4154,10 @@
    "source": "Tick <g1>Use Speed Limiter</g1> and type the speed in <g2>Maximum download speed</g2>.",
    "text": "Aktivieren Sie <g1>Geschwindigkeitsbegrenzer verwenden</g1> und geben Sie die Geschwindigkeit unter <g2>Maximale Download-Geschwindigkeit</g2> ein."
   },
+  "69fd84f8fcd6b3c8": {
+   "source": "Cut connections",
+   "text": "Verbindungen trennen"
+  },
   "6a03943201e9c5c8": {
    "source": "Downloading may be against some sites' terms; that is up to you to check.",
    "text": "Das Herunterladen kann gegen die Nutzungsbedingungen einiger Websites verstoßen; dies zu überprüfen liegt in Ihrer Verantwortung."
@@ -4170,6 +4226,10 @@
    "source": "Linux, the AppImage or the .tar.gz",
    "text": "Linux, das AppImage oder die .tar.gz"
   },
+  "6b0b6731867bf61c": {
+   "source": "{n} runs each. Shorter is faster.",
+   "text": "Jeweils {n} Läufe. Kürzer ist schneller."
+  },
   "6b0ef8e85512f319": {
    "source": "Runs the new setup without its windows. An installation for all users asks for the administrator's permission.",
    "text": "Führt die neue Installation ohne ihre Fenster aus. Eine Installation für alle Benutzer erfordert die Administratorberechtigung."
@@ -4213,6 +4273,10 @@
   "6c0ec44709800dba": {
    "source": "<g1>Mister Download Manager</g1><g2>Free and open source · GPL-3.0</g2>",
    "text": "<g1>Mister Download Manager</g1><g2>Kostenlos und Open Source · GPL-3.0</g2>"
+  },
+  "6c0fdb3cfb96e29c": {
+   "source": "100 MiB from a server that sends at most 2 MB/s on each connection.",
+   "text": "100 MiB von einem Server, der maximal 2 MB/s pro Verbindung sendet."
   },
   "6c562dbba37bfe77": {
    "source": "results.json",
@@ -4430,6 +4494,10 @@
    "source": "<g1>MDM asks to create a folder:</g1> the folder doesn't exist yet. Click <g2>Yes</g2>.",
    "text": "<g1>MDM fragt, ob ein Ordner erstellt werden soll:</g1> Der Ordner existiert noch nicht. Klicken Sie auf <g2>Ja</g2>."
   },
+  "719c8ad7b82e2c86": {
+   "source": "100 MiB from a server that ignores ranges and always sends the whole file.",
+   "text": "100 MiB von einem Server, der Bereiche ignoriert und immer die ganze Datei sendet."
+  },
   "71e90b70c32a4238": {
    "source": "<g1>Download list</g1> (right). One row per download. See <g2>The download list</g2>.",
    "text": "<g1>Download-Liste</g1> (rechts). Eine Zeile pro Download. Siehe <g2>Die Download-Liste</g2>."
@@ -4618,6 +4686,10 @@
    "source": "<g1>Synchronization queue</g1> — finished downloads stay in it instead of leaving. It is the only queue that takes finished downloads.",
    "text": "<g1>Synchronisierungswarteschlange</g1> – abgeschlossene Downloads bleiben darin, anstatt sie zu verlassen. Es ist die einzige Warteschlange, die abgeschlossene Downloads aufnimmt."
   },
+  "76c2453dbe3586aa": {
+   "source": "2 MB/s per connection",
+   "text": "2 MB/s pro Verbindung"
+  },
   "76ca1f61789efab8": {
    "source": "MDM didn't start in time",
    "text": "MDM wurde nicht rechtzeitig gestartet"
@@ -4714,6 +4786,10 @@
    "source": "Questions and answers — Mister Download Manager",
    "text": "Fragen und Antworten — Mister Download Manager"
   },
+  "7978d9d1f23553cc": {
+   "source": "The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.",
+   "text": "Derselbe Testserver und derselbe PC, mit AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 und curl. Jedes Programm wurde, wo einstellbar, auf 8 Verbindungen gesetzt (jede Zeile gibt an, wie viele es verwendet hat), und jede Datei wurde Byte für Byte überprüft. Die Zeiten von IDM sind die oben genannten; es wurde nicht erneut ausgeführt."
+  },
   "798a534b6b549e15": {
    "source": "<g1>Things that fail say why</g1>: opening a file that was moved, a file that can't be deleted or moved, the list that can't be saved, a computer that won't shut down, a check closed early.",
    "text": "<g1>Fehlgeschlagene Vorgänge geben den Grund an</g1>: Öffnen einer verschobenen Datei, einer Datei, die nicht gelöscht oder verschoben werden kann, der Liste, die nicht gespeichert werden kann, eines Computers, der sich nicht herunterfahren lässt, eines zu früh beendeten Checks."
@@ -4757,6 +4833,10 @@
   "7a6ff9503edd25ad": {
    "source": "Is the site in <g1>Don't start downloading automatically from the following sites</g1>?",
    "text": "Ist die Website unter <g1>Downloads von folgenden Websites nicht automatisch starten</g1> aufgeführt?"
+  },
+  "7a74681889007141": {
+   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42, and <g3>against the others</g3> on the same PC and test server: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl.",
+   "text": "Mister Download Manager: <g1>sein Quellcode</g1> und <g2>unser Benchmark</g2> gegen IDM 6.42 sowie <g3>gegen die anderen</g3> auf demselben PC und Testserver: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 und curl."
   },
   "7a8b05b164a2ebec": {
    "source": "Can it download overnight or on a schedule? — Mister Download Manager",
@@ -5850,6 +5930,14 @@
    "source": "Unzip the file to a folder you can write to (not straight into <x1/>).",
    "text": "Entpacken Sie die Datei in einen Ordner, in den Sie schreiben können (nicht direkt in <x1/>)."
   },
+  "96e2ef971fcfc675": {
+   "source": "<g1>Median time, from hand-off to finished file</g1><g2>5 runs each. Shorter is faster.</g2>",
+   "text": "<g1>Medianzeit, von der Übergabe bis zur fertigen Datei</g1><g2>Jeweils 5 Durchläufe. Kürzer ist schneller.</g2>"
+  },
+  "96ecd3b45b4c84ad": {
+   "source": "50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more.",
+   "text": "50 MiB von einem Server, der 2 Verbindungen gleichzeitig mit je 2 MB/s erlaubt und weitere ablehnt."
+  },
   "970430e3defd4e45": {
    "source": "Browser integration →",
    "text": "Browser-Integration →"
@@ -6125,6 +6213,10 @@
   "9e343096f9189eb2": {
    "source": "Seven downloads, each run at least seven times by both apps. The bar is the middle half of the runs, the line the median.",
    "text": "Sieben Downloads, jeder mindestens siebenmal von beiden Apps ausgeführt. Der Balken zeigt die mittlere Hälfte der Läufe, die Linie den Median."
+  },
+  "9e538e2ea50f45d7": {
+   "source": "1 connection",
+   "text": "1 Verbindung"
   },
   "9e5f6ea1de61f755": {
    "source": "Blocking addresses",
@@ -6650,6 +6742,10 @@
    "source": "AB Download Manager",
    "text": "AB Download Manager"
   },
+  "ac10c1349c520d45": {
+   "source": "CPU, average / peak",
+   "text": "CPU, Durchschnitt / Spitze"
+  },
   "ac1acb5254f1187e": {
    "source": "What video a page holds (YouTube, Vimeo, ...), and the qualities to choose from.",
    "text": "Welche Videos eine Seite enthält (YouTube, Vimeo, ...), und die verfügbaren Qualitäten zur Auswahl."
@@ -6830,6 +6926,10 @@
    "source": "Queues",
    "text": "Warteschlangen"
   },
+  "b0044c55e061b1c2": {
+   "source": "Memory after",
+   "text": "Speicher danach"
+  },
   "b0c0ef4ee0008226": {
    "source": "— FTP secured with TLS from the start of the session (explicit FTPS, <x1/>, usually port 21). Use it when the server says it supports TLS.",
    "text": "— FTP, das von Beginn der Sitzung an mit TLS gesichert ist (explizites FTPS, <x1/>, normalerweise Port 21). Verwenden Sie es, wenn der Server angibt, TLS zu unterstützen."
@@ -6889,10 +6989,6 @@
   "b1b2249661e1c4a9": {
    "source": "Keep changes focused and match the code around them. A few rules hold everywhere:",
    "text": "Halten Sie Änderungen fokussiert und passen Sie sie dem umgebenden Code an. Einige Regeln gelten überall:"
-  },
-  "b1d90b3e9d2a1cd5": {
-   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparison; its raw data is in <x3/>.",
-   "text": "führt Unit-Tests und End-to-End-Downloads gegen <x1/> mit injizierten Fehlern (langsame, abgebrochene und abgelehnte Verbindungen, Server ohne Bereiche, sich ändernde Dateien) aus. <x2/> führt den veröffentlichten Geschwindigkeitsvergleich aus; seine Rohdaten befinden sich in <x3/>."
   },
   "b208caa24e13c211": {
    "source": "<g1>Shift+Up / Shift+Down</g1> makes the selection longer or shorter.",
@@ -7034,6 +7130,10 @@
    "source": "256 KiB file",
    "text": "256 KiB Datei"
   },
+  "b57da88051558deb": {
+   "source": "And against the others.",
+   "text": "Und gegen die anderen."
+  },
   "b585eac57a3ace26": {
    "source": "On another computer",
    "text": "Auf einem anderen Computer"
@@ -7117,6 +7217,10 @@
   "b7c0190ca4719975": {
    "source": "The assistant can't change MDM's options, see your browser, or turn the automation API on by itself.",
    "text": "Der Assistent kann die MDM-Optionen nicht ändern, Ihren Browser sehen oder die Automatisierungs-API selbst aktivieren."
+  },
+  "b7c70a77d0281344": {
+   "source": "from the run above, {date}",
+   "text": "vom obigen Lauf, {date}"
   },
   "b7cf37766b3a4159": {
    "source": "On <g1>Q</g1>, tick <g2>In a queue</g2> or <g3>Not in a queue</g3>.",
@@ -7574,6 +7678,10 @@
    "source": "<g1>Torrents and magnet links.</g1> In the same list, with a file tree to pick from. IDM's website doesn't mention BitTorrent.",
    "text": "<g1>Torrents und Magnet-Links.</g1> In derselben Liste, mit einer Dateibaumansicht zur Auswahl. Die IDM-Website erwähnt BitTorrent nicht."
   },
+  "c57753035a57cd80": {
+   "source": "Network",
+   "text": "Netzwerk"
+  },
   "c5951459908e695f": {
    "source": "A table with one row per connection: its number, how much it has downloaded, and what it is doing right now.",
    "text": "Eine Tabelle mit einer Zeile pro Verbindung: ihre Nummer, wie viel sie heruntergeladen hat und was sie gerade tut."
@@ -7682,6 +7790,10 @@
    "source": "MDM median ms (IQR)",
    "text": "MDM Median ms (IQR)"
   },
+  "c8578958d7e75c64": {
+   "source": "50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB.",
+   "text": "50 MiB mit 4 MB/s pro Verbindung; der Server trennt jede zweite Verbindung nach 2 MiB."
+  },
   "c8637f7ebeaab90f": {
    "source": "The software is free of charge. Anyone selling it to you, or asking you to pay to \"unlock\" it, is not us.",
    "text": "Die Software ist kostenlos. Jeder, der sie Ihnen verkauft oder Sie auffordert, für die „Freischaltung“ zu bezahlen, ist nicht wir."
@@ -7726,10 +7838,6 @@
    "source": "The plain programs, for any distribution.",
    "text": "Die reinen Programme, für jede Distribution."
   },
-  "c981c23fd3b23966": {
-   "source": "MDM reads the torrent and shows its files as a folder tree. A <x1/> file is read at once. A magnet link first has to get the file list from other peers, which can take a minute or two.",
-   "text": "MDM liest den Torrent und zeigt seine Dateien als Ordnerbaum an. Eine <x1/>-Datei wird sofort gelesen. Ein Magnet-Link muss zuerst die Dateiliste von anderen Peers abrufen, was ein bis zwei Minuten dauern kann."
-  },
   "c991e64b857c5509": {
    "source": "<g1>Reannounce</g1> — asks the torrent's trackers for peers again now, instead of waiting for their next round. It works while the torrent runs or is shared.",
    "text": "<g1>Erneut ankündigen</g1> — fragt die Tracker des Torrents jetzt erneut nach Peers, anstatt auf die nächste Runde zu warten. Es funktioniert, während der Torrent läuft oder geteilt wird."
@@ -7753,6 +7861,10 @@
   "ca3ccb8cc16abc18": {
    "source": "<g1>Installation help</g1><g2>User guide</g2><g3>Report an issue</g3>",
    "text": "<g1>Installationshilfe</g1><g2>Benutzerhandbuch</g2><g3>Problem melden</g3>"
+  },
+  "ca4285dd397e5809": {
+   "source": "{n} of {m} failed",
+   "text": "{n} von {m} fehlgeschlagen"
   },
   "ca593f72a01b7baf": {
    "source": "User guide",
@@ -7845,6 +7957,14 @@
   "ccf432f5c2c618e6": {
    "source": "Want subtitles? Pick a language in <g1>Subtitles</g1>. They're saved beside the video, or inside it if you tick <g2>Put them into the video</g2> (see <g3>Subtitles</g3>).",
    "text": "Möchten Sie Untertitel? Wählen Sie eine Sprache unter <g1>Untertitel</g1> aus. Diese werden neben dem Video gespeichert oder in das Video eingebettet, wenn Sie <g2>In das Video einbetten</g2> aktivieren (siehe <g3>Untertitel</g3>)."
+  },
+  "ccff9c325c408997": {
+   "source": "No range support",
+   "text": "Keine Bereichsunterstützung"
+  },
+  "cd11402498e46414": {
+   "source": "The whisker spans the middle half of the runs.",
+   "text": "Der Whisker umfasst die mittlere Hälfte der Läufe."
   },
   "cd259ac663c10ccb": {
    "source": "Download a gallery",
@@ -8298,6 +8418,10 @@
    "source": "Each product's own website, linked above, and for the open-source ones their code on GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; licences and latest releases as GitHub shows them, 4 November 2026",
    "text": "Die Websites der einzelnen Produkte, oben verlinkt, und für die Open-Source-Produkte deren Code auf GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; Lizenzen und neueste Versionen, wie GitHub sie zeigt, 4. November 2026"
   },
+  "d8fddf13e98b6e23": {
+   "source": "{n} connections",
+   "text": "{n} Verbindungen"
+  },
   "d9012cd2cc61f595": {
    "source": "Choose <g1>Tasks → Add batch download</g1>. (<g2>Tasks → Add batch download from clipboard</g2> fills in a copied address.)",
    "text": "Wählen Sie <g1>Aufgaben → Batch-Download hinzufügen</g1>. (<g2>Aufgaben → Batch-Download aus der Zwischenablage hinzufügen</g2> füllt eine kopierte Adresse aus.)"
@@ -8725,10 +8849,6 @@
   "e571a12e9be69853": {
    "source": "Move through an open menu",
    "text": "Durch ein geöffnetes Menü navigieren"
-  },
-  "e574864546b1a3c8": {
-   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42. We haven't benchmarked the others yet; until we do, this page makes no speed claim about them.",
-   "text": "Mister Download Manager: <g1>Quellcode</g1> und <g2>unser Benchmark</g2> gegen IDM 6.42. Die anderen haben wir noch nicht getestet; bis dahin machen wir keine Geschwindigkeitsaussagen über sie."
   },
   "e57582f3a7df8548": {
    "source": "Download for Windows",
@@ -9282,6 +9402,10 @@
    "source": "Switches can start with <x1/> or <x2/>, in any case. If MDM is running, the command goes to it; if not, MDM starts and carries it out. For example:",
    "text": "Schalter können mit <x1/> oder <x2/> beginnen, in jedem Fall. Wenn MDM läuft, wird der Befehl an MDM gesendet; wenn nicht, startet MDM und führt ihn aus. Zum Beispiel:"
   },
+  "f443b336d27668f9": {
+   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparisons, against IDM (<x3/>) and against other download managers (<x4/>, method in <x5/>); their raw data is in <x6/>.",
+   "text": "führt Unit-Tests und End-to-End-Downloads gegen <x1/> mit eingeschleusten Fehlern (langsame, unterbrochene und abgelehnte Verbindungen, Server ohne Bereiche, sich ändernde Dateien) aus. <x2/> führt die veröffentlichten Geschwindigkeitsvergleiche durch, gegen IDM (<x3/>) und gegen andere Download-Manager (<x4/>, Methode in <x5/>); deren Rohdaten befinden sich in <x6/>."
+  },
   "f47d19d2ae313a6b": {
    "source": "<g1>MDM as an IDM alternative</g1><g2>Spot something wrong? Tell us</g2>",
    "text": "<g1>MDM als IDM-Alternative</g1><g2>Fehler entdeckt? Sagen Sie uns Bescheid</g2>"
@@ -9321,6 +9445,10 @@
   "f575c52354f70221": {
    "source": "Free forever, no ads, no trial",
    "text": "Für immer kostenlos, keine Werbung, keine Testversion"
+  },
+  "f5a2a44dad341b4f": {
+   "source": "1 GiB",
+   "text": "1 GiB"
   },
   "f5d0db4c9a23ece3": {
    "source": "<g1><g2>Adding downloads</g2></g1> — Add URL, the clipboard, the drop target, batch downloads and lists of links, and Start Download versus Download Later.",

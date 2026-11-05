@@ -638,6 +638,38 @@ tbody th { font-weight: 650; }
 .su-val { text-align: end; font-variant-numeric: tabular-nums; }
 .su-val b { display: block; font-size: 26px; font-weight: 800; font-stretch: 78%; }
 .su-val small { font-size: 12.5px; color: var(--ink-3); }
+/* Against the others: one row per app on a shared seconds axis; ours in ink, the others in
+   ink-2, the middle half of the runs as a whisker. Charts stay left to right in RTL. */
+/* The scenario tabs sit on the board: drawn in board text, the selected one filled (as the
+   metric switch above the dots). */
+.others-tabs { margin-bottom: 16px; box-shadow: inset 0 0 0 1.5px var(--on-board); }
+.others-tabs button { color: var(--on-board); }
+.others-tabs button + button { box-shadow: inset 1.5px 0 0 var(--on-board); }
+.others-tabs button:hover { background: color-mix(in srgb, var(--on-board) 12%, transparent); }
+.others-tabs button[aria-selected="true"] { background: var(--on-board); color: var(--board); }
+.others-sheet { background: var(--paper); color: var(--ink); border-radius: var(--radius); box-shadow: var(--shadow-sheet); overflow: hidden; }
+.others-rows { padding: 6px clamp(18px, 3vw, 28px) 4px; direction: ltr; }
+.ot-axis { position: relative; height: 18px; margin: 8px 132px 0 252px; font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.ot-axis span { position: absolute; top: 0; transform: translateX(-50%); white-space: nowrap; }
+.ot-row { display: grid; grid-template-columns: 232px minmax(0, 1fr) 112px; align-items: center; gap: 20px; padding: 12px 0; border-top: 1px solid var(--line); }
+.ot-axis + .ot-row { border-top: 0; }
+.ot-name b { display: block; font-size: 15px; font-weight: 700; }
+.ot-name small { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.ot-row.is-ours .ot-name b { font-weight: 850; }
+.ot-track { position: relative; height: 26px; }
+.ot-tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.ot-bar { position: absolute; inset-inline-start: 0; top: 6px; bottom: 6px; width: 0; border-radius: 2px; background: var(--ink-2); transition: width .9s cubic-bezier(.16, 1, .3, 1) var(--d, 0s); }
+.ot-row.is-ours .ot-bar { background: var(--ink); }
+.others.in .ot-bar { width: var(--w); }
+.ot-iqr { position: absolute; top: 50%; height: 10px; margin-top: -5px; border-inline: 1.5px solid var(--ink-3); }
+.ot-iqr::after { content: ""; position: absolute; inset-inline: 0; top: 4px; height: 1.5px; background: var(--ink-3); }
+.ot-none { font-size: 14px; color: var(--ink-2); }
+.ot-val { text-align: end; font-variant-numeric: tabular-nums; }
+.ot-val b { display: block; font-size: 22px; font-weight: 800; font-stretch: 78%; }
+.ot-val small { display: block; font-size: 12.5px; color: var(--ink-3); }
+.ot-val small.is-bad { color: var(--ink); font-weight: 700; }
+.others-foot { margin: 0; padding: 12px clamp(18px, 3vw, 28px) 18px; border-top: 1.5px solid var(--ink); font-size: 13.5px; line-height: 1.55; color: var(--ink-3); }
+.others .bench-status { color: var(--on-board); }
 .conn-race { display: grid; grid-template-columns: 1fr 3fr; gap: 16px; direction: ltr; }
 .conn-col { padding: 22px; background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow-sheet); }
 .conn-head { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; font-size: 15px; }
@@ -679,7 +711,8 @@ tbody th { font-weight: 650; }
 #report .fine { margin-top: 12px; color: var(--on-board-2); }
 .method { display: grid; gap: 12px; max-width: 76ch; margin: 0; padding: 24px 28px 24px 44px; background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow-sheet); font-size: 16px; line-height: 1.6; }
 #method .page-tools { padding: 18px 4px 0; border-top: 0; }
-#method .page-tools a { color: var(--on-board) !important; }
+#method .page-tools a, #others .page-tools a { color: var(--on-board) !important; }
+#others .page-tools { margin-top: 20px; padding: 0 4px; border-top: 0; }
 #method .cta-band { margin-top: 28px; }
 
 /* ---- 404 --------------------------------------------------------------------------------------- */
@@ -793,6 +826,12 @@ html.lb-on { overflow: hidden; }
   .su-axis { margin: 0 70px 6px 0; }
   .su-row { grid-template-columns: minmax(0, 1fr) 70px; }
   .su-name { grid-column: 1 / -1; }
+  .ot-axis { margin: 8px 82px 0 0; }
+  .ot-row { grid-template-columns: minmax(0, 1fr) 62px; gap: 6px 14px; }
+  .ot-name { grid-column: 1 / -1; }
+  .ot-val b { font-size: 19px; }
+  .ot-val small:not(.is-bad) { display: none; }
+  .others-tabs button + button { box-shadow: inset 0 1.5px 0 var(--on-board); }
   .foot-cols { grid-template-columns: 1fr 1fr; }
 }
 

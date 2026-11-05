@@ -22,6 +22,15 @@ Each release's notes on GitHub come from its section here (`## [X.Y.Z]`, see
 
 ### Added
 
+- **A benchmark against other download managers**
+  ([#71](https://github.com/anefzaoui/misterdownloadmanager/issues/71)). The website's
+  [benchmark page](https://misterdownloadmanager.com/benchmark.html#others) now times MDM against
+  AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and
+  curl on the same PC and local test server. The scenarios: a 1 GiB file, a server that limits
+  each connection, cut connections, a server that allows two connections, one without range
+  support, and 32 small files. It records the time, CPU, memory and connections of each, and
+  checks every file byte for byte. The harness (`tools/bench/compare.py`) and the raw data are in
+  the repository, so anyone can run it again.
 - **The extension lists the media a page has loaded**
   ([#38](https://github.com/anefzaoui/misterdownloadmanager/issues/38)). The toolbar button's
   window has **Media on this page**: the HLS and DASH streams the page's players loaded (each

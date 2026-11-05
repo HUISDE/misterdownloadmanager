@@ -198,9 +198,9 @@
    "source": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>",
    "text": "Chrome، Firefox، Edge<g1><g2>3</g2></g1>"
   },
-  "04ec5358d75ceff7": {
-   "source": "Point at a video on a web page and a small <g1>Download video</g1> button appears at its edge. Click it and MDM's <g2>Download video from a page</g2> window opens and looks up the qualities it can download. It takes the video you clicked: its own file when it plays one, or the stream the player loaded (HLS or DASH), else the page. Embedded players work too, and your sign-in for the site, the page that embeds the player and your browser's User-Agent go with it, so videos for members, or that play only on the site that embeds them, can be downloaded. Sound players get the button too.",
-   "text": "أشر إلى فيديو على صفحة ويب ويظهر زر <g1>تنزيل الفيديو</g1> صغير على حافته. انقر عليه وتفتح نافذة <g2>تنزيل الفيديو من صفحة</g2> الخاصة بـ MDM وتبحث عن الجودات التي يمكن تنزيلها. يأخذ الفيديو الذي نقرت عليه: ملفه الخاص عندما يشغل واحدا، أو البث الذي حمله المشغل (HLS أو DASH)، وإلا الصفحة. تعمل المشغلات المضمنة أيضا، ويتم إرسال تسجيل دخولك للموقع، والصفحة التي تتضمن المشغل، ووكيل المستخدم لمتصفحك معه، لذلك يمكن تنزيل مقاطع الفيديو للأعضاء، أو التي يتم تشغيلها فقط على الموقع الذي يتضمنها. تحصل مشغلات الصوت على الزر أيضا."
+  "04ebcf1715ef6084": {
+   "source": "Correct runs",
+   "text": "التشغيلات الصحيحة"
   },
   "050edc04316dd70a": {
    "source": "On the command line",
@@ -418,6 +418,10 @@
    "source": "Version 0.2.4 · free and open source · no ads, no spyware, nothing bundled. <g1>What's new</g1>",
    "text": "الإصدار 0.2.4 · مجاني ومفتوح المصدر · بلا إعلانات، بلا برامج تجسس، لا شيء مدمج. <g1>ما الجديد</g1>"
   },
+  "09b6d0a9dbaf55e1": {
+   "source": "{name}, at defaults",
+   "text": "{name}، بالإعدادات الافتراضية"
+  },
   "09baf9aefa050aee": {
    "source": "Tick <g1>Start download at</g1> and set the time, for example 1:00:00 AM. Click the hours and use the arrows or type the number.",
    "text": "ضع علامة في مربع <g1>بدء التنزيل في</g1> واضبط الوقت، على سبيل المثال 1:00:00 صباحا. انقر على الساعات واستخدم الأسهم أو اكتب الرقم."
@@ -529,6 +533,10 @@
   "0bb0e3dc72ae2345": {
    "source": "Before you start",
    "text": "قبل أن تبدأ"
+  },
+  "0bf25272dd906225": {
+   "source": "Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.",
+   "text": "مؤقت: تم أخذ هذه التشغيلات بينما كانت برامج أخرى تعمل على نفس الكمبيوتر. سيتم استبدالها بتشغيل على جهاز هادئ."
   },
   "0c1ddab7d81578c6": {
    "source": "<g1>Options → General → Use advanced browser integration</g1> must be on. Turn it off to send nothing to MDM.",
@@ -741,6 +749,10 @@
   "131c434c36b2d6f9": {
    "source": "Click <g1>Load unpacked</g1>.",
    "text": "انقر على <g1>تحميل غير معبأ</g1>."
+  },
+  "131f6c6af936dd3a": {
+   "source": "1 GiB from a server with no limits: as fast as the loopback and the disk allow.",
+   "text": "1 جيجابايت من خادم بلا قيود: بالسرعة التي يسمح بها التكرار الداخلي والقرص."
   },
   "13382c1e6ceae711": {
    "source": "<g1>The video button over a Drive video</g1> downloads the original file, not one of the player's smaller copies.",
@@ -1009,6 +1021,10 @@
   "19ef176da302a2b4": {
    "source": "When the browser can't hand a download to MDM, it keeps the download itself, so nothing is lost. The extension's toolbar button then shows a red !. Click it…",
    "text": "عندما لا يتمكن المتصفح من تسليم تنزيل إلى MDM، فإنه يحتفظ بالتنزيل بنفسه، لذلك لا يضيع شيء. يظهر زر شريط أدوات الامتداد حينها علامة تعجب حمراء !. انقر عليه..."
+  },
+  "19f9c2c64f700479": {
+   "source": "compare.json",
+   "text": "compare.json"
   },
   "1a0500523dbbbc89": {
    "source": "On a Mac or Linux",
@@ -1698,6 +1714,10 @@
    "source": "Download limits",
    "text": "حدود التنزيل"
   },
+  "29e14750a75c3ab2": {
+   "source": "{n} of {m} with a wrong file",
+   "text": "{n} من {m} بملف خاطئ"
+  },
   "29ea1d92cca7773f": {
    "source": "If the queue didn't start →",
    "text": "إذا لم يبدأ الصف →"
@@ -2078,6 +2098,10 @@
    "source": "not to use it to break copy protection (DRM): MDM doesn't do this and isn't meant to;",
    "text": "عدم استخدامه لكسر حماية النسخ (DRM): MDM لا يقوم بذلك وليس مخصصا له؛"
   },
+  "3321f21fb30215eb": {
+   "source": "Each app at its own default number of connections.",
+   "text": "كل تطبيق بعدد الاتصالات الافتراضي الخاص به."
+  },
   "335ddbe14ee4164c": {
    "source": "Closing the window with its close box keeps the download running.",
    "text": "إغلاق النافذة باستخدام زر الإغلاق الخاص بها يبقي التنزيل قيد التشغيل."
@@ -2097,6 +2121,10 @@
   "338575eefc8880a1": {
    "source": "Type part of the file's name.",
    "text": "اكتب جزءا من اسم الملف."
+  },
+  "33bd7ec498f74ef6": {
+   "source": "No run finished with the right file.",
+   "text": "لم ينته أي تشغيل بملف صحيح."
   },
   "33e932958a661bfe": {
    "source": "<g1>Category</g1> — choose a category to see and change its settings below.",
@@ -2142,10 +2170,6 @@
    "source": "Connections to this computer itself (<x1/>) aren't bound. A proxy on this computer carries the downloads, and where it sends them is up to it.",
    "text": "الاتصالات بهذا الكمبيوتر نفسه (<x1/>) غير مرتبطة. يقوم وكيل على هذا الكمبيوتر بنقل التنزيلات، ويعود إليه تحديد مكان إرسالها."
   },
-  "3549f28b5c3a4fb8": {
-   "source": "Videos protected with DRM (most paid streaming services) can't be downloaded, and MDM doesn't try.",
-   "text": "لا يمكن تنزيل الفيديوهات المحمية بتقنية DRM (معظم خدمات البث المدفوعة)، ولا يحاول MDM ذلك."
-  },
   "3569ffbab6981371": {
    "source": "Choosing a language on first start",
    "text": "اختيار اللغة عند التشغيل الأول"
@@ -2173,6 +2197,10 @@
   "3640bc6fe07d3428": {
    "source": "<g1>macOS 11</g1> or later on Apple Silicon or Intel (experimental).",
    "text": "<g1>macOS 11</g1> أو أحدث على Apple Silicon أو Intel (تجريبي)."
+  },
+  "364fa2fc8f5bcc9e": {
+   "source": "32 small files",
+   "text": "32 ملفا صغيرا"
   },
   "3688ea6bb5b2fe83": {
    "source": "Right-click the list's blank space for <g1>Add new download</g1>, <g2>Select all</g2>, <g3>Arrange files</g3>, <g4>Clear all filters</g4> and <g5>Delete All Completed</g5>.",
@@ -2325,6 +2353,10 @@
   "39c6e3069cb8cc85": {
    "source": "Click <g1>OK</g1>.",
    "text": "انقر على <g1>موافق</g1>."
+  },
+  "39d6924fe82b5e69": {
+   "source": "Every app at 8 connections where that can be set.",
+   "text": "كل تطبيق بـ 8 اتصالات حيث يمكن ضبط ذلك."
   },
   "39f0061bac128459": {
    "source": "<g1>Options → Archives</g1> says whether 7-Zip was found. Without it, a 7z or RAR archive isn't extracted, and the <g2>7-Zip needed</g2> window says so, with a <g3>Get 7-Zip</g3> button.",
@@ -2986,6 +3018,10 @@
    "source": "Turn on <g1>Developer mode</g1>.",
    "text": "شغل <g1>وضع المطور</g1>."
   },
+  "4c682b25c467f254": {
+   "source": "Time, median (IQR)",
+   "text": "الوقت، الوسيط (المدى الربيعي)"
+  },
   "4c75f1e3123da2b1": {
    "source": "— plain FTP.",
    "text": "— FTP عادي."
@@ -3330,6 +3366,10 @@
    "source": "Click <g1>Yes</g1> to delete, or <g2>No</g2> to keep everything.",
    "text": "انقر على <g1>نعم</g1> للحذف، أو <g2>لا</g2> للاحتفاظ بكل شيء."
   },
+  "558add5a46e69125": {
+   "source": "2 connections allowed",
+   "text": "اتصالان مسموح بهما"
+  },
   "558bb1c07f16684f": {
    "source": "It notes the addresses of video streams (HLS and DASH playlists) a page's player loads, in memory for that tab, so the <g1>Download video</g1> button can pass the stream on. Its button reads the page only to find video and sound players and place itself. Clicking it passes the page's address, the video's address, the page's title, the site's cookies, the page that embeds the player and your browser's User-Agent to MDM.",
    "text": "يقوم بتدوين عناوين تدفقات الفيديو (قوائم تشغيل HLS وDASH) التي يحملها مشغل الصفحة، في الذاكرة لتلك علامة التبويب، حتى يتمكن زر <g1>تنزيل الفيديو</g1> من تمرير التدفق. يقرأ زرها الصفحة فقط للعثور على مشغلات الفيديو والصوت ووضع نفسه. يؤدي النقر عليه إلى تمرير عنوان الصفحة، وعنوان الفيديو، وعنوان الصفحة، وملفات تعريف الارتباط الخاصة بالموقع، والصفحة التي تحتوي على المشغل، ووكيل المستخدم الخاص بمتصفحك إلى MDM."
@@ -3470,6 +3510,10 @@
    "source": "Sizes are in bytes (<x1/> while unknown), speeds in bytes per second. A failure prints <x2/> and exits with code 1. For example:",
    "text": "الأحجام بالبايت (<x1/> بينما غير معروف)، والسرعات بالبايت في الثانية. الفشل يطبع <x2/> ويخرج بالرمز 1. على سبيل المثال:"
   },
+  "597f5a93ee5c3935": {
+   "source": "32 different files of 256 KiB, handed over one after another.",
+   "text": "32 ملفا مختلفا بحجم 256 كيلوبايت، يتم تسليمها واحدا تلو الآخر."
+  },
   "59920ff7101c276f": {
    "source": "Fix the translation in the row's third column and delete its <x1/> line.",
    "text": "صحح الترجمة في العمود الثالث من الصف واحذف سطر <x1/> الخاص به."
@@ -3545,6 +3589,10 @@
   "5bc4b6e9ef830d3c": {
    "source": "<g1>Linux and macOS</g1>: in MDM's settings, in a data folder only you may read (0700), not yet in the system's keychain. Keeping it in the keychain is planned.",
    "text": "<g1>Linux و macOS</g1>: في إعدادات MDM، في مجلد بيانات لا يمكنك قراءته إلا أنت (0700)، وليس بعد في سلسلة مفاتيح النظام. من المخطط الاحتفاظ به في سلسلة المفاتيح."
+  },
+  "5bd3c760b64b1916": {
+   "source": "run5",
+   "text": "التشغيل 5"
   },
   "5bf2df1735e69b20": {
    "source": "<g1>Paste</g1> from other programs into any text box (Ctrl+V, ⌘V): MDM kept a clipboard of its own.",
@@ -3918,6 +3966,10 @@
    "source": "The free download managers people reach for instead of IDM, checked on their own websites and code in November 2026. Each is good at something. We make the first one, so judge the rest by their own links.",
    "text": "مديرو التنزيلات المجانية التي يلجأ إليها الناس بدلا من IDM، تم فحصها على مواقعها الإلكترونية الرسمية ورموزها في نوفمبر 2026. كل واحد منها جيد في شيء ما. نحن نصنع الأول، لذا احكم على البقية من خلال روابطهم الخاصة."
   },
+  "64215b3d499445a9": {
+   "source": "{n} (run5)",
+   "text": "{n} (التشغيل 5)"
+  },
   "64254df81bae2d98": {
    "source": "<g1>Installation help</g1><g2>Importing from IDM</g2><g3>The benchmark</g3>",
    "text": "<g1>مساعدة التثبيت</g1><g2>الاستيراد من IDM</g2><g3>اختبار الأداء</g3>"
@@ -4102,6 +4154,10 @@
    "source": "Tick <g1>Use Speed Limiter</g1> and type the speed in <g2>Maximum download speed</g2>.",
    "text": "ضع علامة في <g1>استخدام محدد السرعة</g1> واكتب السرعة في <g2>أقصى سرعة تنزيل</g2>."
   },
+  "69fd84f8fcd6b3c8": {
+   "source": "Cut connections",
+   "text": "قطع الاتصالات"
+  },
   "6a03943201e9c5c8": {
    "source": "Downloading may be against some sites' terms; that is up to you to check.",
    "text": "قد يكون التنزيل مخالفا لشروط بعض المواقع؛ وعليك التحقق من ذلك بنفسك."
@@ -4170,6 +4226,10 @@
    "source": "Linux, the AppImage or the .tar.gz",
    "text": "Linux، AppImage أو .tar.gz"
   },
+  "6b0b6731867bf61c": {
+   "source": "{n} runs each. Shorter is faster.",
+   "text": "{n} تشغيل لكل منها. الأقصر هو الأسرع."
+  },
   "6b0ef8e85512f319": {
    "source": "Runs the new setup without its windows. An installation for all users asks for the administrator's permission.",
    "text": "يشغل الإعداد الجديد بدون نوافذه. يتطلب التثبيت لجميع المستخدمين إذن المسؤول."
@@ -4213,6 +4273,10 @@
   "6c0ec44709800dba": {
    "source": "<g1>Mister Download Manager</g1><g2>Free and open source · GPL-3.0</g2>",
    "text": "<g1>Mister Download Manager</g1><g2>مجاني ومفتوح المصدر · GPL-3.0</g2>"
+  },
+  "6c0fdb3cfb96e29c": {
+   "source": "100 MiB from a server that sends at most 2 MB/s on each connection.",
+   "text": "100 ميجابايت من خادم يرسل بحد أقصى 2 ميجابايت/ثانية على كل اتصال."
   },
   "6c562dbba37bfe77": {
    "source": "results.json",
@@ -4430,6 +4494,10 @@
    "source": "<g1>MDM asks to create a folder:</g1> the folder doesn't exist yet. Click <g2>Yes</g2>.",
    "text": "<g1>يطلب MDM إنشاء مجلد:</g1> المجلد غير موجود بعد. انقر على <g2>نعم</g2>."
   },
+  "719c8ad7b82e2c86": {
+   "source": "100 MiB from a server that ignores ranges and always sends the whole file.",
+   "text": "100 ميجابايت من خادم يتجاهل النطاقات ويرسل الملف بأكمله دائما."
+  },
   "71e90b70c32a4238": {
    "source": "<g1>Download list</g1> (right). One row per download. See <g2>The download list</g2>.",
    "text": "<g1>قائمة التنزيلات</g1> (يمين). صف واحد لكل تنزيل. انظر <g2>قائمة التنزيلات</g2>."
@@ -4618,6 +4686,10 @@
    "source": "<g1>Synchronization queue</g1> — finished downloads stay in it instead of leaving. It is the only queue that takes finished downloads.",
    "text": "<g1>قائمة انتظار المزامنة</g1> — تبقى التنزيلات المكتملة فيها بدلا من مغادرتها. إنها قائمة الانتظار الوحيدة التي تستقبل التنزيلات المكتملة."
   },
+  "76c2453dbe3586aa": {
+   "source": "2 MB/s per connection",
+   "text": "2 ميجابايت/ثانية لكل اتصال"
+  },
   "76ca1f61789efab8": {
    "source": "MDM didn't start in time",
    "text": "لم يبدأ MDM في الوقت المحدد"
@@ -4714,6 +4786,10 @@
    "source": "Questions and answers — Mister Download Manager",
    "text": "أسئلة وأجوبة — Mister Download Manager"
   },
+  "7978d9d1f23553cc": {
+   "source": "The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.",
+   "text": "استخدم نفس خادم الاختبار ونفس الحاسوب، مع برامج AB Download Manager وFree Download Manager وGopeed وPrism وXtreme Download Manager وaria2 وcurl. تم ضبط كل منها على 8 اتصالات حيثما أمكن ذلك (كل صف يوضح عدد الاتصالات المستخدمة)، وتم فحص كل ملف بايت بايت. أوقات IDM هي المذكورة أعلاه؛ لم يتم تشغيله مرة أخرى."
+  },
   "798a534b6b549e15": {
    "source": "<g1>Things that fail say why</g1>: opening a file that was moved, a file that can't be deleted or moved, the list that can't be saved, a computer that won't shut down, a check closed early.",
    "text": "<g1>الأشياء التي تفشل تقول لماذا</g1>: فتح ملف تم نقله، ملف لا يمكن حذفه أو نقله، القائمة التي لا يمكن حفظها، جهاز كمبيوتر لا يغلق، فحص أغلق مبكرا."
@@ -4757,6 +4833,10 @@
   "7a6ff9503edd25ad": {
    "source": "Is the site in <g1>Don't start downloading automatically from the following sites</g1>?",
    "text": "هل الموقع موجود في <g1>عدم بدء التنزيل تلقائيا من المواقع التالية</g1>؟"
+  },
+  "7a74681889007141": {
+   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42, and <g3>against the others</g3> on the same PC and test server: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl.",
+   "text": "Mister Download Manager: <g1>شفرته المصدرية</g1> و<g2>معيارنا</g2> مقارنة بـ IDM 6.42، و<g3>مقارنة بالبرامج الأخرى</g3> على نفس الكمبيوتر وخادم الاختبار: AB Download Manager، وFree Download Manager، وGopeed، وPrism، وXtreme Download Manager، وaria2، وcurl."
   },
   "7a8b05b164a2ebec": {
    "source": "Can it download overnight or on a schedule? — Mister Download Manager",
@@ -5850,6 +5930,14 @@
    "source": "Unzip the file to a folder you can write to (not straight into <x1/>).",
    "text": "فك ضغط الملف إلى مجلد يمكنك الكتابة فيه (ليس مباشرة في <x1/>)."
   },
+  "96e2ef971fcfc675": {
+   "source": "<g1>Median time, from hand-off to finished file</g1><g2>5 runs each. Shorter is faster.</g2>",
+   "text": "<g1>متوسط الوقت، من التسليم إلى الملف النهائي</g1><g2>5 تشغيلات لكل منها. الأقصر هو الأسرع.</g2>"
+  },
+  "96ecd3b45b4c84ad": {
+   "source": "50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more.",
+   "text": "50 ميجابايت من خادم يسمح باتصالين في نفس الوقت، 2 ميجابايت/ثانية لكل منهما، ويرفض المزيد."
+  },
   "970430e3defd4e45": {
    "source": "Browser integration →",
    "text": "دمج المتصفح →"
@@ -6125,6 +6213,10 @@
   "9e343096f9189eb2": {
    "source": "Seven downloads, each run at least seven times by both apps. The bar is the middle half of the runs, the line the median.",
    "text": "سبعة تنزيلات، تم تشغيل كل منها سبع مرات على الأقل بواسطة كلا التطبيقين. الشريط يمثل النصف الأوسط من التشغيلات، والخط يمثل الوسيط."
+  },
+  "9e538e2ea50f45d7": {
+   "source": "1 connection",
+   "text": "اتصال واحد"
   },
   "9e5f6ea1de61f755": {
    "source": "Blocking addresses",
@@ -6650,6 +6742,10 @@
    "source": "AB Download Manager",
    "text": "AB Download Manager"
   },
+  "ac10c1349c520d45": {
+   "source": "CPU, average / peak",
+   "text": "المعالج، متوسط / ذروة"
+  },
   "ac1acb5254f1187e": {
    "source": "What video a page holds (YouTube, Vimeo, ...), and the qualities to choose from.",
    "text": "ما هو الفيديو الذي تحتويه الصفحة (YouTube، Vimeo، ...) والجودات للاختيار من بينها."
@@ -6830,6 +6926,10 @@
    "source": "Queues",
    "text": "قوائم الانتظار"
   },
+  "b0044c55e061b1c2": {
+   "source": "Memory after",
+   "text": "الذاكرة بعد"
+  },
   "b0c0ef4ee0008226": {
    "source": "— FTP secured with TLS from the start of the session (explicit FTPS, <x1/>, usually port 21). Use it when the server says it supports TLS.",
    "text": "— FTP مؤمن باستخدام TLS من بداية الجلسة (FTPS صريح، <x1/>، عادة المنفذ 21). استخدمه عندما يقول الخادم إنه يدعم TLS."
@@ -6889,10 +6989,6 @@
   "b1b2249661e1c4a9": {
    "source": "Keep changes focused and match the code around them. A few rules hold everywhere:",
    "text": "اجعل التغييرات مركزة وتطابق الكود المحيط بها. بعض القواعد تنطبق في كل مكان:"
-  },
-  "b1d90b3e9d2a1cd5": {
-   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparison; its raw data is in <x3/>.",
-   "text": "يشغل اختبارات الوحدات والتنزيلات الشاملة مقابل <x1/> مع أخطاء محقونة (اتصالات بطيئة، متقطعة ومرفوضة، خوادم بدون نطاقات، ملفات متغيرة). <x2/> يشغل مقارنة السرعة المنشورة؛ بياناتها الخام موجودة في <x3/>."
   },
   "b208caa24e13c211": {
    "source": "<g1>Shift+Up / Shift+Down</g1> makes the selection longer or shorter.",
@@ -7034,6 +7130,10 @@
    "source": "256 KiB file",
    "text": "ملف بحجم 256 كيلوبايت"
   },
+  "b57da88051558deb": {
+   "source": "And against the others.",
+   "text": "ومقارنة بالبرامج الأخرى."
+  },
   "b585eac57a3ace26": {
    "source": "On another computer",
    "text": "على كمبيوتر آخر"
@@ -7117,6 +7217,10 @@
   "b7c0190ca4719975": {
    "source": "The assistant can't change MDM's options, see your browser, or turn the automation API on by itself.",
    "text": "لا يمكن للمساعد تغيير خيارات MDM، أو رؤية متصفحك، أو تشغيل واجهة برمجة تطبيقات الأتمتة بنفسه."
+  },
+  "b7c70a77d0281344": {
+   "source": "from the run above, {date}",
+   "text": "من التشغيل أعلاه، {date}"
   },
   "b7cf37766b3a4159": {
    "source": "On <g1>Q</g1>, tick <g2>In a queue</g2> or <g3>Not in a queue</g3>.",
@@ -7574,6 +7678,10 @@
    "source": "<g1>Torrents and magnet links.</g1> In the same list, with a file tree to pick from. IDM's website doesn't mention BitTorrent.",
    "text": "<g1>التورنت وروابط المغناطيس.</g1> في نفس القائمة، مع شجرة ملفات للاختيار منها. موقع IDM لا يذكر BitTorrent."
   },
+  "c57753035a57cd80": {
+   "source": "Network",
+   "text": "الشبكة"
+  },
   "c5951459908e695f": {
    "source": "A table with one row per connection: its number, how much it has downloaded, and what it is doing right now.",
    "text": "جدول به صف واحد لكل اتصال: رقمه، مقدار ما تم تنزيله، وما يفعله الآن."
@@ -7682,6 +7790,10 @@
    "source": "MDM median ms (IQR)",
    "text": "متوسط MDM بالمللي ثانية (المدى الربيعي)"
   },
+  "c8578958d7e75c64": {
+   "source": "50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB.",
+   "text": "50 ميجابايت بسرعة 4 ميجابايت/ثانية لكل اتصال؛ يقطع الخادم كل اتصال ثان بعد 2 ميجابايت."
+  },
   "c8637f7ebeaab90f": {
    "source": "The software is free of charge. Anyone selling it to you, or asking you to pay to \"unlock\" it, is not us.",
    "text": "البرنامج مجاني. أي شخص يبيعه لك، أو يطلب منك الدفع \"لفتحه\"، ليس نحن."
@@ -7726,10 +7838,6 @@
    "source": "The plain programs, for any distribution.",
    "text": "البرامج العادية، لأي توزيعة."
   },
-  "c981c23fd3b23966": {
-   "source": "MDM reads the torrent and shows its files as a folder tree. A <x1/> file is read at once. A magnet link first has to get the file list from other peers, which can take a minute or two.",
-   "text": "يقرأ MDM ملف التورنت ويعرض ملفاته كشجرة مجلدات. يتم قراءة ملف <x1/> دفعة واحدة. أما رابط magnet فيجب عليه أولا الحصول على قائمة الملفات من الأقران الآخرين، وقد يستغرق ذلك دقيقة أو دقيقتين."
-  },
   "c991e64b857c5509": {
    "source": "<g1>Reannounce</g1> — asks the torrent's trackers for peers again now, instead of waiting for their next round. It works while the torrent runs or is shared.",
    "text": "<g1>إعادة الإعلان</g1> — يطلب من متتبعات التورنت الأقران مرة أخرى الآن، بدلا من انتظار جولتهم التالية. يعمل أثناء تشغيل التورنت أو مشاركته."
@@ -7753,6 +7861,10 @@
   "ca3ccb8cc16abc18": {
    "source": "<g1>Installation help</g1><g2>User guide</g2><g3>Report an issue</g3>",
    "text": "<g1>مساعدة التثبيت</g1><g2>دليل المستخدم</g2><g3>أبلغ عن مشكلة</g3>"
+  },
+  "ca4285dd397e5809": {
+   "source": "{n} of {m} failed",
+   "text": "{n} من {m} فشلت"
   },
   "ca593f72a01b7baf": {
    "source": "User guide",
@@ -7845,6 +7957,14 @@
   "ccf432f5c2c618e6": {
    "source": "Want subtitles? Pick a language in <g1>Subtitles</g1>. They're saved beside the video, or inside it if you tick <g2>Put them into the video</g2> (see <g3>Subtitles</g3>).",
    "text": "هل تريد ترجمات؟ اختر لغة في <g1>الترجمات</g1>. يتم حفظها بجانب الفيديو، أو بداخله إذا قمت بتحديد <g2>وضعها في الفيديو</g2> (انظر <g3>الترجمات</g3>)."
+  },
+  "ccff9c325c408997": {
+   "source": "No range support",
+   "text": "لا يوجد دعم للنطاق"
+  },
+  "cd11402498e46414": {
+   "source": "The whisker spans the middle half of the runs.",
+   "text": "يمتد الخط الرفيع على النصف الأوسط من التشغيلات."
   },
   "cd259ac663c10ccb": {
    "source": "Download a gallery",
@@ -8298,6 +8418,10 @@
    "source": "Each product's own website, linked above, and for the open-source ones their code on GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; licences and latest releases as GitHub shows them, 4 November 2026",
    "text": "الموقع الإلكتروني الخاص بكل منتج، الروابط أعلاه، وبالنسبة للمفتوحة المصدر، رموزها على GitHub: <g1>AB Download Manager</g1>، <g2>Motrix</g2>، <g3>Prism</g3>، <g4>Xtreme Download Manager</g4>، <g5>Gopeed</g5>؛ التراخيص وآخر الإصدارات كما تظهر على GitHub، 4 نوفمبر 2026"
   },
+  "d8fddf13e98b6e23": {
+   "source": "{n} connections",
+   "text": "{n} اتصالات"
+  },
   "d9012cd2cc61f595": {
    "source": "Choose <g1>Tasks → Add batch download</g1>. (<g2>Tasks → Add batch download from clipboard</g2> fills in a copied address.)",
    "text": "اختر <g1>المهام ← إضافة تنزيل دفعي</g1>. (<g2>المهام ← إضافة تنزيل دفعي من الحافظة</g2> يملأ عنوانا منسوخا.)"
@@ -8725,10 +8849,6 @@
   "e571a12e9be69853": {
    "source": "Move through an open menu",
    "text": "التنقل عبر قائمة مفتوحة"
-  },
-  "e574864546b1a3c8": {
-   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42. We haven't benchmarked the others yet; until we do, this page makes no speed claim about them.",
-   "text": "Mister Download Manager: <g1>رمزه المصدري</g1> و<g2>اختبار الأداء الخاص بنا</g2> مقابل IDM 6.42. لم نقم باختبار أداء الآخرين بعد؛ وحتى نفعل ذلك، لا تدعي هذه الصفحة أي سرعة بخصوصهم."
   },
   "e57582f3a7df8548": {
    "source": "Download for Windows",
@@ -9282,6 +9402,10 @@
    "source": "Switches can start with <x1/> or <x2/>, in any case. If MDM is running, the command goes to it; if not, MDM starts and carries it out. For example:",
    "text": "يمكن أن تبدأ المفاتيح بـ <x1/> أو <x2/>، بأي حالة. إذا كان MDM قيد التشغيل، ينتقل الأمر إليه؛ وإذا لم يكن كذلك، يبدأ MDM وينفذه. على سبيل المثال:"
   },
+  "f443b336d27668f9": {
+   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparisons, against IDM (<x3/>) and against other download managers (<x4/>, method in <x5/>); their raw data is in <x6/>.",
+   "text": "يجري اختبارات الوحدات والتنزيلات الشاملة مقابل <x1/> مع الأخطاء المحقونة (اتصالات بطيئة، متقطعة ومرفوضة، خوادم بدون نطاقات، ملفات متغيرة). <x2/> يجري مقارنات السرعة المنشورة، مقابل IDM (<x3/>) ومقابل مديري التنزيل الآخرين (<x4/>، الطريقة في <x5/>)؛ بياناتهم الأولية موجودة في <x6/>."
+  },
   "f47d19d2ae313a6b": {
    "source": "<g1>MDM as an IDM alternative</g1><g2>Spot something wrong? Tell us</g2>",
    "text": "<g1>MDM كبديل لـ IDM</g1><g2>هل لاحظت شيئا خاطئا؟ أخبرنا</g2>"
@@ -9321,6 +9445,10 @@
   "f575c52354f70221": {
    "source": "Free forever, no ads, no trial",
    "text": "مجاني للأبد، بلا إعلانات، بلا فترة تجريبية"
+  },
+  "f5a2a44dad341b4f": {
+   "source": "1 GiB",
+   "text": "1 جيجابايت"
   },
   "f5d0db4c9a23ece3": {
    "source": "<g1><g2>Adding downloads</g2></g1> — Add URL, the clipboard, the drop target, batch downloads and lists of links, and Start Download versus Download Later.",

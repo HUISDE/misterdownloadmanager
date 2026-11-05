@@ -442,4 +442,185 @@
     .catch(function () {
       root.querySelector("[data-bench-grid]").textContent = t("The benchmark data could not be loaded.");
     });
+
+  // ---- Against the other download managers: bench/compare.json (tools/bench/compare_report.py).
+  var others = document.querySelector("[data-others]");
+  var cmp = null;
+  var ORDER = ["MDM", "IDM", "ABDM", "FDM", "Gopeed", "Prism", "XDM", "aria2", "curl"];
+  var LABEL = { MDM: "Mister Download Manager", IDM: "Internet Download Manager", ABDM: "AB Download Manager",
+                FDM: "Free Download Manager", Gopeed: "Gopeed", Prism: "Prism", XDM: "Xtreme Download Manager",
+                aria2: "aria2", curl: "curl" };
+  var OTHER_SHORT = { "fast-1g": t("1 GiB"), "capped-100m": t("2 MB/s per connection"), "drops-50m": t("Cut connections"),
+                      "maxconns-50m": t("2 connections allowed"), "norange-100m": t("No range support"),
+                      "batch-32x256k": t("32 small files") };
+  var OTHER_WHAT = {
+    "fast-1g": t("1 GiB from a server with no limits: as fast as the loopback and the disk allow."),
+    "capped-100m": t("100 MiB from a server that sends at most 2 MB/s on each connection."),
+    "drops-50m": t("50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB."),
+    "maxconns-50m": t("50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more."),
+    "norange-100m": t("100 MiB from a server that ignores ranges and always sends the whole file."),
+    "batch-32x256k": t("32 different files of 256 KiB, handed over one after another.")
+  };
+  function secs(v) {
+    if (v == null) return "—";
+    return (v >= 10000 ? (v / 1000).toFixed(1) : v >= 1000 ? (v / 1000).toFixed(2) : (v / 1000).toFixed(3)) + " s";
+  }
+  function med(s, m) { var x = s.stats && s.stats[m]; return x == null ? null : (typeof x === "number" ? x : x.median); }
+  function niceStep(max) {
+    var raw = max / 4, p = Math.pow(10, Math.floor(Math.log(raw) / Math.LN10)), f = raw / p;
+    return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+  }
+  function tabName(sc) {
+    var n = OTHER_SHORT[sc.id] || sc.title;
+    return sc.profile === "defaults" ? t("{name}, at defaults").replace("{name}", n) : n;
+  }
+  function failNote(s) {
+    var bad = [];
+    if (s.failed) bad.push(t("{n} of {m} failed").replace("{n}", s.failed).replace("{m}", s.runs));
+    if (s.sha_failed) bad.push(t("{n} of {m} with a wrong file").replace("{n}", s.sha_failed).replace("{m}", s.runs));
+    return bad.join(", ");
+  }
+  function drawOthersScenario(k) {
+    var sc = cmp.scenarios[k];
+    var tabs = others.querySelectorAll('[role="tab"]');
+    for (var i = 0; i < tabs.length; i++) tabs[i].setAttribute("aria-selected", i === k ? "true" : "false");
+    var box = others.querySelector("[data-others-rows]");
+    box.innerHTML = "";
+    others.classList.remove("in");
+    var names = ORDER.filter(function (c) { return sc.clients[c]; });
+    var rows = names.map(function (c) { return { c: c, s: sc.clients[c], m: med(sc.clients[c], "e2e_ms") }; });
+    rows.sort(function (a, b) { return (a.m == null) - (b.m == null) || a.m - b.m; });
+    var max = 0;
+    rows.forEach(function (r) {
+      var st = r.s.stats.e2e_ms;
+      if (st) max = Math.max(max, st.q3 != null ? st.q3 : st.median);
+    });
+    var step = niceStep(max || 1), top = Math.ceil(max / step) * step || step;
+    var axis = el("div", "ot-axis");
+    for (var v = 0; v <= top + 1e-9; v += step) {
+      var a = el("span", null, secs(v).replace(".000 s", " s").replace(".00 s", " s").replace(".0 s", " s"));
+      a.style.left = (v / top * 100) + "%";
+      axis.appendChild(a);
+    }
+    box.appendChild(axis);
+    rows.forEach(function (r, i) {
+      var s = r.s, st = s.stats.e2e_ms, env = (cmp.environment.clients || {})[r.c];
+      var row = el("div", "ot-row" + (r.c === "MDM" ? " is-ours" : ""));
+      row.style.setProperty("--d", (i * 70) + "ms");
+      var name = el("div", "ot-name");
+      name.appendChild(el("b", null, LABEL[r.c] || r.c));
+      var small = r.c === "IDM"
+        ? cmp.idm.version.replace(/, /g, ".") + " · " + t("from the run above, {date}").replace("{date}", cmp.idm.date.slice(0, 10))
+        : (env ? env.version.replace(/\s*\(.*\)$/, "") : "") + " · " +
+          (s.connections_setting === 1 ? t("1 connection") : t("{n} connections").replace("{n}", s.connections_setting));
+      name.appendChild(el("small", null, small));
+      var track = el("div", "ot-track");
+      for (var v2 = step; v2 < top - 1e-9; v2 += step) {
+        var tk = el("i", "ot-tick"); tk.style.left = (v2 / top * 100) + "%"; track.appendChild(tk);
+      }
+      var val = el("div", "ot-val");
+      if (st) {
+        var bar = el("i", "ot-bar"); bar.style.setProperty("--w", (st.median / top * 100) + "%");
+        track.appendChild(bar);
+        if (st.q1 != null && st.q3 != null && st.n > 1) {
+          var iqr = el("i", "ot-iqr");
+          iqr.style.left = (st.q1 / top * 100) + "%";
+          iqr.style.width = Math.max(0.3, (st.q3 - st.q1) / top * 100) + "%";
+          track.appendChild(iqr);
+        }
+        val.appendChild(el("b", null, secs(st.median)));
+      } else {
+        track.appendChild(el("span", "ot-none", t("No run finished with the right file.")));
+        val.appendChild(el("b", null, "—"));
+      }
+      var note = failNote(s);
+      if (note) val.appendChild(el("small", "is-bad", note));
+      else if (st) val.appendChild(el("small", null, secs(st.q1) + "–" + secs(st.q3)));
+      row.appendChild(name); row.appendChild(track); row.appendChild(val);
+      box.appendChild(row);
+    });
+    var foot = (OTHER_WHAT[sc.id] || sc.title) + " " +
+      (sc.profile === "defaults" ? t("Each app at its own default number of connections.")
+                                 : t("Every app at 8 connections where that can be set.")) + " " +
+      t("The whisker spans the middle half of the runs.");
+    others.querySelector("[data-others-foot]").textContent = foot;
+    var sub = others.querySelector("[data-others-sub]");
+    var n = Math.max.apply(null, names.map(function (c) { return sc.clients[c].runs || 0; }));
+    sub.textContent = t("{n} runs each. Shorter is faster.").replace("{n}", n);
+    if (still) others.classList.add("in");
+    else requestAnimationFrame(function () { requestAnimationFrame(function () { others.classList.add("in"); }); });
+  }
+  function drawOthersTable() {
+    var body = others.querySelector("[data-others-table] tbody");
+    body.innerHTML = "";
+    cmp.scenarios.forEach(function (sc) {
+      var first = true;
+      ORDER.forEach(function (c) {
+        var s = sc.clients[c];
+        if (!s) return;
+        var tr = el("tr"), st = s.stats;
+        var cells = [
+          tabName(sc), LABEL[c] || c,
+          s.source === "run5" ? t("{n} (run5)").replace("{n}", s.runs - s.failed) : (s.runs - s.failed - (s.sha_failed || 0)) + " / " + s.runs,
+          st.e2e_ms ? secs(st.e2e_ms.median) + " (" + secs(st.e2e_ms.q1) + "–" + secs(st.e2e_ms.q3) + ")" : "—",
+          secs(med(s, "transfer_ms")),
+          (med(s, "cpu_avg_cores") == null ? "—" : med(s, "cpu_avg_cores").toFixed(2)) + " / " +
+            (med(s, "cpu_peak_cores") == null ? "—" : med(s, "cpu_peak_cores").toFixed(2)),
+          med(s, "peak_mem_mb") == null ? "—" : Math.round(med(s, "peak_mem_mb")) + " MB",
+          med(s, "idle_after_mb") == null ? "—" : Math.round(med(s, "idle_after_mb")) + " MB",
+          med(s, "connections") == null ? "—" : String(Math.round(med(s, "connections")))
+        ];
+        cells.forEach(function (v, j) { tr.appendChild(el(j < 2 ? "th" : "td", null, v)); });
+        if (!first) tr.firstChild.textContent = "";
+        first = false;
+        tr.firstChild.setAttribute("scope", "row");
+        body.appendChild(tr);
+      });
+    });
+    var e = cmp.environment;
+    others.querySelector("[data-others-env]").textContent =
+      e.cpu + ", " + e.ram_gb + " GB, " + e.os + ". " + e.date.slice(0, 10) + ". " +
+      ORDER.filter(function (c) { return e.clients[c]; }).map(function (c) {
+        return (LABEL[c] || c) + " " + e.clients[c].version;
+      }).join("; ") + "; Internet Download Manager " + cmp.idm.version.replace(/, /g, ".") + " (" + t("run5") + ").";
+  }
+  function drawOthers() {
+    if (!cmp.scenarios || !cmp.scenarios.length) throw new Error("compare.json: no scenarios");
+    var list = others.querySelector("[data-others-tabs]");
+    list.innerHTML = "";
+    cmp.scenarios.forEach(function (sc, k) {
+      var b = el("button", null, tabName(sc));
+      b.type = "button"; b.setAttribute("role", "tab"); b.tabIndex = k ? -1 : 0;
+      b.addEventListener("click", function () { drawOthersScenario(k); });
+      list.appendChild(b);
+    });
+    list.addEventListener("keydown", function (e) {
+      var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+      var i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      var d = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : e.key === "ArrowLeft" || e.key === "ArrowUp" ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var j = (i + d + tabs.length) % tabs.length;
+      tabs.forEach(function (b, x) { b.tabIndex = x === j ? 0 : -1; });
+      tabs[j].focus();
+      drawOthersScenario(j);
+    });
+    var status = others.querySelector("[data-others-status]");
+    if (cmp.status === "provisional") {
+      status.hidden = false;
+      status.textContent = t("Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.");
+    }
+    drawOthersScenario(0);
+    drawOthersTable();
+  }
+  if (others && window.fetch) {
+    fetch("/bench/compare.json")
+      .then(function (r) { return r.json(); })
+      .then(function (j) { cmp = j; drawOthers(); })
+      .catch(function (e) {
+        if (window.console) console.error(e && e.stack || e);
+        others.querySelector("[data-others-rows]").textContent = t("The benchmark data could not be loaded.");
+      });
+  }
 })();

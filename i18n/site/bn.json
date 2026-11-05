@@ -198,9 +198,9 @@
    "source": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>",
    "text": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>"
   },
-  "04ec5358d75ceff7": {
-   "source": "Point at a video on a web page and a small <g1>Download video</g1> button appears at its edge. Click it and MDM's <g2>Download video from a page</g2> window opens and looks up the qualities it can download. It takes the video you clicked: its own file when it plays one, or the stream the player loaded (HLS or DASH), else the page. Embedded players work too, and your sign-in for the site, the page that embeds the player and your browser's User-Agent go with it, so videos for members, or that play only on the site that embeds them, can be downloaded. Sound players get the button too.",
-   "text": "একটি ওয়েব পৃষ্ঠায় একটি ভিডিওর উপর পয়েন্ট করুন এবং এর প্রান্তে একটি ছোট <g1>ভিডিও ডাউনলোড করুন</g1> বাটন দেখা যাবে। এটিতে ক্লিক করুন এবং MDM-এর <g2>একটি পৃষ্ঠা থেকে ভিডিও ডাউনলোড করুন</g2> উইন্ডোটি খোলে এবং এটি ডাউনলোড করতে পারে এমন গুণাবলী খুঁজে বের করে। এটি আপনার ক্লিক করা ভিডিওটি নেয়: যখন এটি একটি ফাইল চালায় তখন তার নিজস্ব ফাইল, অথবা প্লেয়ার লোড করা স্ট্রিম (HLS বা DASH), অন্যথায় পৃষ্ঠাটি। এমবেডেড প্লেয়ারগুলিও কাজ করে, এবং সাইটের জন্য আপনার সাইন-ইন, প্লেয়ার এমবেড করা পৃষ্ঠা এবং আপনার ব্রাউজারের User-Agent এর সাথে যায়, তাই সদস্যদের জন্য ভিডিও, বা যেগুলি কেবল এমবেড করা সাইটে চলে, সেগুলি ডাউনলোড করা যায়। সাউন্ড প্লেয়ারগুলিও বাটনটি পায়।"
+  "04ebcf1715ef6084": {
+   "source": "Correct runs",
+   "text": "সঠিক রান"
   },
   "050edc04316dd70a": {
    "source": "On the command line",
@@ -418,6 +418,10 @@
    "source": "Version 0.2.4 · free and open source · no ads, no spyware, nothing bundled. <g1>What's new</g1>",
    "text": "সংস্করণ 0.2.4 · বিনামূল্যে এবং ওপেন সোর্স · কোনো বিজ্ঞাপন নেই, কোনো স্পাইওয়্যার নেই, কিছু বান্ডেল করা নেই। <g1>নতুন কী আছে</g1>"
   },
+  "09b6d0a9dbaf55e1": {
+   "source": "{name}, at defaults",
+   "text": "{name}, ডিফল্ট অবস্থায়"
+  },
   "09baf9aefa050aee": {
    "source": "Tick <g1>Start download at</g1> and set the time, for example 1:00:00 AM. Click the hours and use the arrows or type the number.",
    "text": "<g1>ডাউনলোড শুরু করুন</g1> টিক করুন এবং সময় সেট করুন, উদাহরণস্বরূপ 1:00:00 AM। ঘন্টাগুলিতে ক্লিক করুন এবং তীর ব্যবহার করুন অথবা সংখ্যা টাইপ করুন।"
@@ -529,6 +533,10 @@
   "0bb0e3dc72ae2345": {
    "source": "Before you start",
    "text": "শুরু করার আগে"
+  },
+  "0bf25272dd906225": {
+   "source": "Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.",
+   "text": "অস্থায়ী: এই রানগুলি একই পিসিতে অন্যান্য প্রোগ্রাম ব্যস্ত থাকা অবস্থায় নেওয়া হয়েছিল। একটি শান্ত মেশিনে নেওয়া রান দিয়ে এগুলি প্রতিস্থাপন করা হবে।"
   },
   "0c1ddab7d81578c6": {
    "source": "<g1>Options → General → Use advanced browser integration</g1> must be on. Turn it off to send nothing to MDM.",
@@ -741,6 +749,10 @@
   "131c434c36b2d6f9": {
    "source": "Click <g1>Load unpacked</g1>.",
    "text": "<g1>আনপ্যাকড লোড করুন</g1>-এ ক্লিক করুন।"
+  },
+  "131f6c6af936dd3a": {
+   "source": "1 GiB from a server with no limits: as fast as the loopback and the disk allow.",
+   "text": "সীমাহীন সার্ভার থেকে 1 জিআইবি: লুপব্যাক এবং ডিস্ক যত দ্রুত অনুমতি দেয়।"
   },
   "13382c1e6ceae711": {
    "source": "<g1>The video button over a Drive video</g1> downloads the original file, not one of the player's smaller copies.",
@@ -1009,6 +1021,10 @@
   "19ef176da302a2b4": {
    "source": "When the browser can't hand a download to MDM, it keeps the download itself, so nothing is lost. The extension's toolbar button then shows a red !. Click it…",
    "text": "যখন ব্রাউজার MDM-কে একটি ডাউনলোড দিতে পারে না, তখন এটি ডাউনলোডটি নিজেই রাখে, তাই কিছুই হারায় না। এক্সটেনশনের টুলবার বোতামটি তখন একটি লাল ! দেখায়। এটিতে ক্লিক করুন..."
+  },
+  "19f9c2c64f700479": {
+   "source": "compare.json",
+   "text": "compare.json"
   },
   "1a0500523dbbbc89": {
    "source": "On a Mac or Linux",
@@ -1698,6 +1714,10 @@
    "source": "Download limits",
    "text": "ডাউনলোড সীমা"
   },
+  "29e14750a75c3ab2": {
+   "source": "{n} of {m} with a wrong file",
+   "text": "{m}টির মধ্যে {n}টির ফাইল ভুল"
+  },
   "29ea1d92cca7773f": {
    "source": "If the queue didn't start →",
    "text": "যদি সারি শুরু না হয় →"
@@ -2078,6 +2098,10 @@
    "source": "not to use it to break copy protection (DRM): MDM doesn't do this and isn't meant to;",
    "text": "কপি সুরক্ষা (DRM) ভাঙতে এটি ব্যবহার না করতে: MDM এটি করে না এবং এর উদ্দেশ্যও এটি নয়;"
   },
+  "3321f21fb30215eb": {
+   "source": "Each app at its own default number of connections.",
+   "text": "প্রতিটি অ্যাপ তার নিজস্ব ডিফল্ট সংখ্যক সংযোগে।"
+  },
   "335ddbe14ee4164c": {
    "source": "Closing the window with its close box keeps the download running.",
    "text": "উইন্ডোটি তার ক্লোজ বক্স দিয়ে বন্ধ করলে ডাউনলোড চলতে থাকে।"
@@ -2097,6 +2121,10 @@
   "338575eefc8880a1": {
    "source": "Type part of the file's name.",
    "text": "ফাইলের নামের কিছু অংশ টাইপ করুন।"
+  },
+  "33bd7ec498f74ef6": {
+   "source": "No run finished with the right file.",
+   "text": "সঠিক ফাইল দিয়ে কোনো রান শেষ হয়নি।"
   },
   "33e932958a661bfe": {
    "source": "<g1>Category</g1> — choose a category to see and change its settings below.",
@@ -2142,10 +2170,6 @@
    "source": "Connections to this computer itself (<x1/>) aren't bound. A proxy on this computer carries the downloads, and where it sends them is up to it.",
    "text": "এই কম্পিউটারটির সাথে সংযোগগুলি (<x1/>) বাইন্ড করা হয় না। এই কম্পিউটারে একটি প্রক্সি ডাউনলোডগুলি বহন করে, এবং এটি কোথায় পাঠায় তা এর উপর নির্ভর করে।"
   },
-  "3549f28b5c3a4fb8": {
-   "source": "Videos protected with DRM (most paid streaming services) can't be downloaded, and MDM doesn't try.",
-   "text": "DRM দ্বারা সুরক্ষিত ভিডিও (বেশিরভাগ পেইড স্ট্রিমিং পরিষেবা) ডাউনলোড করা যায় না, এবং MDM চেষ্টা করে না।"
-  },
   "3569ffbab6981371": {
    "source": "Choosing a language on first start",
    "text": "প্রথম শুরুতে একটি ভাষা নির্বাচন করা"
@@ -2173,6 +2197,10 @@
   "3640bc6fe07d3428": {
    "source": "<g1>macOS 11</g1> or later on Apple Silicon or Intel (experimental).",
    "text": "Apple Silicon বা Intel-এ <g1>macOS 11</g1> বা তার পরের সংস্করণ (পরীক্ষামূলক)।"
+  },
+  "364fa2fc8f5bcc9e": {
+   "source": "32 small files",
+   "text": "32টি ছোট ফাইল"
   },
   "3688ea6bb5b2fe83": {
    "source": "Right-click the list's blank space for <g1>Add new download</g1>, <g2>Select all</g2>, <g3>Arrange files</g3>, <g4>Clear all filters</g4> and <g5>Delete All Completed</g5>.",
@@ -2325,6 +2353,10 @@
   "39c6e3069cb8cc85": {
    "source": "Click <g1>OK</g1>.",
    "text": "<g1>ঠিক আছে</g1> ক্লিক করুন।"
+  },
+  "39d6924fe82b5e69": {
+   "source": "Every app at 8 connections where that can be set.",
+   "text": "যেখানে সেট করা যায়, সেখানে প্রতিটি অ্যাপ 8টি সংযোগ ব্যবহার করে।"
   },
   "39f0061bac128459": {
    "source": "<g1>Options → Archives</g1> says whether 7-Zip was found. Without it, a 7z or RAR archive isn't extracted, and the <g2>7-Zip needed</g2> window says so, with a <g3>Get 7-Zip</g3> button.",
@@ -2986,6 +3018,10 @@
    "source": "Turn on <g1>Developer mode</g1>.",
    "text": "<g1>ডেভেলপার মোড</g1> চালু করুন।"
   },
+  "4c682b25c467f254": {
+   "source": "Time, median (IQR)",
+   "text": "সময়, মধ্যম (IQR)"
+  },
   "4c75f1e3123da2b1": {
    "source": "— plain FTP.",
    "text": "— সাধারণ FTP।"
@@ -3330,6 +3366,10 @@
    "source": "Click <g1>Yes</g1> to delete, or <g2>No</g2> to keep everything.",
    "text": "মুছে ফেলার জন্য <g1>হ্যাঁ</g1> ক্লিক করুন, অথবা সবকিছু রাখার জন্য <g2>না</g2> ক্লিক করুন।"
   },
+  "558add5a46e69125": {
+   "source": "2 connections allowed",
+   "text": "2টি সংযোগ অনুমোদিত"
+  },
   "558bb1c07f16684f": {
    "source": "It notes the addresses of video streams (HLS and DASH playlists) a page's player loads, in memory for that tab, so the <g1>Download video</g1> button can pass the stream on. Its button reads the page only to find video and sound players and place itself. Clicking it passes the page's address, the video's address, the page's title, the site's cookies, the page that embeds the player and your browser's User-Agent to MDM.",
    "text": "এটি একটি পৃষ্ঠার প্লেয়ার দ্বারা লোড করা ভিডিও স্ট্রিমগুলির (HLS এবং DASH প্লেলিস্ট) ঠিকানাগুলি সেই ট্যাবের জন্য মেমরিতে নোট করে, যাতে <g1>ভিডিও ডাউনলোড করুন</g1> বোতামটি স্ট্রিমটি পাস করতে পারে। এর বোতামটি শুধুমাত্র ভিডিও এবং সাউন্ড প্লেয়ারগুলি খুঁজে বের করতে এবং নিজেকে স্থাপন করতে পৃষ্ঠাটি পড়ে। এটিতে ক্লিক করলে পৃষ্ঠার ঠিকানা, ভিডিওর ঠিকানা, পৃষ্ঠার শিরোনাম, সাইটের কুকিজ, প্লেয়ারটি এম্বেড করা পৃষ্ঠা এবং আপনার ব্রাউজারের ইউজার-এজেন্ট MDM-এর কাছে চলে যায়।"
@@ -3470,6 +3510,10 @@
    "source": "Sizes are in bytes (<x1/> while unknown), speeds in bytes per second. A failure prints <x2/> and exits with code 1. For example:",
    "text": "আকার বাইটে (<x1/> যখন অজানা), গতি বাইট প্রতি সেকেন্ডে। একটি ব্যর্থতা <x2/> প্রিন্ট করে এবং কোড 1 সহ প্রস্থান করে। উদাহরণস্বরূপ:"
   },
+  "597f5a93ee5c3935": {
+   "source": "32 different files of 256 KiB, handed over one after another.",
+   "text": "256 কেআইবি-এর 32টি ভিন্ন ফাইল, একের পর এক হস্তান্তর করা হয়েছে।"
+  },
   "59920ff7101c276f": {
    "source": "Fix the translation in the row's third column and delete its <x1/> line.",
    "text": "সারিটির তৃতীয় কলামে অনুবাদটি ঠিক করুন এবং এর <x1/> লাইনটি মুছে দিন।"
@@ -3545,6 +3589,10 @@
   "5bc4b6e9ef830d3c": {
    "source": "<g1>Linux and macOS</g1>: in MDM's settings, in a data folder only you may read (0700), not yet in the system's keychain. Keeping it in the keychain is planned.",
    "text": "<g1>Linux এবং macOS</g1>: MDM-এর সেটিংসে, একটি ডেটা ফোল্ডারে যা শুধুমাত্র আপনি পড়তে পারেন (0700), এখনও সিস্টেমের কীচেইনে নেই। এটি কীচেইনে রাখার পরিকল্পনা করা হয়েছে।"
+  },
+  "5bd3c760b64b1916": {
+   "source": "run5",
+   "text": "রান5"
   },
   "5bf2df1735e69b20": {
    "source": "<g1>Paste</g1> from other programs into any text box (Ctrl+V, ⌘V): MDM kept a clipboard of its own.",
@@ -3918,6 +3966,10 @@
    "source": "The free download managers people reach for instead of IDM, checked on their own websites and code in November 2026. Each is good at something. We make the first one, so judge the rest by their own links.",
    "text": "নভেম্বর 2026-এ তাদের নিজস্ব ওয়েবসাইট এবং কোড পরীক্ষা করে IDM-এর পরিবর্তে মানুষ যে বিনামূল্যে ডাউনলোড ম্যানেজারগুলি ব্যবহার করে। প্রতিটিই কোনো না কোনো ক্ষেত্রে ভালো। আমরা প্রথমটি তৈরি করি, তাই বাকিগুলি তাদের নিজস্ব লিঙ্ক দ্বারা বিচার করুন।"
   },
+  "64215b3d499445a9": {
+   "source": "{n} (run5)",
+   "text": "{n} (রান5)"
+  },
   "64254df81bae2d98": {
    "source": "<g1>Installation help</g1><g2>Importing from IDM</g2><g3>The benchmark</g3>",
    "text": "<g1>ইনস্টলেশন সহায়তা</g1><g2>IDM থেকে আমদানি করা</g2><g3>বেঞ্চমার্ক</g3>"
@@ -4102,6 +4154,10 @@
    "source": "Tick <g1>Use Speed Limiter</g1> and type the speed in <g2>Maximum download speed</g2>.",
    "text": "<g1>স্পিড লিমিটার ব্যবহার করুন</g1> টিক দিন এবং <g2>সর্বোচ্চ ডাউনলোড গতি</g2>-তে গতি টাইপ করুন।"
   },
+  "69fd84f8fcd6b3c8": {
+   "source": "Cut connections",
+   "text": "সংযোগ কাটুন"
+  },
   "6a03943201e9c5c8": {
    "source": "Downloading may be against some sites' terms; that is up to you to check.",
    "text": "ডাউনলোড করা কিছু সাইটের শর্তাবলীর বিরুদ্ধে হতে পারে; এটি আপনার পরীক্ষা করার বিষয়।"
@@ -4170,6 +4226,10 @@
    "source": "Linux, the AppImage or the .tar.gz",
    "text": "Linux, AppImage অথবা .tar.gz"
   },
+  "6b0b6731867bf61c": {
+   "source": "{n} runs each. Shorter is faster.",
+   "text": "প্রতিটি {n}টি রান। যত ছোট, তত দ্রুত।"
+  },
   "6b0ef8e85512f319": {
    "source": "Runs the new setup without its windows. An installation for all users asks for the administrator's permission.",
    "text": "নতুন সেটআপ তার উইন্ডো ছাড়া চলে। সমস্ত ব্যবহারকারীর জন্য একটি ইনস্টলেশন প্রশাসকের অনুমতি চায়।"
@@ -4213,6 +4273,10 @@
   "6c0ec44709800dba": {
    "source": "<g1>Mister Download Manager</g1><g2>Free and open source · GPL-3.0</g2>",
    "text": "<g1>Mister Download Manager</g1><g2>বিনামূল্যে এবং ওপেন সোর্স · GPL-3.0</g2>"
+  },
+  "6c0fdb3cfb96e29c": {
+   "source": "100 MiB from a server that sends at most 2 MB/s on each connection.",
+   "text": "একটি সার্ভার থেকে 100 এমআইবি যা প্রতিটি সংযোগে সর্বোচ্চ 2 এমবি/সেকেন্ড পাঠায়।"
   },
   "6c562dbba37bfe77": {
    "source": "results.json",
@@ -4430,6 +4494,10 @@
    "source": "<g1>MDM asks to create a folder:</g1> the folder doesn't exist yet. Click <g2>Yes</g2>.",
    "text": "<g1>MDM একটি ফোল্ডার তৈরি করতে বলছে:</g1> ফোল্ডারটি এখনও বিদ্যমান নেই। <g2>হ্যাঁ</g2> ক্লিক করুন।"
   },
+  "719c8ad7b82e2c86": {
+   "source": "100 MiB from a server that ignores ranges and always sends the whole file.",
+   "text": "একটি সার্ভার থেকে 100 এমআইবি যা রেঞ্জ উপেক্ষা করে এবং সর্বদা পুরো ফাইলটি পাঠায়।"
+  },
   "71e90b70c32a4238": {
    "source": "<g1>Download list</g1> (right). One row per download. See <g2>The download list</g2>.",
    "text": "<g1>ডাউনলোড তালিকা</g1> (ডান দিকে)। প্রতি ডাউনলোডের জন্য একটি সারি। <g2>ডাউনলোড তালিকা</g2> দেখুন।"
@@ -4618,6 +4686,10 @@
    "source": "<g1>Synchronization queue</g1> — finished downloads stay in it instead of leaving. It is the only queue that takes finished downloads.",
    "text": "<g1>সিঙ্ক্রোনাইজেশন কিউ</g1> — শেষ হওয়া ডাউনলোডগুলি সারি থেকে না গিয়ে এতে থাকে। এটিই একমাত্র সারি যা শেষ হওয়া ডাউনলোডগুলি নেয়।"
   },
+  "76c2453dbe3586aa": {
+   "source": "2 MB/s per connection",
+   "text": "প্রতি সংযোগে 2 এমবি/সেকেন্ড"
+  },
   "76ca1f61789efab8": {
    "source": "MDM didn't start in time",
    "text": "MDM সময়মতো শুরু হয়নি"
@@ -4714,6 +4786,10 @@
    "source": "Questions and answers — Mister Download Manager",
    "text": "প্রশ্ন ও উত্তর — Mister Download Manager"
   },
+  "7978d9d1f23553cc": {
+   "source": "The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.",
+   "text": "একই টেস্ট সার্ভার এবং একই পিসি, AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 এবং curl ব্যবহার করে। প্রতিটি 8টি সংযোগে সেট করা হয়েছিল যেখানে এটি সেট করা যায় (প্রতিটি সারিতে কতটি ব্যবহার করা হয়েছে তা বলা আছে), এবং প্রতিটি ফাইল বাইট বাইট করে পরীক্ষা করা হয়েছিল। IDM-এর সময়গুলি উপরেরগুলি; এটি আবার চালানো হয়নি।"
+  },
   "798a534b6b549e15": {
    "source": "<g1>Things that fail say why</g1>: opening a file that was moved, a file that can't be deleted or moved, the list that can't be saved, a computer that won't shut down, a check closed early.",
    "text": "<g1>যেসব জিনিস ব্যর্থ হয় তা কারণ বলে</g1>: স্থানান্তরিত একটি ফাইল খোলা, একটি ফাইল যা মুছে ফেলা বা সরানো যায় না, যে তালিকা সংরক্ষণ করা যায় না, একটি কম্পিউটার যা বন্ধ হবে না, একটি চেক তাড়াতাড়ি বন্ধ হয়ে গেছে।"
@@ -4757,6 +4833,10 @@
   "7a6ff9503edd25ad": {
    "source": "Is the site in <g1>Don't start downloading automatically from the following sites</g1>?",
    "text": "সাইটটি কি <g1>নিম্নলিখিত সাইটগুলি থেকে স্বয়ংক্রিয়ভাবে ডাউনলোড শুরু করবেন না</g1>-এ আছে?"
+  },
+  "7a74681889007141": {
+   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42, and <g3>against the others</g3> on the same PC and test server: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl.",
+   "text": "Mister Download Manager: <g1>এর সোর্স কোড</g1> এবং IDM 6.42-এর বিরুদ্ধে <g2>আমাদের বেঞ্চমার্ক</g2>, এবং একই পিসি ও টেস্ট সার্ভারে <g3>অন্যান্যদের বিরুদ্ধে</g3>: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 এবং curl।"
   },
   "7a8b05b164a2ebec": {
    "source": "Can it download overnight or on a schedule? — Mister Download Manager",
@@ -5850,6 +5930,14 @@
    "source": "Unzip the file to a folder you can write to (not straight into <x1/>).",
    "text": "ফাইলটি একটি ফোল্ডারে আনজিপ করুন যেখানে আপনি লিখতে পারবেন (সরাসরি <x1/>-তে নয়)।"
   },
+  "96e2ef971fcfc675": {
+   "source": "<g1>Median time, from hand-off to finished file</g1><g2>5 runs each. Shorter is faster.</g2>",
+   "text": "<g1>হ্যান্ড-অফ থেকে ফাইল শেষ হওয়া পর্যন্ত মধ্যম সময়</g1><g2>প্রতিটি 5 বার চালানো হয়েছে। কম সময় মানে দ্রুততর।</g2>"
+  },
+  "96ecd3b45b4c84ad": {
+   "source": "50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more.",
+   "text": "একটি সার্ভার থেকে 50 এমআইবি যা একবারে 2টি সংযোগের অনুমতি দেয়, প্রতিটি 2 এমবি/সেকেন্ড, এবং এর বেশি প্রত্যাখ্যান করে।"
+  },
   "970430e3defd4e45": {
    "source": "Browser integration →",
    "text": "ব্রাউজার ইন্টিগ্রেশন →"
@@ -6125,6 +6213,10 @@
   "9e343096f9189eb2": {
    "source": "Seven downloads, each run at least seven times by both apps. The bar is the middle half of the runs, the line the median.",
    "text": "সাতটি ডাউনলোড, প্রতিটি অ্যাপ দিয়ে কমপক্ষে সাতবার চালানো হয়েছে। বারের মাঝের অর্ধেক রান, আর লাইনটি হলো মধ্যমা।"
+  },
+  "9e538e2ea50f45d7": {
+   "source": "1 connection",
+   "text": "1টি সংযোগ"
   },
   "9e5f6ea1de61f755": {
    "source": "Blocking addresses",
@@ -6650,6 +6742,10 @@
    "source": "AB Download Manager",
    "text": "AB Download Manager"
   },
+  "ac10c1349c520d45": {
+   "source": "CPU, average / peak",
+   "text": "CPU, গড় / সর্বোচ্চ"
+  },
   "ac1acb5254f1187e": {
    "source": "What video a page holds (YouTube, Vimeo, ...), and the qualities to choose from.",
    "text": "একটি পৃষ্ঠায় কী ভিডিও আছে (YouTube, Vimeo, ...), এবং বেছে নেওয়ার জন্য গুণমানগুলি।"
@@ -6830,6 +6926,10 @@
    "source": "Queues",
    "text": "সারি"
   },
+  "b0044c55e061b1c2": {
+   "source": "Memory after",
+   "text": "মেমরি পরে"
+  },
   "b0c0ef4ee0008226": {
    "source": "— FTP secured with TLS from the start of the session (explicit FTPS, <x1/>, usually port 21). Use it when the server says it supports TLS.",
    "text": "— সেশনের শুরু থেকে TLS দ্বারা সুরক্ষিত FTP (স্পষ্ট FTPS, <x1/>, সাধারণত পোর্ট 21)। সার্ভার যখন TLS সমর্থন করে বলে, তখন এটি ব্যবহার করুন।"
@@ -6889,10 +6989,6 @@
   "b1b2249661e1c4a9": {
    "source": "Keep changes focused and match the code around them. A few rules hold everywhere:",
    "text": "পরিবর্তনগুলিকে কেন্দ্রীভূত রাখুন এবং তাদের চারপাশের কোডের সাথে মিলিয়ে নিন। কয়েকটি নিয়ম সর্বত্র প্রযোজ্য:"
-  },
-  "b1d90b3e9d2a1cd5": {
-   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparison; its raw data is in <x3/>.",
-   "text": "<x1/> এর বিরুদ্ধে ইউনিট পরীক্ষা এবং এন্ড-টু-এন্ড ডাউনলোড চালায় ইনজেক্টেড ফল্ট সহ (ধীর, বাদ পড়া এবং প্রত্যাখ্যান করা সংযোগ, রেঞ্জ ছাড়া সার্ভার, ফাইল পরিবর্তন)। <x2/> প্রকাশিত গতি তুলনা চালায়; এর কাঁচা ডেটা <x3/> এ রয়েছে।"
   },
   "b208caa24e13c211": {
    "source": "<g1>Shift+Up / Shift+Down</g1> makes the selection longer or shorter.",
@@ -7034,6 +7130,10 @@
    "source": "256 KiB file",
    "text": "256 কিবি ফাইল"
   },
+  "b57da88051558deb": {
+   "source": "And against the others.",
+   "text": "এবং অন্যদের বিরুদ্ধে।"
+  },
   "b585eac57a3ace26": {
    "source": "On another computer",
    "text": "অন্য একটি কম্পিউটারে"
@@ -7117,6 +7217,10 @@
   "b7c0190ca4719975": {
    "source": "The assistant can't change MDM's options, see your browser, or turn the automation API on by itself.",
    "text": "অ্যাসিস্ট্যান্ট MDM-এর অপশন পরিবর্তন করতে পারে না, আপনার ব্রাউজার দেখতে পারে না, অথবা নিজে থেকে অটোমেশন API চালু করতে পারে না।"
+  },
+  "b7c70a77d0281344": {
+   "source": "from the run above, {date}",
+   "text": "উপরের রান থেকে, {date}"
   },
   "b7cf37766b3a4159": {
    "source": "On <g1>Q</g1>, tick <g2>In a queue</g2> or <g3>Not in a queue</g3>.",
@@ -7574,6 +7678,10 @@
    "source": "<g1>Torrents and magnet links.</g1> In the same list, with a file tree to pick from. IDM's website doesn't mention BitTorrent.",
    "text": "<g1>টরেন্ট এবং ম্যাগনেট লিঙ্ক।</g1> একই তালিকায়, ফাইল ট্রি থেকে বেছে নেওয়ার সুবিধা সহ। IDM-এর ওয়েবসাইটে BitTorrent-এর উল্লেখ নেই।"
   },
+  "c57753035a57cd80": {
+   "source": "Network",
+   "text": "নেটওয়ার্ক"
+  },
   "c5951459908e695f": {
    "source": "A table with one row per connection: its number, how much it has downloaded, and what it is doing right now.",
    "text": "প্রতিটি সংযোগের জন্য একটি সারি সহ একটি টেবিল: এর সংখ্যা, এটি কতটুকু ডাউনলোড করেছে এবং এটি এখন কী করছে।"
@@ -7682,6 +7790,10 @@
    "source": "MDM median ms (IQR)",
    "text": "MDM মধ্যমা ms (IQR)"
   },
+  "c8578958d7e75c64": {
+   "source": "50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB.",
+   "text": "প্রতি সংযোগে 4 এমবি/সেকেন্ড গতিতে 50 এমআইবি; সার্ভার 2 এমআইবি-এর পর প্রতি দ্বিতীয় সংযোগ কেটে দেয়।"
+  },
   "c8637f7ebeaab90f": {
    "source": "The software is free of charge. Anyone selling it to you, or asking you to pay to \"unlock\" it, is not us.",
    "text": "সফটওয়্যারটি বিনামূল্যে। যে কেউ এটি আপনার কাছে বিক্রি করছে, অথবা এটি \"আনলক\" করার জন্য আপনাকে অর্থ দিতে বলছে, তারা আমরা নই।"
@@ -7726,10 +7838,6 @@
    "source": "The plain programs, for any distribution.",
    "text": "যেকোনো ডিস্ট্রিবিউশনের জন্য সাধারণ প্রোগ্রামগুলি।"
   },
-  "c981c23fd3b23966": {
-   "source": "MDM reads the torrent and shows its files as a folder tree. A <x1/> file is read at once. A magnet link first has to get the file list from other peers, which can take a minute or two.",
-   "text": "MDM টরেন্টটি পড়ে এবং এর ফাইলগুলিকে একটি ফোল্ডার ট্রি হিসাবে দেখায়। একটি <x1/> ফাইল একবারে পড়া হয়। একটি ম্যাগনেট লিঙ্ককে প্রথমে অন্যান্য পিয়ার্স থেকে ফাইলের তালিকা পেতে হয়, যা এক বা দুই মিনিট সময় নিতে পারে।"
-  },
   "c991e64b857c5509": {
    "source": "<g1>Reannounce</g1> — asks the torrent's trackers for peers again now, instead of waiting for their next round. It works while the torrent runs or is shared.",
    "text": "<g1>পুনরায় ঘোষণা করুন</g1> — টরেন্টের ট্র্যাকারদের কাছে এখন আবার পিয়ারদের জন্য অনুরোধ করে, তাদের পরবর্তী রাউন্ডের জন্য অপেক্ষা না করে। টরেন্ট চলাকালীন বা শেয়ার করার সময় এটি কাজ করে।"
@@ -7753,6 +7861,10 @@
   "ca3ccb8cc16abc18": {
    "source": "<g1>Installation help</g1><g2>User guide</g2><g3>Report an issue</g3>",
    "text": "<g1>ইনস্টলেশন সহায়তা</g1><g2>ব্যবহারকারী নির্দেশিকা</g2><g3>একটি সমস্যা রিপোর্ট করুন</g3>"
+  },
+  "ca4285dd397e5809": {
+   "source": "{n} of {m} failed",
+   "text": "{m}টির মধ্যে {n}টি ব্যর্থ হয়েছে"
   },
   "ca593f72a01b7baf": {
    "source": "User guide",
@@ -7845,6 +7957,14 @@
   "ccf432f5c2c618e6": {
    "source": "Want subtitles? Pick a language in <g1>Subtitles</g1>. They're saved beside the video, or inside it if you tick <g2>Put them into the video</g2> (see <g3>Subtitles</g3>).",
    "text": "সাবটাইটেল চান? <g1>সাবটাইটেল</g1>-এ একটি ভাষা বেছে নিন। এগুলো ভিডিওর পাশে সেভ হবে, অথবা আপনি যদি <g2>এগুলোকে ভিডিওতে রাখুন</g2> টিক দেন তাহলে ভিডিওর ভেতরে সেভ হবে (দেখুন <g3>সাবটাইটেল</g3>)।"
+  },
+  "ccff9c325c408997": {
+   "source": "No range support",
+   "text": "রেঞ্জ সমর্থন নেই"
+  },
+  "cd11402498e46414": {
+   "source": "The whisker spans the middle half of the runs.",
+   "text": "হুইস্কার রানগুলির মাঝের অর্ধেক জুড়ে বিস্তৃত।"
   },
   "cd259ac663c10ccb": {
    "source": "Download a gallery",
@@ -8298,6 +8418,10 @@
    "source": "Each product's own website, linked above, and for the open-source ones their code on GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; licences and latest releases as GitHub shows them, 4 November 2026",
    "text": "প্রতিটি পণ্যের নিজস্ব ওয়েবসাইট, উপরে লিঙ্ক করা আছে, এবং ওপেন-সোর্সগুলির জন্য GitHub-এ তাদের কোড: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; লাইসেন্স এবং সর্বশেষ রিলিজ GitHub-এ যেমন দেখানো হয়েছে, 4 নভেম্বর 2026"
   },
+  "d8fddf13e98b6e23": {
+   "source": "{n} connections",
+   "text": "{n}টি সংযোগ"
+  },
   "d9012cd2cc61f595": {
    "source": "Choose <g1>Tasks → Add batch download</g1>. (<g2>Tasks → Add batch download from clipboard</g2> fills in a copied address.)",
    "text": "<g1>কাজ → ব্যাচ ডাউনলোড যোগ করুন</g1> নির্বাচন করুন। (<g2>কাজ → ক্লিপবোর্ড থেকে ব্যাচ ডাউনলোড যোগ করুন</g2> একটি কপি করা ঠিকানা পূরণ করে।)"
@@ -8725,10 +8849,6 @@
   "e571a12e9be69853": {
    "source": "Move through an open menu",
    "text": "একটি খোলা মেনুর মধ্যে সরান"
-  },
-  "e574864546b1a3c8": {
-   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42. We haven't benchmarked the others yet; until we do, this page makes no speed claim about them.",
-   "text": "Mister Download Manager: <g1>এর সোর্স কোড</g1> এবং <g2>IDM 6.42 এর বিরুদ্ধে আমাদের বেঞ্চমার্ক</g2>। আমরা এখনও অন্যদের বেঞ্চমার্ক করিনি; যতক্ষণ না আমরা করি, এই পৃষ্ঠা তাদের সম্পর্কে গতির কোনো দাবি করে না।"
   },
   "e57582f3a7df8548": {
    "source": "Download for Windows",
@@ -9282,6 +9402,10 @@
    "source": "Switches can start with <x1/> or <x2/>, in any case. If MDM is running, the command goes to it; if not, MDM starts and carries it out. For example:",
    "text": "সুইচগুলি <x1/> বা <x2/> দিয়ে শুরু হতে পারে, যে কোনো ক্ষেত্রে। যদি MDM চলছে, কমান্ডটি সেখানে যায়; যদি না চলে, MDM শুরু হয় এবং এটি কার্যকর করে। উদাহরণস্বরূপ:"
   },
+  "f443b336d27668f9": {
+   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparisons, against IDM (<x3/>) and against other download managers (<x4/>, method in <x5/>); their raw data is in <x6/>.",
+   "text": "<x1/>-এর বিরুদ্ধে ইউনিট পরীক্ষা এবং এন্ড-টু-এন্ড ডাউনলোড চালায়, যেখানে ত্রুটিগুলি ইনজেক্ট করা হয় (ধীর, ড্রপ হওয়া এবং প্রত্যাখ্যান করা সংযোগ, রেঞ্জ ছাড়া সার্ভার, ফাইল পরিবর্তন)। <x2/> প্রকাশিত গতির তুলনা চালায়, IDM (<x3/>) এবং অন্যান্য ডাউনলোড ম্যানেজারগুলির (<x4/>) বিরুদ্ধে (<x5/>-এ পদ্ধতি); তাদের কাঁচা ডেটা <x6/>-এ আছে।"
+  },
   "f47d19d2ae313a6b": {
    "source": "<g1>MDM as an IDM alternative</g1><g2>Spot something wrong? Tell us</g2>",
    "text": "<g1>IDM এর বিকল্প হিসেবে MDM</g1><g2>কিছু ভুল চোখে পড়েছে? আমাদের জানান</g2>"
@@ -9321,6 +9445,10 @@
   "f575c52354f70221": {
    "source": "Free forever, no ads, no trial",
    "text": "চিরতরে বিনামূল্যে, কোনো বিজ্ঞাপন নেই, কোনো ট্রায়াল নেই"
+  },
+  "f5a2a44dad341b4f": {
+   "source": "1 GiB",
+   "text": "1 জিআইবি"
   },
   "f5d0db4c9a23ece3": {
    "source": "<g1><g2>Adding downloads</g2></g1> — Add URL, the clipboard, the drop target, batch downloads and lists of links, and Start Download versus Download Later.",

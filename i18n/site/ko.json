@@ -198,9 +198,9 @@
    "source": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>",
    "text": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>"
   },
-  "04ec5358d75ceff7": {
-   "source": "Point at a video on a web page and a small <g1>Download video</g1> button appears at its edge. Click it and MDM's <g2>Download video from a page</g2> window opens and looks up the qualities it can download. It takes the video you clicked: its own file when it plays one, or the stream the player loaded (HLS or DASH), else the page. Embedded players work too, and your sign-in for the site, the page that embeds the player and your browser's User-Agent go with it, so videos for members, or that play only on the site that embeds them, can be downloaded. Sound players get the button too.",
-   "text": "웹 페이지의 비디오에 마우스를 가져가면 작은 <g1>비디오 다운로드</g1> 버튼이 가장자리에 나타납니다. 이 버튼을 클릭하면 MDM의 <g2>페이지에서 비디오 다운로드</g2> 창이 열리고 다운로드할 수 있는 품질을 검색합니다. 클릭한 비디오를 가져옵니다. 자체 파일을 재생할 때, 또는 플레이어가 로드한 스트림(HLS 또는 DASH), 그렇지 않으면 페이지를 가져옵니다. 임베디드 플레이어도 작동하며, 사이트 로그인 정보, 플레이어를 임베드하는 페이지 및 브라우저의 User-Agent가 함께 전달되므로, 회원 전용 비디오 또는 임베드된 사이트에서만 재생되는 비디오도 다운로드할 수 있습니다. 사운드 플레이어에도 버튼이 나타납니다."
+  "04ebcf1715ef6084": {
+   "source": "Correct runs",
+   "text": "정확한 실행 횟수"
   },
   "050edc04316dd70a": {
    "source": "On the command line",
@@ -418,6 +418,10 @@
    "source": "Version 0.2.4 · free and open source · no ads, no spyware, nothing bundled. <g1>What's new</g1>",
    "text": "버전 0.2.4 · 무료 오픈 소스 · 광고, 스파이웨어, 번들 없음. <g1>새로운 기능</g1>"
   },
+  "09b6d0a9dbaf55e1": {
+   "source": "{name}, at defaults",
+   "text": "{name}, 기본값"
+  },
   "09baf9aefa050aee": {
    "source": "Tick <g1>Start download at</g1> and set the time, for example 1:00:00 AM. Click the hours and use the arrows or type the number.",
    "text": "<g1>다운로드 시작 시각</g1>을 선택하고 시간을 설정합니다(예: 오전 1:00:00). 시간을 클릭하고 화살표를 사용하거나 숫자를 입력합니다."
@@ -529,6 +533,10 @@
   "0bb0e3dc72ae2345": {
    "source": "Before you start",
    "text": "시작하기 전에"
+  },
+  "0bf25272dd906225": {
+   "source": "Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.",
+   "text": "잠정적: 이 실행은 다른 프로그램이 같은 PC에서 바쁜 동안 수행되었습니다. 조용한 머신에서 실행한 결과로 대체될 예정입니다."
   },
   "0c1ddab7d81578c6": {
    "source": "<g1>Options → General → Use advanced browser integration</g1> must be on. Turn it off to send nothing to MDM.",
@@ -741,6 +749,10 @@
   "131c434c36b2d6f9": {
    "source": "Click <g1>Load unpacked</g1>.",
    "text": "<g1>압축 해제된 확장 프로그램 로드</g1>를 클릭합니다."
+  },
+  "131f6c6af936dd3a": {
+   "source": "1 GiB from a server with no limits: as fast as the loopback and the disk allow.",
+   "text": "제한 없는 서버에서 1GiB: 루프백 및 디스크가 허용하는 한 빠릅니다."
   },
   "13382c1e6ceae711": {
    "source": "<g1>The video button over a Drive video</g1> downloads the original file, not one of the player's smaller copies.",
@@ -1009,6 +1021,10 @@
   "19ef176da302a2b4": {
    "source": "When the browser can't hand a download to MDM, it keeps the download itself, so nothing is lost. The extension's toolbar button then shows a red !. Click it…",
    "text": "브라우저가 MDM에 다운로드를 넘겨줄 수 없을 때, 다운로드를 직접 처리하므로 아무것도 손실되지 않습니다. 이때 확장 프로그램의 도구 모음 버튼에 빨간색 !가 표시됩니다. 클릭하세요..."
+  },
+  "19f9c2c64f700479": {
+   "source": "compare.json",
+   "text": "compare.json"
   },
   "1a0500523dbbbc89": {
    "source": "On a Mac or Linux",
@@ -1698,6 +1714,10 @@
    "source": "Download limits",
    "text": "다운로드 제한"
   },
+  "29e14750a75c3ab2": {
+   "source": "{n} of {m} with a wrong file",
+   "text": "{m}개 중 {n}개 파일 오류"
+  },
   "29ea1d92cca7773f": {
    "source": "If the queue didn't start →",
    "text": "대기열이 시작되지 않은 경우 →"
@@ -2078,6 +2098,10 @@
    "source": "not to use it to break copy protection (DRM): MDM doesn't do this and isn't meant to;",
    "text": "복사 방지(DRM)를 해제하는 데 사용하지 않아야 합니다. MDM은 이러한 기능을 제공하지 않으며, 이러한 목적으로 만들어지지 않았습니다."
   },
+  "3321f21fb30215eb": {
+   "source": "Each app at its own default number of connections.",
+   "text": "각 앱은 자체 기본 연결 수를 사용합니다."
+  },
   "335ddbe14ee4164c": {
    "source": "Closing the window with its close box keeps the download running.",
    "text": "닫기 상자로 창을 닫으면 다운로드가 계속 실행됩니다."
@@ -2097,6 +2121,10 @@
   "338575eefc8880a1": {
    "source": "Type part of the file's name.",
    "text": "파일 이름의 일부를 입력합니다."
+  },
+  "33bd7ec498f74ef6": {
+   "source": "No run finished with the right file.",
+   "text": "올바른 파일로 완료된 실행 없음."
   },
   "33e932958a661bfe": {
    "source": "<g1>Category</g1> — choose a category to see and change its settings below.",
@@ -2142,10 +2170,6 @@
    "source": "Connections to this computer itself (<x1/>) aren't bound. A proxy on this computer carries the downloads, and where it sends them is up to it.",
    "text": "이 컴퓨터 자체(<x1/>)로의 연결은 바인딩되지 않습니다. 이 컴퓨터의 프록시는 다운로드를 전달하며, 어디로 보낼지는 프록시에 달려 있습니다."
   },
-  "3549f28b5c3a4fb8": {
-   "source": "Videos protected with DRM (most paid streaming services) can't be downloaded, and MDM doesn't try.",
-   "text": "DRM으로 보호된 비디오(대부분의 유료 스트리밍 서비스)는 다운로드할 수 없으며, MDM은 시도하지 않습니다."
-  },
   "3569ffbab6981371": {
    "source": "Choosing a language on first start",
    "text": "첫 시작 시 언어 선택"
@@ -2173,6 +2197,10 @@
   "3640bc6fe07d3428": {
    "source": "<g1>macOS 11</g1> or later on Apple Silicon or Intel (experimental).",
    "text": "Apple Silicon 또는 Intel 기반 <g1>macOS 11</g1> 이상 (실험적)."
+  },
+  "364fa2fc8f5bcc9e": {
+   "source": "32 small files",
+   "text": "작은 파일 32개"
   },
   "3688ea6bb5b2fe83": {
    "source": "Right-click the list's blank space for <g1>Add new download</g1>, <g2>Select all</g2>, <g3>Arrange files</g3>, <g4>Clear all filters</g4> and <g5>Delete All Completed</g5>.",
@@ -2325,6 +2353,10 @@
   "39c6e3069cb8cc85": {
    "source": "Click <g1>OK</g1>.",
    "text": "<g1>확인</g1>을 클릭하세요."
+  },
+  "39d6924fe82b5e69": {
+   "source": "Every app at 8 connections where that can be set.",
+   "text": "설정 가능한 모든 앱에서 연결 8개."
   },
   "39f0061bac128459": {
    "source": "<g1>Options → Archives</g1> says whether 7-Zip was found. Without it, a 7z or RAR archive isn't extracted, and the <g2>7-Zip needed</g2> window says so, with a <g3>Get 7-Zip</g3> button.",
@@ -2986,6 +3018,10 @@
    "source": "Turn on <g1>Developer mode</g1>.",
    "text": "<g1>개발자 모드</g1>를 켭니다."
   },
+  "4c682b25c467f254": {
+   "source": "Time, median (IQR)",
+   "text": "시간, 중간값 (IQR)"
+  },
   "4c75f1e3123da2b1": {
    "source": "— plain FTP.",
    "text": "— 일반 FTP."
@@ -3330,6 +3366,10 @@
    "source": "Click <g1>Yes</g1> to delete, or <g2>No</g2> to keep everything.",
    "text": "삭제하려면 <g1>예</g1>를 클릭하고, 모든 것을 유지하려면 <g2>아니요</g2>를 클릭합니다."
   },
+  "558add5a46e69125": {
+   "source": "2 connections allowed",
+   "text": "2개 연결 허용"
+  },
   "558bb1c07f16684f": {
    "source": "It notes the addresses of video streams (HLS and DASH playlists) a page's player loads, in memory for that tab, so the <g1>Download video</g1> button can pass the stream on. Its button reads the page only to find video and sound players and place itself. Clicking it passes the page's address, the video's address, the page's title, the site's cookies, the page that embeds the player and your browser's User-Agent to MDM.",
    "text": "페이지 플레이어가 로드하는 비디오 스트림(HLS 및 DASH 재생 목록)의 주소를 해당 탭의 메모리에 기록하여 <g1>비디오 다운로드</g1> 버튼이 스트림을 전달할 수 있도록 합니다. 이 버튼은 비디오 및 사운드 플레이어를 찾아 자신을 배치하기 위해서만 페이지를 읽습니다. 버튼을 클릭하면 페이지 주소, 비디오 주소, 페이지 제목, 사이트 쿠키, 플레이어를 포함하는 페이지 및 브라우저의 User-Agent가 MDM으로 전달됩니다."
@@ -3470,6 +3510,10 @@
    "source": "Sizes are in bytes (<x1/> while unknown), speeds in bytes per second. A failure prints <x2/> and exits with code 1. For example:",
    "text": "크기는 바이트(<x1/>는 알 수 없음), 속도는 초당 바이트입니다. 실패하면 <x2/>를 출력하고 코드 1로 종료됩니다. 예를 들어:"
   },
+  "597f5a93ee5c3935": {
+   "source": "32 different files of 256 KiB, handed over one after another.",
+   "text": "256KiB의 서로 다른 파일 32개가 차례로 전달됩니다."
+  },
   "59920ff7101c276f": {
    "source": "Fix the translation in the row's third column and delete its <x1/> line.",
    "text": "행의 세 번째 열에 있는 번역을 수정하고 <x1/> 줄을 삭제하세요."
@@ -3545,6 +3589,10 @@
   "5bc4b6e9ef830d3c": {
    "source": "<g1>Linux and macOS</g1>: in MDM's settings, in a data folder only you may read (0700), not yet in the system's keychain. Keeping it in the keychain is planned.",
    "text": "<g1>Linux 및 macOS</g1>: MDM 설정의 데이터 폴더에 저장되며, 사용자만 읽을 수 있습니다(0700). 아직 시스템 키체인에는 저장되지 않습니다. 키체인에 저장하는 것이 계획되어 있습니다."
+  },
+  "5bd3c760b64b1916": {
+   "source": "run5",
+   "text": "run5"
   },
   "5bf2df1735e69b20": {
    "source": "<g1>Paste</g1> from other programs into any text box (Ctrl+V, ⌘V): MDM kept a clipboard of its own.",
@@ -3918,6 +3966,10 @@
    "source": "The free download managers people reach for instead of IDM, checked on their own websites and code in November 2026. Each is good at something. We make the first one, so judge the rest by their own links.",
    "text": "2026년 11월에 자체 웹사이트와 코드를 통해 확인된, 사람들이 IDM 대신 찾는 무료 다운로드 관리자들입니다. 각자 장점이 있습니다. 첫 번째는 저희가 만들었으니, 나머지는 자체 링크를 통해 판단해 주세요."
   },
+  "64215b3d499445a9": {
+   "source": "{n} (run5)",
+   "text": "{n} (run5)"
+  },
   "64254df81bae2d98": {
    "source": "<g1>Installation help</g1><g2>Importing from IDM</g2><g3>The benchmark</g3>",
    "text": "<g1>설치 도움말</g1><g2>IDM에서 가져오기</g2><g3>벤치마크</g3>"
@@ -4102,6 +4154,10 @@
    "source": "Tick <g1>Use Speed Limiter</g1> and type the speed in <g2>Maximum download speed</g2>.",
    "text": "<g1>속도 제한기 사용</g1>을 선택하고 <g2>최대 다운로드 속도</g2>에 속도를 입력합니다."
   },
+  "69fd84f8fcd6b3c8": {
+   "source": "Cut connections",
+   "text": "연결 끊기"
+  },
   "6a03943201e9c5c8": {
    "source": "Downloading may be against some sites' terms; that is up to you to check.",
    "text": "다운로드는 일부 사이트의 약관에 위배될 수 있습니다. 이는 사용자 본인이 확인해야 합니다."
@@ -4170,6 +4226,10 @@
    "source": "Linux, the AppImage or the .tar.gz",
    "text": "Linux, AppImage 또는 .tar.gz"
   },
+  "6b0b6731867bf61c": {
+   "source": "{n} runs each. Shorter is faster.",
+   "text": "각 {n}회 실행. 짧을수록 빠릅니다."
+  },
   "6b0ef8e85512f319": {
    "source": "Runs the new setup without its windows. An installation for all users asks for the administrator's permission.",
    "text": "새 설치 프로그램을 창 없이 실행합니다. 모든 사용자를 위한 설치는 관리자 권한을 요청합니다."
@@ -4213,6 +4273,10 @@
   "6c0ec44709800dba": {
    "source": "<g1>Mister Download Manager</g1><g2>Free and open source · GPL-3.0</g2>",
    "text": "<g1>Mister Download Manager</g1><g2>무료 오픈 소스 · GPL-3.0</g2>"
+  },
+  "6c0fdb3cfb96e29c": {
+   "source": "100 MiB from a server that sends at most 2 MB/s on each connection.",
+   "text": "각 연결에서 최대 2MB/s로 전송하는 서버에서 100MiB."
   },
   "6c562dbba37bfe77": {
    "source": "results.json",
@@ -4430,6 +4494,10 @@
    "source": "<g1>MDM asks to create a folder:</g1> the folder doesn't exist yet. Click <g2>Yes</g2>.",
    "text": "<g1>MDM이 폴더 생성을 요청함:</g1> 폴더가 아직 존재하지 않습니다. <g2>예</g2>를 클릭합니다."
   },
+  "719c8ad7b82e2c86": {
+   "source": "100 MiB from a server that ignores ranges and always sends the whole file.",
+   "text": "범위를 무시하고 항상 전체 파일을 전송하는 서버에서 100MiB."
+  },
   "71e90b70c32a4238": {
    "source": "<g1>Download list</g1> (right). One row per download. See <g2>The download list</g2>.",
    "text": "<g1>다운로드 목록</g1> (오른쪽). 다운로드당 한 줄. <g2>다운로드 목록</g2>을 참조하세요."
@@ -4618,6 +4686,10 @@
    "source": "<g1>Synchronization queue</g1> — finished downloads stay in it instead of leaving. It is the only queue that takes finished downloads.",
    "text": "<g1>동기화 큐</g1> — 완료된 다운로드가 나가지 않고 남아 있습니다. 완료된 다운로드를 받는 유일한 대기열입니다."
   },
+  "76c2453dbe3586aa": {
+   "source": "2 MB/s per connection",
+   "text": "연결당 2MB/s"
+  },
   "76ca1f61789efab8": {
    "source": "MDM didn't start in time",
    "text": "MDM이 제때 시작되지 않았습니다"
@@ -4714,6 +4786,10 @@
    "source": "Questions and answers — Mister Download Manager",
    "text": "자주 묻는 질문 — Mister Download Manager"
   },
+  "7978d9d1f23553cc": {
+   "source": "The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.",
+   "text": "동일한 테스트 서버와 동일한 PC에서 AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 및 curl을 사용했습니다. 각 프로그램은 8개의 연결로 설정되었으며 (각 행에 사용된 연결 수가 명시됨), 모든 파일은 바이트 단위로 확인되었습니다. IDM의 시간은 위에 명시된 시간이며, 다시 실행되지 않았습니다."
+  },
   "798a534b6b549e15": {
    "source": "<g1>Things that fail say why</g1>: opening a file that was moved, a file that can't be deleted or moved, the list that can't be saved, a computer that won't shut down, a check closed early.",
    "text": "<g1>실패한 작업은 이유를 알려줍니다</g1>: 이동된 파일 열기, 삭제 또는 이동할 수 없는 파일, 저장할 수 없는 목록, 종료되지 않는 컴퓨터, 일찍 닫힌 확인."
@@ -4757,6 +4833,10 @@
   "7a6ff9503edd25ad": {
    "source": "Is the site in <g1>Don't start downloading automatically from the following sites</g1>?",
    "text": "사이트가 <g1>다음 사이트에서 자동으로 다운로드 시작 안 함</g1>에 있습니까?"
+  },
+  "7a74681889007141": {
+   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42, and <g3>against the others</g3> on the same PC and test server: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl.",
+   "text": "Mister Download Manager: <g1>소스 코드</g1> 및 IDM 6.42와 <g2>당사의 벤치마크</g2>, 그리고 동일한 PC 및 테스트 서버에서 AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2, curl 등 <g3>다른 프로그램들과의 비교</g3>."
   },
   "7a8b05b164a2ebec": {
    "source": "Can it download overnight or on a schedule? — Mister Download Manager",
@@ -5850,6 +5930,14 @@
    "source": "Unzip the file to a folder you can write to (not straight into <x1/>).",
    "text": "파일을 쓸 수 있는 폴더에 압축을 푸세요(<x1/>에 직접 풀지 마세요)."
   },
+  "96e2ef971fcfc675": {
+   "source": "<g1>Median time, from hand-off to finished file</g1><g2>5 runs each. Shorter is faster.</g2>",
+   "text": "<g1>핸드오프부터 파일 완료까지의 중간 시간</g1><g2>각 5회 실행. 짧을수록 빠릅니다.</g2>"
+  },
+  "96ecd3b45b4c84ad": {
+   "source": "50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more.",
+   "text": "한 번에 2개의 연결을 허용하고 각 2MB/s이며 그 이상은 거부하는 서버에서 50MiB."
+  },
   "970430e3defd4e45": {
    "source": "Browser integration →",
    "text": "브라우저 통합 →"
@@ -6125,6 +6213,10 @@
   "9e343096f9189eb2": {
    "source": "Seven downloads, each run at least seven times by both apps. The bar is the middle half of the runs, the line the median.",
    "text": "두 앱 모두 각 다운로드를 최소 7회 실행했습니다. 막대는 실행 시간의 중간 절반을, 선은 중앙값을 나타냅니다."
+  },
+  "9e538e2ea50f45d7": {
+   "source": "1 connection",
+   "text": "연결 1개"
   },
   "9e5f6ea1de61f755": {
    "source": "Blocking addresses",
@@ -6650,6 +6742,10 @@
    "source": "AB Download Manager",
    "text": "AB Download Manager"
   },
+  "ac10c1349c520d45": {
+   "source": "CPU, average / peak",
+   "text": "CPU, 평균 / 최고"
+  },
   "ac1acb5254f1187e": {
    "source": "What video a page holds (YouTube, Vimeo, ...), and the qualities to choose from.",
    "text": "페이지에 포함된 비디오(YouTube, Vimeo 등)와 선택할 수 있는 품질입니다."
@@ -6830,6 +6926,10 @@
    "source": "Queues",
    "text": "대기열"
   },
+  "b0044c55e061b1c2": {
+   "source": "Memory after",
+   "text": "메모리 사용량 (종료 후)"
+  },
   "b0c0ef4ee0008226": {
    "source": "— FTP secured with TLS from the start of the session (explicit FTPS, <x1/>, usually port 21). Use it when the server says it supports TLS.",
    "text": "— 세션 시작부터 TLS로 보호되는 FTP(명시적 FTPS, <x1/>, 일반적으로 포트 21). 서버가 TLS를 지원한다고 표시할 때 사용하세요."
@@ -6889,10 +6989,6 @@
   "b1b2249661e1c4a9": {
    "source": "Keep changes focused and match the code around them. A few rules hold everywhere:",
    "text": "변경 사항을 집중시키고 주변 코드와 일치시키세요. 몇 가지 규칙은 모든 곳에 적용됩니다."
-  },
-  "b1d90b3e9d2a1cd5": {
-   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparison; its raw data is in <x3/>.",
-   "text": "주입된 오류(느린 연결, 끊긴 연결, 거부된 연결, 범위가 없는 서버, 변경되는 파일)가 있는 <x1/>에 대해 단위 테스트 및 엔드투엔드 다운로드를 실행합니다. <x2/>는 게시된 속도 비교를 실행합니다. 원시 데이터는 <x3/>에 있습니다."
   },
   "b208caa24e13c211": {
    "source": "<g1>Shift+Up / Shift+Down</g1> makes the selection longer or shorter.",
@@ -7034,6 +7130,10 @@
    "source": "256 KiB file",
    "text": "256 KiB 파일"
   },
+  "b57da88051558deb": {
+   "source": "And against the others.",
+   "text": "다른 프로그램과의 비교"
+  },
   "b585eac57a3ace26": {
    "source": "On another computer",
    "text": "다른 컴퓨터에서"
@@ -7117,6 +7217,10 @@
   "b7c0190ca4719975": {
    "source": "The assistant can't change MDM's options, see your browser, or turn the automation API on by itself.",
    "text": "도우미는 MDM의 옵션을 변경하거나, 브라우저를 보거나, 자동화 API를 스스로 켤 수 없습니다."
+  },
+  "b7c70a77d0281344": {
+   "source": "from the run above, {date}",
+   "text": "위 실행에서, {date}"
   },
   "b7cf37766b3a4159": {
    "source": "On <g1>Q</g1>, tick <g2>In a queue</g2> or <g3>Not in a queue</g3>.",
@@ -7574,6 +7678,10 @@
    "source": "<g1>Torrents and magnet links.</g1> In the same list, with a file tree to pick from. IDM's website doesn't mention BitTorrent.",
    "text": "<g1>토렌트 및 마그넷 링크.</g1> 동일한 목록에서 파일 트리를 통해 선택 가능. IDM 웹사이트에는 BitTorrent에 대한 언급이 없습니다."
   },
+  "c57753035a57cd80": {
+   "source": "Network",
+   "text": "네트워크"
+  },
   "c5951459908e695f": {
    "source": "A table with one row per connection: its number, how much it has downloaded, and what it is doing right now.",
    "text": "연결당 한 행으로 구성된 표: 연결 번호, 다운로드된 양, 현재 수행 중인 작업."
@@ -7682,6 +7790,10 @@
    "source": "MDM median ms (IQR)",
    "text": "MDM 중앙값 ms (IQR)"
   },
+  "c8578958d7e75c64": {
+   "source": "50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB.",
+   "text": "연결당 4MB/s로 50MiB; 서버는 2MiB 후에 매 두 번째 연결을 끊습니다."
+  },
   "c8637f7ebeaab90f": {
    "source": "The software is free of charge. Anyone selling it to you, or asking you to pay to \"unlock\" it, is not us.",
    "text": "소프트웨어는 무료입니다. 소프트웨어를 판매하거나 \"잠금 해제\"를 위해 비용을 요구하는 사람은 당사가 아닙니다."
@@ -7726,10 +7838,6 @@
    "source": "The plain programs, for any distribution.",
    "text": "모든 배포판용 일반 프로그램입니다."
   },
-  "c981c23fd3b23966": {
-   "source": "MDM reads the torrent and shows its files as a folder tree. A <x1/> file is read at once. A magnet link first has to get the file list from other peers, which can take a minute or two.",
-   "text": "MDM은 토렌트를 읽고 해당 파일을 폴더 트리로 표시합니다. <x1/> 파일은 즉시 읽힙니다. 마그넷 링크는 먼저 다른 피어로부터 파일 목록을 가져와야 하므로 1~2분 정도 걸릴 수 있습니다."
-  },
   "c991e64b857c5509": {
    "source": "<g1>Reannounce</g1> — asks the torrent's trackers for peers again now, instead of waiting for their next round. It works while the torrent runs or is shared.",
    "text": "<g1>다시 알림</g1> — 다음 라운드를 기다리지 않고 지금 토렌트의 트래커에 피어를 다시 요청합니다. 토렌트가 실행 중이거나 공유 중일 때 작동합니다."
@@ -7753,6 +7861,10 @@
   "ca3ccb8cc16abc18": {
    "source": "<g1>Installation help</g1><g2>User guide</g2><g3>Report an issue</g3>",
    "text": "<g1>설치 도움말</g1><g2>사용자 가이드</g2><g3>문제 보고</g3>"
+  },
+  "ca4285dd397e5809": {
+   "source": "{n} of {m} failed",
+   "text": "{m}개 중 {n}개 실패"
   },
   "ca593f72a01b7baf": {
    "source": "User guide",
@@ -7845,6 +7957,14 @@
   "ccf432f5c2c618e6": {
    "source": "Want subtitles? Pick a language in <g1>Subtitles</g1>. They're saved beside the video, or inside it if you tick <g2>Put them into the video</g2> (see <g3>Subtitles</g3>).",
    "text": "자막을 원하시면 <g1>자막</g1>에서 언어를 선택하세요. 자막은 비디오 옆에 저장되거나, <g2>비디오에 포함</g2>을 선택하면 비디오 안에 저장됩니다 (<g3>자막</g3> 참조)."
+  },
+  "ccff9c325c408997": {
+   "source": "No range support",
+   "text": "범위 지원 없음"
+  },
+  "cd11402498e46414": {
+   "source": "The whisker spans the middle half of the runs.",
+   "text": "수염은 실행의 중간 절반에 걸쳐 있습니다."
   },
   "cd259ac663c10ccb": {
    "source": "Download a gallery",
@@ -8298,6 +8418,10 @@
    "source": "Each product's own website, linked above, and for the open-source ones their code on GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; licences and latest releases as GitHub shows them, 4 November 2026",
    "text": "각 제품의 웹사이트 (위에 링크됨) 및 오픈 소스 제품의 GitHub 코드: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; GitHub에 표시된 라이선스 및 최신 릴리스, 2026년 11월 4일 기준"
   },
+  "d8fddf13e98b6e23": {
+   "source": "{n} connections",
+   "text": "연결 {n}개"
+  },
   "d9012cd2cc61f595": {
    "source": "Choose <g1>Tasks → Add batch download</g1>. (<g2>Tasks → Add batch download from clipboard</g2> fills in a copied address.)",
    "text": "<g1>작업 → 일괄 다운로드 추가</g1>를 선택합니다. (<g2>작업 → 클립보드에서 일괄 다운로드 추가</g2>는 복사된 주소를 채웁니다.)"
@@ -8725,10 +8849,6 @@
   "e571a12e9be69853": {
    "source": "Move through an open menu",
    "text": "열린 메뉴 탐색"
-  },
-  "e574864546b1a3c8": {
-   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42. We haven't benchmarked the others yet; until we do, this page makes no speed claim about them.",
-   "text": "Mister Download Manager: <g1>소스 코드</g1> 및 <g2>IDM 6.42 대비 벤치마크</g2>. 다른 제품들은 아직 벤치마크하지 않았으므로, 이 페이지에서는 속도에 대한 주장을 하지 않습니다."
   },
   "e57582f3a7df8548": {
    "source": "Download for Windows",
@@ -9282,6 +9402,10 @@
    "source": "Switches can start with <x1/> or <x2/>, in any case. If MDM is running, the command goes to it; if not, MDM starts and carries it out. For example:",
    "text": "스위치는 <x1/> 또는 <x2/>로 시작할 수 있으며, 대소문자를 구분하지 않습니다. MDM이 실행 중이면 명령이 MDM으로 전달되고, 실행 중이 아니면 MDM이 시작되어 명령을 수행합니다. 예시:"
   },
+  "f443b336d27668f9": {
+   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparisons, against IDM (<x3/>) and against other download managers (<x4/>, method in <x5/>); their raw data is in <x6/>.",
+   "text": "<x1/>를 대상으로 단위 테스트 및 종단 간 다운로드를 실행하며, 오류를 주입합니다(느린 연결, 끊기거나 거부된 연결, 범위 없는 서버, 변경되는 파일). <x2/>는 IDM(<x3/>) 및 다른 다운로드 관리자(<x4/>, <x5/>의 방법)와 비교하여 공개된 속도 비교를 실행합니다. 원본 데이터는 <x6/>에 있습니다."
+  },
   "f47d19d2ae313a6b": {
    "source": "<g1>MDM as an IDM alternative</g1><g2>Spot something wrong? Tell us</g2>",
    "text": "<g1>IDM 대안으로서의 MDM</g1><g2>잘못된 점을 발견하셨나요? 알려주세요</g2>"
@@ -9321,6 +9445,10 @@
   "f575c52354f70221": {
    "source": "Free forever, no ads, no trial",
    "text": "영원히 무료, 광고 없음, 평가판 없음"
+  },
+  "f5a2a44dad341b4f": {
+   "source": "1 GiB",
+   "text": "1GiB"
   },
   "f5d0db4c9a23ece3": {
    "source": "<g1><g2>Adding downloads</g2></g1> — Add URL, the clipboard, the drop target, batch downloads and lists of links, and Start Download versus Download Later.",

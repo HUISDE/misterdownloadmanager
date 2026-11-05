@@ -92,4 +92,5 @@ each text (what it is, where it shows, its placeholders).
 
 `cargo test` runs unit tests and end-to-end downloads against `mdm-labserver` with injected
 faults (slow, dropped and refused connections, servers without ranges, changing files).
-`tools/bench` runs the published speed comparison; its raw data is in `docs/bench/`.
+`tools/bench` runs the published speed comparisons, against IDM (`bench.py`) and against other
+download managers (`compare.py`, method in `docs/bench/README.md`); their raw data is in `docs/bench/`.

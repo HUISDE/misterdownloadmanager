@@ -198,9 +198,9 @@
    "source": "Chrome, Firefox, Edge<g1><g2>3</g2></g1>",
    "text": "Chrome、Firefox、Edge<g1><g2>3</g2></g1>"
   },
-  "04ec5358d75ceff7": {
-   "source": "Point at a video on a web page and a small <g1>Download video</g1> button appears at its edge. Click it and MDM's <g2>Download video from a page</g2> window opens and looks up the qualities it can download. It takes the video you clicked: its own file when it plays one, or the stream the player loaded (HLS or DASH), else the page. Embedded players work too, and your sign-in for the site, the page that embeds the player and your browser's User-Agent go with it, so videos for members, or that play only on the site that embeds them, can be downloaded. Sound players get the button too.",
-   "text": "ウェブページのビデオにポインターを合わせると、小さな<g1>動画をダウンロード</g1>ボタンが端に表示されます。これをクリックすると、MDMの<g2>ページからビデオをダウンロード</g2>ウィンドウが開き、ダウンロード可能な品質を検索します。クリックしたビデオを取得します。再生するファイル自体、またはプレーヤーがロードしたストリーム（HLSまたはDASH）、そうでなければページです。埋め込みプレーヤーも機能し、サイトのサインイン、プレーヤーを埋め込むページ、およびブラウザーのUser-Agentも一緒に送信されるため、メンバー向けのビデオや、埋め込みサイトでのみ再生されるビデオもダウンロードできます。サウンドプレーヤーにもボタンが表示されます。"
+  "04ebcf1715ef6084": {
+   "source": "Correct runs",
+   "text": "成功した実行回数"
   },
   "050edc04316dd70a": {
    "source": "On the command line",
@@ -418,6 +418,10 @@
    "source": "Version 0.2.4 · free and open source · no ads, no spyware, nothing bundled. <g1>What's new</g1>",
    "text": "バージョン0.2.4 · 無料のオープンソース · 広告、スパイウェア、バンドルなし。<g1>新機能</g1>"
   },
+  "09b6d0a9dbaf55e1": {
+   "source": "{name}, at defaults",
+   "text": "{name}、デフォルト設定"
+  },
   "09baf9aefa050aee": {
    "source": "Tick <g1>Start download at</g1> and set the time, for example 1:00:00 AM. Click the hours and use the arrows or type the number.",
    "text": "<g1>ダウンロード開始時刻</g1>にチェックを入れ、時刻を設定します。例えば午前1時00分00秒。時間をクリックし、矢印を使うか数字を入力します。"
@@ -529,6 +533,10 @@
   "0bb0e3dc72ae2345": {
    "source": "Before you start",
    "text": "始める前に"
+  },
+  "0bf25272dd906225": {
+   "source": "Provisional: these runs were taken while other programs were busy on the same PC. A run on a quiet machine will replace them.",
+   "text": "暫定：これらの実行は、他のプログラムが同じPCで動作中に取得されました。静かなマシンでの実行に置き換えられます。"
   },
   "0c1ddab7d81578c6": {
    "source": "<g1>Options → General → Use advanced browser integration</g1> must be on. Turn it off to send nothing to MDM.",
@@ -741,6 +749,10 @@
   "131c434c36b2d6f9": {
    "source": "Click <g1>Load unpacked</g1>.",
    "text": "<g1>パッケージ化されていない拡張機能を読み込む</g1>をクリックします。"
+  },
+  "131f6c6af936dd3a": {
+   "source": "1 GiB from a server with no limits: as fast as the loopback and the disk allow.",
+   "text": "制限のないサーバーから1 GiB: ループバックとディスクが許す限り高速。"
   },
   "13382c1e6ceae711": {
    "source": "<g1>The video button over a Drive video</g1> downloads the original file, not one of the player's smaller copies.",
@@ -1009,6 +1021,10 @@
   "19ef176da302a2b4": {
    "source": "When the browser can't hand a download to MDM, it keeps the download itself, so nothing is lost. The extension's toolbar button then shows a red !. Click it…",
    "text": "ブラウザーがダウンロードを MDM に渡せない場合、ブラウザー自身がダウンロードを保持するため、何も失われません。その際、拡張機能のツールバーボタンには赤い「!」が表示されます。それをクリックすると..."
+  },
+  "19f9c2c64f700479": {
+   "source": "compare.json",
+   "text": "compare.json"
   },
   "1a0500523dbbbc89": {
    "source": "On a Mac or Linux",
@@ -1698,6 +1714,10 @@
    "source": "Download limits",
    "text": "ダウンロード制限"
   },
+  "29e14750a75c3ab2": {
+   "source": "{n} of {m} with a wrong file",
+   "text": "{m}件中{n}件ファイルが不正"
+  },
   "29ea1d92cca7773f": {
    "source": "If the queue didn't start →",
    "text": "キューが開始されなかった場合 →"
@@ -2078,6 +2098,10 @@
    "source": "not to use it to break copy protection (DRM): MDM doesn't do this and isn't meant to;",
    "text": "コピープロテクション（DRM）を破るために使用しないこと。MDMはこれを行わず、その目的もありません。"
   },
+  "3321f21fb30215eb": {
+   "source": "Each app at its own default number of connections.",
+   "text": "各アプリはそれぞれのデフォルト接続数を使用。"
+  },
   "335ddbe14ee4164c": {
    "source": "Closing the window with its close box keeps the download running.",
    "text": "ウィンドウの閉じるボタンでウィンドウを閉じても、ダウンロードは実行されたままになります。"
@@ -2097,6 +2121,10 @@
   "338575eefc8880a1": {
    "source": "Type part of the file's name.",
    "text": "ファイル名の一部を入力します。"
+  },
+  "33bd7ec498f74ef6": {
+   "source": "No run finished with the right file.",
+   "text": "正しいファイルで完了した実行はありません。"
   },
   "33e932958a661bfe": {
    "source": "<g1>Category</g1> — choose a category to see and change its settings below.",
@@ -2142,10 +2170,6 @@
    "source": "Connections to this computer itself (<x1/>) aren't bound. A proxy on this computer carries the downloads, and where it sends them is up to it.",
    "text": "このコンピューター自体への接続（<x1/>）はバインドされません。このコンピューター上のプロキシがダウンロードを運び、どこに送信するかはプロキシ次第です。"
   },
-  "3549f28b5c3a4fb8": {
-   "source": "Videos protected with DRM (most paid streaming services) can't be downloaded, and MDM doesn't try.",
-   "text": "DRM で保護された動画 (ほとんどの有料ストリーミングサービス) はダウンロードできず、MDM は試みません。"
-  },
   "3569ffbab6981371": {
    "source": "Choosing a language on first start",
    "text": "初回起動時の言語選択"
@@ -2173,6 +2197,10 @@
   "3640bc6fe07d3428": {
    "source": "<g1>macOS 11</g1> or later on Apple Silicon or Intel (experimental).",
    "text": "Apple SiliconまたはIntel搭載の<g1>macOS 11</g1>以降（実験的）。"
+  },
+  "364fa2fc8f5bcc9e": {
+   "source": "32 small files",
+   "text": "32個の小さなファイル"
   },
   "3688ea6bb5b2fe83": {
    "source": "Right-click the list's blank space for <g1>Add new download</g1>, <g2>Select all</g2>, <g3>Arrange files</g3>, <g4>Clear all filters</g4> and <g5>Delete All Completed</g5>.",
@@ -2325,6 +2353,10 @@
   "39c6e3069cb8cc85": {
    "source": "Click <g1>OK</g1>.",
    "text": "<g1>OK</g1>をクリックします。"
+  },
+  "39d6924fe82b5e69": {
+   "source": "Every app at 8 connections where that can be set.",
+   "text": "設定可能なすべてのアプリで8接続"
   },
   "39f0061bac128459": {
    "source": "<g1>Options → Archives</g1> says whether 7-Zip was found. Without it, a 7z or RAR archive isn't extracted, and the <g2>7-Zip needed</g2> window says so, with a <g3>Get 7-Zip</g3> button.",
@@ -2986,6 +3018,10 @@
    "source": "Turn on <g1>Developer mode</g1>.",
    "text": "<g1>開発者モード</g1>をオンにします。"
   },
+  "4c682b25c467f254": {
+   "source": "Time, median (IQR)",
+   "text": "時間、中央値 (IQR)"
+  },
   "4c75f1e3123da2b1": {
    "source": "— plain FTP.",
    "text": "— 通常のFTP。"
@@ -3330,6 +3366,10 @@
    "source": "Click <g1>Yes</g1> to delete, or <g2>No</g2> to keep everything.",
    "text": "<g1>はい</g1>をクリックして削除するか、<g2>いいえ</g2>をクリックしてすべてを保持します。"
   },
+  "558add5a46e69125": {
+   "source": "2 connections allowed",
+   "text": "2接続まで許可"
+  },
   "558bb1c07f16684f": {
    "source": "It notes the addresses of video streams (HLS and DASH playlists) a page's player loads, in memory for that tab, so the <g1>Download video</g1> button can pass the stream on. Its button reads the page only to find video and sound players and place itself. Clicking it passes the page's address, the video's address, the page's title, the site's cookies, the page that embeds the player and your browser's User-Agent to MDM.",
    "text": "ページのプレイヤーが読み込むビデオストリーム（HLSおよびDASHプレイリスト）のアドレスは、そのタブのメモリに記録され、<g1>動画をダウンロード</g1>ボタンがストリームを渡せるようにします。このボタンは、ビデオおよびサウンドプレイヤーを見つけて自身を配置するためだけにページを読み取ります。これをクリックすると、ページのURL、ビデオのURL、ページのタイトル、サイトのクッキー、プレイヤーを埋め込んでいるページ、およびブラウザのユーザーエージェントがMDMに渡されます。"
@@ -3470,6 +3510,10 @@
    "source": "Sizes are in bytes (<x1/> while unknown), speeds in bytes per second. A failure prints <x2/> and exits with code 1. For example:",
    "text": "サイズはバイト（不明な場合は<x1/>）、速度はバイト/秒です。失敗すると<x2/>を出力し、コード1で終了します。例："
   },
+  "597f5a93ee5c3935": {
+   "source": "32 different files of 256 KiB, handed over one after another.",
+   "text": "256 KiBの異なる32個のファイルを次々と転送。"
+  },
   "59920ff7101c276f": {
    "source": "Fix the translation in the row's third column and delete its <x1/> line.",
    "text": "行の3列目の翻訳を修正し、その<x1/>行を削除します。"
@@ -3545,6 +3589,10 @@
   "5bc4b6e9ef830d3c": {
    "source": "<g1>Linux and macOS</g1>: in MDM's settings, in a data folder only you may read (0700), not yet in the system's keychain. Keeping it in the keychain is planned.",
    "text": "<g1>Linux および macOS</g1>: MDM の設定で、あなただけが読み取れるデータフォルダー (0700) に保存されており、システムのキーチェーンにはまだ保存されていません。キーチェーンへの保存は計画中です。"
+  },
+  "5bd3c760b64b1916": {
+   "source": "run5",
+   "text": "run5"
   },
   "5bf2df1735e69b20": {
    "source": "<g1>Paste</g1> from other programs into any text box (Ctrl+V, ⌘V): MDM kept a clipboard of its own.",
@@ -3918,6 +3966,10 @@
    "source": "The free download managers people reach for instead of IDM, checked on their own websites and code in November 2026. Each is good at something. We make the first one, so judge the rest by their own links.",
    "text": "IDMの代わりに人々が利用する無料のダウンロードマネージャーを、2026年11月にそれぞれのウェブサイトとコードで確認しました。それぞれに得意なことがあります。私たちは最初のものを作成しているので、残りはそれぞれのリンクで判断してください。"
   },
+  "64215b3d499445a9": {
+   "source": "{n} (run5)",
+   "text": "{n} (run5)"
+  },
   "64254df81bae2d98": {
    "source": "<g1>Installation help</g1><g2>Importing from IDM</g2><g3>The benchmark</g3>",
    "text": "<g1>インストールヘルプ</g1><g2>IDMからのインポート</g2><g3>ベンチマーク</g3>"
@@ -4102,6 +4154,10 @@
    "source": "Tick <g1>Use Speed Limiter</g1> and type the speed in <g2>Maximum download speed</g2>.",
    "text": "<g1>速度制限を使用する</g1>にチェックを入れ、<g2>最大ダウンロード速度</g2>に速度を入力します。"
   },
+  "69fd84f8fcd6b3c8": {
+   "source": "Cut connections",
+   "text": "接続を切断"
+  },
   "6a03943201e9c5c8": {
    "source": "Downloading may be against some sites' terms; that is up to you to check.",
    "text": "ダウンロードは一部のサイトの規約に違反する場合があります。これはご自身で確認してください。"
@@ -4170,6 +4226,10 @@
    "source": "Linux, the AppImage or the .tar.gz",
    "text": "Linux、AppImageまたは.tar.gz"
   },
+  "6b0b6731867bf61c": {
+   "source": "{n} runs each. Shorter is faster.",
+   "text": "各{n}回実行。短いほど高速。"
+  },
   "6b0ef8e85512f319": {
    "source": "Runs the new setup without its windows. An installation for all users asks for the administrator's permission.",
    "text": "新しいセットアップをウィンドウなしで実行します。すべてのユーザー向けのインストールでは、管理者の許可を求めます。"
@@ -4213,6 +4273,10 @@
   "6c0ec44709800dba": {
    "source": "<g1>Mister Download Manager</g1><g2>Free and open source · GPL-3.0</g2>",
    "text": "<g1>Mister Download Manager</g1><g2>無料・オープンソース · GPL-3.0</g2>"
+  },
+  "6c0fdb3cfb96e29c": {
+   "source": "100 MiB from a server that sends at most 2 MB/s on each connection.",
+   "text": "各接続で最大2 MB/秒を送信するサーバーから100 MiB。"
   },
   "6c562dbba37bfe77": {
    "source": "results.json",
@@ -4430,6 +4494,10 @@
    "source": "<g1>MDM asks to create a folder:</g1> the folder doesn't exist yet. Click <g2>Yes</g2>.",
    "text": "<g1>MDMがフォルダーの作成を求める場合:</g1> そのフォルダーはまだ存在しません。<g2>はい</g2>をクリックしてください。"
   },
+  "719c8ad7b82e2c86": {
+   "source": "100 MiB from a server that ignores ranges and always sends the whole file.",
+   "text": "範囲を無視し、常にファイル全体を送信するサーバーから100 MiB。"
+  },
   "71e90b70c32a4238": {
    "source": "<g1>Download list</g1> (right). One row per download. See <g2>The download list</g2>.",
    "text": "<g1>ダウンロードリスト</g1> (右)。ダウンロードごとに1行。詳しくは<g2>ダウンロードリスト</g2>をご覧ください。"
@@ -4618,6 +4686,10 @@
    "source": "<g1>Synchronization queue</g1> — finished downloads stay in it instead of leaving. It is the only queue that takes finished downloads.",
    "text": "<g1>同期キュー</g1> — 完了したダウンロードは、削除されずにここに残ります。完了したダウンロードを受け入れる唯一のキューです。"
   },
+  "76c2453dbe3586aa": {
+   "source": "2 MB/s per connection",
+   "text": "接続あたり2 MB/秒"
+  },
   "76ca1f61789efab8": {
    "source": "MDM didn't start in time",
    "text": "MDMが時間内に起動しなかった"
@@ -4714,6 +4786,10 @@
    "source": "Questions and answers — Mister Download Manager",
    "text": "よくある質問 — Mister Download Manager"
   },
+  "7978d9d1f23553cc": {
+   "source": "The same test server and the same PC, with AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl. Each was set to 8 connections where that can be set (every row says how many it used), and every file was checked byte for byte. IDM's times are the ones above; it wasn't run again.",
+   "text": "同じテストサーバーとPCで、AB Download Manager、Free Download Manager、Gopeed、Prism、Xtreme Download Manager、aria2、curl を使用しました。それぞれ、設定可能な場合は8接続に設定し（各行に使用した接続数を記載）、すべてのファイルはバイト単位でチェックしました。IDMの時間は上記の通りで、再実行はしていません。"
+  },
   "798a534b6b549e15": {
    "source": "<g1>Things that fail say why</g1>: opening a file that was moved, a file that can't be deleted or moved, the list that can't be saved, a computer that won't shut down, a check closed early.",
    "text": "<g1>失敗した場合は理由が表示されます</g1>：移動されたファイルを開く、削除または移動できないファイル、保存できないリスト、シャットダウンできないコンピューター、早期に閉じられたチェック。"
@@ -4757,6 +4833,10 @@
   "7a6ff9503edd25ad": {
    "source": "Is the site in <g1>Don't start downloading automatically from the following sites</g1>?",
    "text": "サイトは<g1>以下のサイトからの自動ダウンロードを開始しない</g1>にありますか？"
+  },
+  "7a74681889007141": {
+   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42, and <g3>against the others</g3> on the same PC and test server: AB Download Manager, Free Download Manager, Gopeed, Prism, Xtreme Download Manager, aria2 and curl.",
+   "text": "Mister Download Manager: IDM 6.42、および同じPCとテストサーバーでの<g1>ソースコード</g1>と<g2>ベンチマーク</g2>を、AB Download Manager、Free Download Manager、Gopeed、Prism、Xtreme Download Manager、aria2、curlといった<g3>他のソフトウェア</g3>と比較しました。"
   },
   "7a8b05b164a2ebec": {
    "source": "Can it download overnight or on a schedule? — Mister Download Manager",
@@ -5850,6 +5930,14 @@
    "source": "Unzip the file to a folder you can write to (not straight into <x1/>).",
    "text": "書き込み可能なフォルダにファイルを解凍します（<x1/>に直接解凍しないでください）。"
   },
+  "96e2ef971fcfc675": {
+   "source": "<g1>Median time, from hand-off to finished file</g1><g2>5 runs each. Shorter is faster.</g2>",
+   "text": "<g1>ハンドオフからファイル完了までの時間（中央値）</g1><g2>各5回実行。短いほど高速です。</g2>"
+  },
+  "96ecd3b45b4c84ad": {
+   "source": "50 MiB from a server that allows 2 connections at a time, 2 MB/s each, and refuses more.",
+   "text": "一度に2つの接続を許可し、それぞれ2 MB/秒で、それ以上を拒否するサーバーから50 MiB。"
+  },
   "970430e3defd4e45": {
    "source": "Browser integration →",
    "text": "ブラウザ統合 →"
@@ -6125,6 +6213,10 @@
   "9e343096f9189eb2": {
    "source": "Seven downloads, each run at least seven times by both apps. The bar is the middle half of the runs, the line the median.",
    "text": "各アプリで7回以上実行された7つのダウンロード。棒グラフは実行の中央半分、線は中央値を示します。"
+  },
+  "9e538e2ea50f45d7": {
+   "source": "1 connection",
+   "text": "1接続"
   },
   "9e5f6ea1de61f755": {
    "source": "Blocking addresses",
@@ -6650,6 +6742,10 @@
    "source": "AB Download Manager",
    "text": "AB Download Manager"
   },
+  "ac10c1349c520d45": {
+   "source": "CPU, average / peak",
+   "text": "CPU、平均 / ピーク"
+  },
   "ac1acb5254f1187e": {
    "source": "What video a page holds (YouTube, Vimeo, ...), and the qualities to choose from.",
    "text": "ページに含まれるビデオ（YouTube、Vimeoなど）と、選択できる品質。"
@@ -6830,6 +6926,10 @@
    "source": "Queues",
    "text": "キュー"
   },
+  "b0044c55e061b1c2": {
+   "source": "Memory after",
+   "text": "メモリ使用量（終了後）"
+  },
   "b0c0ef4ee0008226": {
    "source": "— FTP secured with TLS from the start of the session (explicit FTPS, <x1/>, usually port 21). Use it when the server says it supports TLS.",
    "text": "— セッション開始時からTLSで保護されたFTP（明示的FTPS、<x1/>、通常ポート21）。サーバーがTLSをサポートしていると表示されている場合に使用します。"
@@ -6889,10 +6989,6 @@
   "b1b2249661e1c4a9": {
    "source": "Keep changes focused and match the code around them. A few rules hold everywhere:",
    "text": "変更は焦点を絞り、周囲のコードと一致させてください。いくつかのルールがどこでも適用されます。"
-  },
-  "b1d90b3e9d2a1cd5": {
-   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparison; its raw data is in <x3/>.",
-   "text": "注入された障害 (低速、切断および拒否された接続、範囲のないサーバー、変更されるファイル) を持つ <x1/> に対して単体テストとエンドツーエンドダウンロードを実行します。<x2/> は公開されている速度比較を実行します。その生データは <x3/> にあります。"
   },
   "b208caa24e13c211": {
    "source": "<g1>Shift+Up / Shift+Down</g1> makes the selection longer or shorter.",
@@ -7034,6 +7130,10 @@
    "source": "256 KiB file",
    "text": "256 KiBファイル"
   },
+  "b57da88051558deb": {
+   "source": "And against the others.",
+   "text": "他のダウンロードマネージャーとの比較"
+  },
   "b585eac57a3ace26": {
    "source": "On another computer",
    "text": "別のコンピューターで"
@@ -7117,6 +7217,10 @@
   "b7c0190ca4719975": {
    "source": "The assistant can't change MDM's options, see your browser, or turn the automation API on by itself.",
    "text": "アシスタントはMDMのオプションを変更したり、ブラウザを表示したり、自動化APIを単独でオンにしたりすることはできません。"
+  },
+  "b7c70a77d0281344": {
+   "source": "from the run above, {date}",
+   "text": "上記実行より、{date}"
   },
   "b7cf37766b3a4159": {
    "source": "On <g1>Q</g1>, tick <g2>In a queue</g2> or <g3>Not in a queue</g3>.",
@@ -7574,6 +7678,10 @@
    "source": "<g1>Torrents and magnet links.</g1> In the same list, with a file tree to pick from. IDM's website doesn't mention BitTorrent.",
    "text": "<g1>トレントとマグネットリンク。</g1>同じリスト内で、ファイルツリーから選択できます。IDMのウェブサイトにはBitTorrentに関する言及はありません。"
   },
+  "c57753035a57cd80": {
+   "source": "Network",
+   "text": "ネットワーク"
+  },
   "c5951459908e695f": {
    "source": "A table with one row per connection: its number, how much it has downloaded, and what it is doing right now.",
    "text": "接続ごとに1行のテーブル: 接続番号、ダウンロード量、現在の動作。"
@@ -7682,6 +7790,10 @@
    "source": "MDM median ms (IQR)",
    "text": "MDM中央値 ms (IQR)"
   },
+  "c8578958d7e75c64": {
+   "source": "50 MiB at 4 MB/s per connection; the server cuts every second connection after 2 MiB.",
+   "text": "接続あたり4 MB/秒で50 MiB。サーバーは2 MiB後に2番目の接続を切断します。"
+  },
   "c8637f7ebeaab90f": {
    "source": "The software is free of charge. Anyone selling it to you, or asking you to pay to \"unlock\" it, is not us.",
    "text": "本ソフトウェアは無料です。お客様に本ソフトウェアを販売したり、「ロック解除」のために支払いを要求したりする者は、当社ではありません。"
@@ -7726,10 +7838,6 @@
    "source": "The plain programs, for any distribution.",
    "text": "どのディストリビューションでも使える、プレーンなプログラムです。"
   },
-  "c981c23fd3b23966": {
-   "source": "MDM reads the torrent and shows its files as a folder tree. A <x1/> file is read at once. A magnet link first has to get the file list from other peers, which can take a minute or two.",
-   "text": "MDM はトレントを読み取り、そのファイルをフォルダーツリーとして表示します。<x1/> ファイルは一度に読み取られます。マグネットリンクは、まず他のピアからファイルリストを取得する必要があり、これには1〜2分かかる場合があります。"
-  },
   "c991e64b857c5509": {
    "source": "<g1>Reannounce</g1> — asks the torrent's trackers for peers again now, instead of waiting for their next round. It works while the torrent runs or is shared.",
    "text": "<g1>再アナウンス</g1> — 次のラウンドを待つ代わりに、今すぐトレントのトラッカーにピアを再度要求します。トレントが実行中または共有中に機能します。"
@@ -7753,6 +7861,10 @@
   "ca3ccb8cc16abc18": {
    "source": "<g1>Installation help</g1><g2>User guide</g2><g3>Report an issue</g3>",
    "text": "<g1>インストールヘルプ</g1><g2>ユーザーガイド</g2><g3>問題を報告</g3>"
+  },
+  "ca4285dd397e5809": {
+   "source": "{n} of {m} failed",
+   "text": "{m}件中{n}件失敗"
   },
   "ca593f72a01b7baf": {
    "source": "User guide",
@@ -7845,6 +7957,14 @@
   "ccf432f5c2c618e6": {
    "source": "Want subtitles? Pick a language in <g1>Subtitles</g1>. They're saved beside the video, or inside it if you tick <g2>Put them into the video</g2> (see <g3>Subtitles</g3>).",
    "text": "字幕が必要ですか？<g1>字幕</g1>で言語を選択してください。字幕は動画の横に保存されます。ただし、<g2>ビデオに埋め込む</g2>にチェックを入れると、動画内に保存されます（<g3>字幕</g3>を参照）。"
+  },
+  "ccff9c325c408997": {
+   "source": "No range support",
+   "text": "範囲指定非対応"
+  },
+  "cd11402498e46414": {
+   "source": "The whisker spans the middle half of the runs.",
+   "text": "ひげは実行の中央半分にまたがっています。"
   },
   "cd259ac663c10ccb": {
    "source": "Download a gallery",
@@ -8298,6 +8418,10 @@
    "source": "Each product's own website, linked above, and for the open-source ones their code on GitHub: <g1>AB Download Manager</g1>, <g2>Motrix</g2>, <g3>Prism</g3>, <g4>Xtreme Download Manager</g4>, <g5>Gopeed</g5>; licences and latest releases as GitHub shows them, 4 November 2026",
    "text": "各製品の公式サイト（上記リンク）、およびオープンソース製品についてはGitHubのコード：<g1>AB Download Manager</g1>、<g2>Motrix</g2>、<g3>Prism</g3>、<g4>Xtreme Download Manager</g4>、<g5>Gopeed</g5>。ライセンスと最新リリースはGitHubに表示されている通り、2026年11月4日時点。"
   },
+  "d8fddf13e98b6e23": {
+   "source": "{n} connections",
+   "text": "{n}接続"
+  },
   "d9012cd2cc61f595": {
    "source": "Choose <g1>Tasks → Add batch download</g1>. (<g2>Tasks → Add batch download from clipboard</g2> fills in a copied address.)",
    "text": "<g1>タスク → バッチ ダウンロードを追加</g1>を選択します。（<g2>タスク → クリップボードからバッチ ダウンロードを追加</g2>は、コピーされたアドレスを埋めます。）"
@@ -8725,10 +8849,6 @@
   "e571a12e9be69853": {
    "source": "Move through an open menu",
    "text": "開いているメニュー内を移動"
-  },
-  "e574864546b1a3c8": {
-   "source": "Mister Download Manager: <g1>its source code</g1> and <g2>our benchmark</g2> against IDM 6.42. We haven't benchmarked the others yet; until we do, this page makes no speed claim about them.",
-   "text": "Mister Download Manager: <g1>ソースコード</g1>とIDM 6.42との<g2>ベンチマーク</g2>。他の製品についてはまだベンチマークを行っていません。それまでは、このページでは他の製品の速度に関する主張はしません。"
   },
   "e57582f3a7df8548": {
    "source": "Download for Windows",
@@ -9282,6 +9402,10 @@
    "source": "Switches can start with <x1/> or <x2/>, in any case. If MDM is running, the command goes to it; if not, MDM starts and carries it out. For example:",
    "text": "スイッチは<x1/>または<x2/>で始まり、大文字小文字は問いません。MDMが実行中の場合、コマンドはMDMに送られます。実行中でない場合、MDMが起動して実行します。例："
   },
+  "f443b336d27668f9": {
+   "source": "runs unit tests and end-to-end downloads against <x1/> with injected faults (slow, dropped and refused connections, servers without ranges, changing files). <x2/> runs the published speed comparisons, against IDM (<x3/>) and against other download managers (<x4/>, method in <x5/>); their raw data is in <x6/>.",
+   "text": "注入された障害（低速、接続切断、接続拒否、範囲指定のないサーバー、ファイル変更）に対して<x1/>で単体テストとエンドツーエンドのダウンロードを実行します。<x2/>は、公開されている速度比較をIDM（<x3/>）および他のダウンロードマネージャー（<x4/>、方法は<x5/>）に対して実行します。それらの生データは<x6/>にあります。"
+  },
   "f47d19d2ae313a6b": {
    "source": "<g1>MDM as an IDM alternative</g1><g2>Spot something wrong? Tell us</g2>",
    "text": "<g1>IDM の代替としての MDM</g1><g2>間違いを見つけましたか？お知らせください</g2>"
@@ -9321,6 +9445,10 @@
   "f575c52354f70221": {
    "source": "Free forever, no ads, no trial",
    "text": "永久無料、広告なし、試用期間なし"
+  },
+  "f5a2a44dad341b4f": {
+   "source": "1 GiB",
+   "text": "1 GiB"
   },
   "f5d0db4c9a23ece3": {
    "source": "<g1><g2>Adding downloads</g2></g1> — Add URL, the clipboard, the drop target, batch downloads and lists of links, and Start Download versus Download Later.",

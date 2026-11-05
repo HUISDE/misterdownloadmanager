@@ -96,12 +96,6 @@ jobs:
           tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Work $work -At $at -OutDir "$out\docs" -Only main-dark
           tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Work $work -At $at -OutDir "$out\docs" -Lang ar -Only arabic-main
           tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Torrent $torrent -Work $work -At $at -Dark -OutDir "$out\site-dark" -Only main-dark, add-torrent, progress
-          # The whole screen at the end, to see what was there if a shot is wrong.
-          Add-Type -AssemblyName System.Windows.Forms, System.Drawing
-          $b = [System.Windows.Forms.Screen]::PrimaryScreen.Bounds
-          $bmp = New-Object System.Drawing.Bitmap $b.Width, $b.Height
-          [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($b.Location, [System.Drawing.Point]::Empty, $b.Size)
-          $bmp.Save("$out\screen.png")
 
       - uses: actions/upload-artifact@v4
         if: always()

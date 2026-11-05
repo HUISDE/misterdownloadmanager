@@ -1,0 +1,58 @@
+chrome   browser   ok         8.8s  chromium 156 (to MDM: Google Chrome), extension oogbclbbninliongijffeeggalppliok
+chrome   proxy     ok         3.8s  9 requests for the file through the browser's proxy (the browser's, then MDM's)
+chrome   link      ok         7.1s  throttled, full speed
+chrome   cookie    ok         4.5s  14 request(s) with sid=1, the page as referrer, the browser's User-Agent
+chrome   names     ok         5.5s  e2e-report-chrome.zip, 报告-e2e-chrome.zip
+chrome   redirect  ok         3.8s  the address clicked kept, the file from its target
+chrome   form      ok         4.7s  posted again with token=abc (1 request(s)); 303: POST form 303, GET gen 200, POST form 303, GET gen 200, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206
+chrome   alt       ok         4.2s  the browser's own download, MDM untouched
+chrome   opened    ok         5.0s  taken, the tab stayed: pdf inline=bare, mp3 inline=1, pdf inline=1 (left out: IDM runs and takes it)
+chrome   csp       ok        11.7s  styled (34px, linear-gradient...), sent /gen/1M/clip.mp4?inline=1
+chrome   hls       ok        10.4s  sent /hls/master.m3u8
+chrome   media     ok        17.2s  listed MP4 e2e-media-chrome.mp4, MP3 sound.mp3, HLS master.m3u8, DASH manifest.mpd, DASH protected.mpd (protected); e2e-media-chrome.mp4 downloaded with the cookie and referrer; video window: /hls/master.m3u8, /dash/manifest.mpd
+chrome   video     ok        12.8s  shown, clicked (the video's file), dragged, kept
+chrome   start     ok        12.5s  started by the host (pid 31632), off the screens, stopped
+brave    browser   ok         3.2s  chromium 156 (to MDM: Brave Browser), extension oogbclbbninliongijffeeggalppliok
+brave    proxy     ok         3.1s  9 requests for the file through the browser's proxy (the browser's, then MDM's)
+brave    link      ok         6.3s  throttled, full speed
+brave    cookie    ok         3.4s  19 request(s) with sid=1, the page as referrer, the browser's User-Agent
+brave    names     ok         4.8s  e2e-report-brave.zip, 报告-e2e-brave.zip
+brave    redirect  ok         3.2s  the address clicked kept, the file from its target
+brave    form      ok         4.6s  posted again with token=abc (1 request(s)); 303: POST form 303, GET gen 200, POST form 303, GET gen 200, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206
+brave    alt       ok         5.8s  the browser's own download, MDM untouched
+brave    opened    ok         5.2s  taken, the tab stayed: pdf inline=bare, mp3 inline=1, pdf inline=1 (left out: IDM runs and takes it)
+brave    csp       ok        10.5s  styled (34px, linear-gradient...), sent /gen/1M/clip.mp4?inline=1
+brave    hls       ok         9.1s  sent /hls/master.m3u8
+brave    media     ok        19.4s  listed MP4 e2e-media-brave.mp4, MP3 sound.mp3, HLS master.m3u8, DASH manifest.mpd, DASH protected.mpd (protected); e2e-media-brave.mp4 downloaded with the cookie and referrer; video window: /hls/master.m3u8, /dash/manifest.mpd
+brave    video     ok        12.9s  shown, clicked (the video's file), dragged, kept
+brave    start     ok        15.4s  started by the host (pid 21924), off the screens, stopped
+edge     browser   ok         3.2s  chromium 156 (to MDM: Microsoft Edge), extension oogbclbbninliongijffeeggalppliok
+edge     proxy     ok         3.6s  9 requests for the file through the browser's proxy (the browser's, then MDM's)
+edge     link      ok         6.1s  throttled, full speed
+edge     cookie    ok         3.2s  14 request(s) with sid=1, the page as referrer, the browser's User-Agent
+edge     names     ok         5.8s  e2e-report-edge.zip, 报告-e2e-edge.zip
+edge     redirect  ok         3.0s  the address clicked kept, the file from its target
+edge     form      ok         4.7s  posted again with token=abc (1 request(s)); 303: POST form 303, GET gen 200, POST form 303, GET gen 200, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206
+edge     alt       ok         3.7s  the browser's own download, MDM untouched
+edge     opened    ok         5.3s  taken, the tab stayed: pdf inline=bare, mp3 inline=1, pdf inline=1 (left out: IDM runs and takes it)
+edge     csp       ok        10.2s  styled (34px, linear-gradient...), sent /gen/1M/clip.mp4?inline=1
+edge     hls       ok         9.0s  sent /hls/master.m3u8
+edge     media     ok        19.8s  listed MP4 e2e-media-edge.mp4, MP3 sound.mp3, HLS master.m3u8, DASH manifest.mpd, DASH protected.mpd (protected); e2e-media-edge.mp4 downloaded with the cookie and referrer; video window: /hls/master.m3u8, /dash/manifest.mpd
+edge     video     ok        13.8s  shown, clicked (the video's file), dragged, kept
+edge     start     ok        13.4s  started by the host (pid 26884), off the screens, stopped
+firefox  browser   ok         4.1s  firefox 159 (to MDM: Mozilla Firefox), extension integration@misterdownloadmanager.com
+firefox  proxy     skipped    1.5s  Firefox: its per-request proxy (proxyInfo) is covered by tools/extension/test.mjs
+firefox  link      ok         5.4s  throttled, full speed
+firefox  cookie    ok         2.6s  17 request(s) with sid=1, the page as referrer, the browser's User-Agent
+firefox  names     ok         4.4s  e2e-report-firefox.zip, 报告-e2e-firefox.zip
+firefox  redirect  ok         2.6s  the address clicked kept, the file from its target
+firefox  form      ok         4.1s  posted again with token=abc (1 request(s)); 303: POST form 303, GET gen 200, POST form 303, GET gen 200, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206, GET gen 206
+firefox  alt       ok         3.1s  the browser's own download, MDM untouched
+firefox  opened    ok         4.3s  taken, the tab stayed: pdf inline=bare, mp3 inline=1, pdf inline=1 (left out: IDM runs and takes it)
+firefox  csp       ok        10.8s  styled (34px, linear-gradient...), sent /gen/1M/clip.mp4?inline=1
+firefox  hls       ok         8.9s  sent /hls/master.m3u8
+firefox  media     ok        20.9s  listed MP4 e2e-media-firefox.mp4, MP3 sound.mp3, HLS master.m3u8, DASH manifest.mpd, DASH protected.mpd (protected); e2e-media-firefox.mp4 downloaded with the cookie and referrer; video window: /hls/master.m3u8, /dash/manifest.mpd
+firefox  video     ok        22.3s  shown, clicked (the video's file), dragged, kept, never on the site
+firefox  start     ok        11.8s  started by the host (pid 26360), off the screens, stopped
+registry: 12 keys byte-identical to before the run; present before: HKCU\Software\Google\Chrome\Extensions, HKLM\Software\Google\Chrome\NativeMessagingHosts\com.misterdownloadmanager.host, HKLM\Software\Microsoft\Edge\NativeMessagingHosts\com.misterdownloadmanager.host, HKLM\Software\BraveSoftware\Brave-Browser\NativeMessagingHosts\com.misterdownloadmanager.host, HKLM\Software\Mozilla\NativeMessagingHosts\com.misterdownloadmanager.host, HKLM\Software\Google\Chrome\Extensions
+total 441s

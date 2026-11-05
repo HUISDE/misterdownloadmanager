@@ -89,10 +89,21 @@ jobs:
           $torrent = "tools\lab\Open Movie Night.torrent"
           # A neutral folder and address, as they show in the shots (Properties, Add torrent): the
           # downloads come from downloads.example (a reserved name, pointed at the lab server
-          # on 127.0.0.1 in this runner's hosts file) on port 80.
+          # on 127.0.0.1 in this runner's hosts file) on port 80. Windows' HTTP service may hold
+          # port 80 (it answers 404): it is stopped, and 8080 taken if the port stays busy.
           $work = "C:\Demo"
           Add-Content "$env:SystemRoot\System32\drivers\etc\hosts" "`n127.0.0.1 downloads.example"
-          $net = @{ Port = 80; UrlHost = "downloads.example" }
+          $busy = { [bool](Get-NetTCPConnection -LocalPort 80 -State Listen -ErrorAction SilentlyContinue) }
+          if (& $busy) { cmd /c "net stop http /y" | Out-Null }
+          $port = if (& $busy) { 8080 } else { 80 }
+          $base = if ($port -eq 80) { "http://downloads.example" } else { "http://downloads.example:$port" }
+          # The address reaches the lab server, or no shot is taken.
+          $lab = Start-Process -PassThru -WindowStyle Hidden $srv -ArgumentList "--bind 127.0.0.1:$port"
+          Start-Sleep 2
+          try { $code = (Invoke-WebRequest -UseBasicParsing "$base/gen/1K/check.bin").StatusCode } finally { Stop-Process -Id $lab.Id }
+          "lab server at $base answers $code" | Tee-Object -Append "$out\runner.txt"
+          if ($code -ne 200) { throw "the lab server isn't reached at $base" }
+          $net = @{ Port = $port; UrlHost = "downloads.example" }
           # On the screen, as nobody watches it: llvmpipe draws nothing off the screens.
           $at = "40,40"
           tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Torrent $torrent -Work $work -At $at @net -OutDir "$out\docs" -Only main-light, add-torrent, properties, progress

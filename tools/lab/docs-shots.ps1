@@ -22,6 +22,10 @@ param(
   [string[]]$Only = @(),
   # Dark mode for every window (View → Always dark: Windows' own mode doesn't matter).
   [switch]$Dark,
+  # Where the main window opens instead of far off the screens (MDM_OFFSCREEN_AT, "x,y"): on a
+  # machine nobody watches whose OpenGL is software (GitHub's runner, docs-shots.yml), which
+  # draws nothing off the screens.
+  [string]$At = "",
   # The run's temporary folder, whose path shows in some windows (Add torrent's); default
   # target\docs-shots in this checkout. From a worktree, the main checkout's target keeps it short.
   [string]$Work = ""
@@ -131,6 +135,7 @@ try {
   $env:MDM_DATA_DIR = "$work\data"
   $env:MDM_ZOOM = "$Zoom"
   $env:MDM_OFFSCREEN = "1"
+  if ($At) { $env:MDM_OFFSCREEN_AT = $At }
   $app = Start-Process -PassThru $Exe
   Start-Sleep 3
   $main = @(Titles $app.Id | Where-Object { $_ -like "Mister Download Manager*" })[0]
@@ -231,7 +236,7 @@ try {
 } finally {
   if ($app) { Stop-Process -Id $app.Id -ErrorAction SilentlyContinue }
   if ($srv) { Stop-Process -Id $srv.Id -ErrorAction SilentlyContinue }
-  Remove-Item Env:MDM_DATA_DIR, Env:MDM_ZOOM, Env:MDM_OFFSCREEN, Env:MDM_CRASH_TEST -ErrorAction SilentlyContinue
+  Remove-Item Env:MDM_DATA_DIR, Env:MDM_ZOOM, Env:MDM_OFFSCREEN, Env:MDM_OFFSCREEN_AT, Env:MDM_CRASH_TEST -ErrorAction SilentlyContinue
   # The downloads (a 6 GB file partly fetched) don't stay behind.
   Start-Sleep 1
   Remove-Item $work -Recurse -Force -ErrorAction SilentlyContinue

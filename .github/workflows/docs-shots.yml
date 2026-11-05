@@ -87,15 +87,18 @@ jobs:
           $out = "$env:RUNNER_TEMP\shots"
           $exe = "target\debug\misterdownloadmanager.exe"; $srv = "target\debug\labserver.exe"
           $torrent = "tools\lab\Open Movie Night.torrent"
-          # The same folder as the shots taken before (it shows in Add torrent).
-          $work = "D:\Projects\misterdownloadmanager\target\docs-shots"
-          New-Item -ItemType Directory -Force (Split-Path $work) | Out-Null
+          # A neutral folder and address, as they show in the shots (Properties, Add torrent): the
+          # downloads come from downloads.example (a reserved name, pointed at the lab server
+          # on 127.0.0.1 in this runner's hosts file) on port 80.
+          $work = "C:\Demo"
+          Add-Content "$env:SystemRoot\System32\drivers\etc\hosts" "`n127.0.0.1 downloads.example"
+          $net = @{ Port = 80; UrlHost = "downloads.example" }
           # On the screen, as nobody watches it: llvmpipe draws nothing off the screens.
           $at = "40,40"
-          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Torrent $torrent -Work $work -At $at -OutDir "$out\docs" -Only main-light, add-torrent, properties, progress
-          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Work $work -At $at -OutDir "$out\docs" -Only main-dark
-          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Work $work -At $at -OutDir "$out\docs" -Lang ar -Only arabic-main
-          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Torrent $torrent -Work $work -At $at -Dark -OutDir "$out\site-dark" -Only main-dark, add-torrent, progress
+          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Torrent $torrent -Work $work -At $at @net -OutDir "$out\docs" -Only main-light, add-torrent, properties, progress
+          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Work $work -At $at @net -OutDir "$out\docs" -Only main-dark
+          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Work $work -At $at @net -OutDir "$out\docs" -Lang ar -Only arabic-main
+          tools\lab\docs-shots.ps1 -Exe $exe -Server $srv -Torrent $torrent -Work $work -At $at @net -Dark -OutDir "$out\site-dark" -Only main-dark, add-torrent, progress
 
       - uses: actions/upload-artifact@v4
         if: always()

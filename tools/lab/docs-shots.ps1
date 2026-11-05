@@ -17,6 +17,9 @@ param(
   [string]$OutDir = "docs\images",
   [string]$Lang = "en",
   [int]$Port = 8099,
+  # The name the downloads' addresses use for the lab server (it listens on 127.0.0.1): one the
+  # hosts file points there gives the shots a neutral address (docs-shots.yml: downloads.example).
+  [string]$UrlHost = "127.0.0.1",
   [int]$Zoom = 1,
   # A .torrent file: its Add torrent window becomes add-torrent.png.
   [string]$Torrent = "",
@@ -112,7 +115,7 @@ function Shot([int]$procId, [string]$title, [string]$name) {
 $srv = $null; $app = $null
 try {
   if (Test-Path $work) { Remove-Item $work -Recurse -Force }
-  New-Item -ItemType Directory -Force "$work\data", "$work\dl" | Out-Null
+  New-Item -ItemType Directory -Force "$work\data", "$work\Downloads" | Out-Null
   # The language is chosen (no first-start picker); light mode unless asked, dark with View →
   # Always dark, whatever Windows' own mode. Every category's folder is under $work, so no shot
   # shows the user's own folders (or name). Nothing reaches out: no update check, and the torrent
@@ -132,6 +135,7 @@ try {
     ',"category_dirs":[' + ($dirs -join ",") + ']}}')
 
   $srv = Start-Process -PassThru -WindowStyle Hidden $Server -ArgumentList "--bind 127.0.0.1:$Port"
+  $base = if ($Port -eq 80) { "http://$UrlHost" } else { "http://${UrlHost}:$Port" }
   # /show crash-test:freeze for the crash report window's shot.
   $env:MDM_CRASH_TEST = "1"
   $env:MDM_DATA_DIR = "$work\data"
@@ -151,7 +155,7 @@ try {
     @("ubuntu-26.04-desktop-amd64.iso", "6G", "?rate=256K")
   )
   foreach ($f in $files) {
-    & $Exe /d "http://127.0.0.1:$Port/gen/$($f[1])/$($f[0])$($f[2])" /p "$work\dl" /n
+    & $Exe /d "$base/gen/$($f[1])/$($f[0])$($f[2])" /p "$work\Downloads" /n
     Start-Sleep -Milliseconds 400
   }
   # Let the small ones finish; close the dialogs they open (Download complete, progress), never

@@ -5343,6 +5343,10 @@ menu	Add category	வகை சேர்
 #, machine
 menu	Add trackers...	டிராக்கர்களைச் சேர்...
 #. menu command in the main window
+#. View → Theme: a style theme's name (GNOME's look, the Linux desktop), a name: keep "Adwaita" as written
+#, machine
+menu	Adwaita	Adwaita
+#. menu command in the main window
 #. View → Draw with: a greyed note under the choices; the choice takes effect when MDM is started again
 #, machine
 menu	Applies the next time MDM starts	அடுத்த முறை MDM தொடங்கும் போது பொருந்தும்

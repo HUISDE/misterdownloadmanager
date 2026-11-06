@@ -5343,6 +5343,10 @@ menu	Add category	Cuir roinn-seòrsa ris
 #, machine
 menu	Add trackers...	Cuir tracaran ris...
 #. menu command in the main window
+#. View → Theme: a style theme's name (GNOME's look, the Linux desktop), a name: keep "Adwaita" as written
+#, machine
+menu	Adwaita	Adwaita
+#. menu command in the main window
 #. View → Draw with: a greyed note under the choices; the choice takes effect when MDM is started again
 #, machine
 menu	Applies the next time MDM starts	Bidh seo a' buntainn an ath thuras a thòisicheas MDM

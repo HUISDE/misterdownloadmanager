@@ -1,0 +1,104 @@
+# #206's measurements on GitHub's runners, for its pull request: the download sizes before and
+# after, start-up, idle CPU, memory and the tray, the fallbacks and the screenshots. Lives on the
+# lab/206-measure branch only (never merged); runs on a push to it.
+name: "Lab #206: Vulkan and Metal"
+
+on:
+  push:
+    branches: ["lab/206-measure"]
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  # main, as merged into the pull request's branch.
+  BASE: c34b5e6686c35726ba1917e257c81f588c7e7124
+
+jobs:
+  run:
+    name: ${{ matrix.os }} ${{ matrix.ref }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, macos-latest]
+        ref: [base, head]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: lab
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.ref == 'base' && env.BASE || github.sha }}
+          path: src
+
+      - name: Toolchain
+        working-directory: src
+        run: rustup show active-toolchain || rustup toolchain install
+
+      - name: Linux libraries, Xvfb, Mesa's software OpenGL and Vulkan
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libxkbcommon-dev libwayland-dev libgl1-mesa-dev \
+            libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev rpm python3-pil zsync \
+            xvfb mesa-vulkan-drivers libvulkan1 vulkan-tools mesa-utils imagemagick dbus-x11 weston
+
+      - name: Build the downloads
+        working-directory: src
+        run: |
+          if [ "$RUNNER_OS" = Linux ]; then bash tools/installer/build-linux.sh; else bash tools/installer/build-macos.sh; fi
+
+      - name: Sizes
+        working-directory: src
+        run: |
+          out=$GITHUB_WORKSPACE/out; mkdir -p $out
+          {
+            echo "== ${{ matrix.ref }} $(git rev-parse --short HEAD) on ${{ matrix.os }}"
+            for b in target/release/misterdownloadmanager target/*-apple-darwin/release/misterdownloadmanager; do
+              [ -f "$b" ] || continue
+              cp "$b" /tmp/mdm-stripped; strip /tmp/mdm-stripped 2>/dev/null || strip -x /tmp/mdm-stripped
+              echo "$b: $(wc -c < $b) bytes built, $(wc -c < /tmp/mdm-stripped) stripped"
+            done
+            ls -l target/dist | grep -v stage
+          } | tee $out/sizes-${{ matrix.ref }}.txt
+
+      - name: Measure and check (Linux, X11 on Xvfb)
+        if: runner.os == 'Linux'
+        working-directory: src
+        run: |
+          out=$GITHUB_WORKSPACE/out
+          { vulkaninfo --summary 2>&1 | head -40; xvfb-run -a glxinfo -B 2>&1 | head -20; } > $out/drivers.txt || true
+          xvfb-run -a -s "-screen 0 1280x1024x24" dbus-run-session -- bash $GITHUB_WORKSPACE/lab/lab206/run.sh "$PWD/target/release/misterdownloadmanager" ${{ matrix.ref }} $out || true
+
+      - name: Wayland (weston, headless)
+        if: runner.os == 'Linux' && matrix.ref == 'head'
+        working-directory: src
+        run: |
+          out=$GITHUB_WORKSPACE/out
+          export XDG_RUNTIME_DIR=$(mktemp -d); chmod 700 $XDG_RUNTIME_DIR
+          weston --backend=headless-backend.so --socket=wl-mdm --width=1280 --height=1024 > $out/weston.log 2>&1 &
+          sleep 3
+          for r in opengl vulkan; do
+            d=$(mktemp -d)
+            echo '{"next_id":1,"items":[],"version":2,"settings":{"language":"en","language_asked":true,"helpers_asked":true,"extension_never_ask":true,"update_check":false,"torrent_dht":false,"torrent_lsd":false,"torrent_upnp":false,"torrent_incoming":false,"renderer":"'$r'"}}' > $d/downloads.json
+            (unset DISPLAY; WAYLAND_DISPLAY=wl-mdm MDM_DATA_DIR=$d MDM_OFFSCREEN=1 MDM_TEST_SOFTWARE_CARD=1 timeout 25 dbus-run-session -- target/release/misterdownloadmanager) || true
+            cp $d/logs/*.log $out/wayland-$r.log 2>/dev/null
+            echo "wayland $r: $(grep -h -m1 -o 'drawing with [^,]*, [0-9]* ms after start' $d/logs/*.log) / $(grep -h -m1 -o 'first frame drawn, [0-9]* ms' $d/logs/*.log) / $(grep -h -m1 -io 'wayland[^ ]*' $d/logs/*.log)" | tee -a $out/results.txt
+          done
+
+      - name: Measure and check (macOS)
+        if: runner.os == 'macOS'
+        working-directory: src
+        run: |
+          out=$GITHUB_WORKSPACE/out
+          system_profiler SPDisplaysDataType > $out/drivers.txt 2>&1 || true
+          bash $GITHUB_WORKSPACE/lab/lab206/run.sh "$PWD/target/aarch64-apple-darwin/release/misterdownloadmanager" ${{ matrix.ref }} $out || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lab206-${{ matrix.os }}-${{ matrix.ref }}
+          path: out

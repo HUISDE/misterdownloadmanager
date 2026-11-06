@@ -40,9 +40,12 @@ jobs:
 
       - name: Linux libraries, Xvfb, Mesa's software OpenGL and Vulkan
         if: runner.os == 'Linux'
+        timeout-minutes: 15
+        env:
+          DEBIAN_FRONTEND: noninteractive
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libxkbcommon-dev libwayland-dev libgl1-mesa-dev \
+          sudo -E apt-get install -y --no-install-recommends libgtk-3-dev libxkbcommon-dev libwayland-dev libgl1-mesa-dev \
             libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev rpm python3-pil zsync \
             xvfb mesa-vulkan-drivers libvulkan1 vulkan-tools mesa-utils imagemagick dbus-x11 weston
 

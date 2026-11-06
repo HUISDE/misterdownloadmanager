@@ -38,6 +38,16 @@ jobs:
         working-directory: src
         run: rustup show active-toolchain || rustup toolchain install
 
+      # Each build kept for the next run of this lab (measuring again needs no new build).
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src/target
+          key: lab206-${{ matrix.os }}-${{ matrix.ref }}-${{ hashFiles('src/Cargo.lock', 'src/crates/app/src/**') }}
+          restore-keys: lab206-${{ matrix.os }}-${{ matrix.ref }}-
+
       - name: Linux libraries, Xvfb, Mesa's software OpenGL and Vulkan
         if: runner.os == 'Linux'
         timeout-minutes: 15

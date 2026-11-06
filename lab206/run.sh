@@ -41,9 +41,13 @@ stop() {
   for _ in $(seq 40); do pgrep -f "^$app" >/dev/null || return 0; sleep 0.25; done
   pkill -9 -f "^$app"; sleep 1
 }
-start() { # data folder, extra env…
+start() { # data folder, extra env… (the program's own output kept beside the logs)
   local d=$1; shift
-  (cd "$work" && env MDM_DATA_DIR="$d" "$@" "$app" >/dev/null 2>&1 &)
+  (cd "$work" && env MDM_DATA_DIR="$d" "$@" "$app" >>"$out/logs/stdout-$(basename "$d").txt" 2>&1 &)
+}
+# Why a start drew nothing: the folder, the processes, the program's output.
+why() {
+  { echo "== $1"; ls -la "$1" "$1/logs" 2>&1; ps aux | grep -i misterdown | grep -v grep; tail -30 "$out/logs/stdout-$(basename "$1").txt"; } >> "$out/logs/why.txt" 2>&1
 }
 keep_log() { cp "$1"/logs/*.log "$out/logs/$2.log" 2>/dev/null; }
 
@@ -87,7 +91,7 @@ measure() { # label, renderer JSON, extra env…
   for i in 1 2 3 4 5 6; do
     rm -f "$d"/logs/*.log
     start "$d" "$@"
-    if ! wait_log "$d" "first frame drawn" 40; then say "$ref $label: no first frame (run $i)"; keep_log "$d" "$ref-$label-nofirst"; stop "$d"; return; fi
+    if ! wait_log "$d" "first frame drawn" 40; then say "$ref $label: no first frame (run $i)"; why "$d"; keep_log "$d" "$ref-$label-nofirst"; stop "$d"; return; fi
     local ms; ms=$(log_of "$d" | grep -m1 'first frame drawn' | sed -E 's/.*drawn, ([0-9]+) ms.*/\1/')
     # The first run is cold (fonts, the shader cache): kept apart.
     [ $i -gt 1 ] && times+=("$ms")
@@ -110,7 +114,7 @@ measure() { # label, renderer JSON, extra env…
   stop "$d"
 }
 
-say "== $ref on $os: $("$app" --version 2>/dev/null | head -1)"
+say "== $ref on $os"
 measure opengl null
 if [ "$ref" = head ]; then
   # The user's choice of the system's API (watched, as a card's start): Mesa's lavapipe taken for

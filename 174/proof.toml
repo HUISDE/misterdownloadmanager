@@ -1,0 +1,39 @@
+# A test theme for #45's first PR: proves a file reaches every painter (not a built-in).
+name = "Proof"
+icons = "accent"
+
+[sizes]
+radius = 6
+"radius.check" = 4
+"list.row" = 20
+
+[colors]
+accent = "#1b7a26"
+selection = "#1b7a26"
+"progress.bar" = "#1b7a26"
+"check.on" = "#1b7a26"
+"check.on.hot" = "#23913a"
+"check.on.pressed" = "#2aa344"
+"button.default.border" = "#1b7a26"
+"button.accent" = "#1b7a26"
+"highlight.hot" = "#dff3e2"
+"toolbar.hot" = "#dff3e2"
+"toolbar.hot.border" = "#b5e0bc"
+"toolbar.hot.edge" = "#b5e0bc"
+
+[light]
+window = "#f3f1ea"
+"tab.page" = "#fbfaf5"
+menubar = "#fbfaf5"
+header = "#fbfaf5"
+
+[dark]
+window = "#1f2a22"
+"tab.page" = "#26332a"
+menubar = "#17201a"
+accent = "#6bdb6e"
+"check.on" = "#6bdb6e"
+"progress.bar" = "#6bdb6e"
+"toolbar.hot" = "#2a4030"
+"highlight.hot" = "#2a4030"
+"toolbar.hot.border" = "#00000000"

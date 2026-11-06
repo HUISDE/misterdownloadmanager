@@ -57,7 +57,7 @@ jobs:
           sudo apt-get update
           sudo -E apt-get install -y --no-install-recommends libgtk-3-dev libxkbcommon-dev libwayland-dev libgl1-mesa-dev \
             libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev rpm python3-pil zsync \
-            xvfb xauth libgl1-mesa-dri libegl-mesa0 libegl1 mesa-vulkan-drivers libvulkan1 vulkan-tools mesa-utils imagemagick dbus-x11 weston
+            xvfb xauth libxkbcommon-x11-0 libxcursor1 libxi6 libxrandr2 libx11-xcb1 libwayland-client0 libwayland-cursor0 libwayland-egl1 libgl1-mesa-dri libegl-mesa0 libegl1 mesa-vulkan-drivers libvulkan1 vulkan-tools mesa-utils imagemagick dbus-x11 weston
 
       - name: Build the downloads
         working-directory: src

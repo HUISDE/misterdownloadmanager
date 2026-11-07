@@ -21,8 +21,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        # Linux's head again (its logs); the other three are measured in run 42314796939.
-        os: [ubuntu-22.04]
+        # The heads again (logs, wgpu's own on Wayland); the bases are measured in run 42314796939.
+        os: [ubuntu-22.04, macos-latest]
         ref: [head]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150
@@ -95,10 +95,11 @@ jobs:
           export XDG_RUNTIME_DIR=$(mktemp -d); chmod 700 $XDG_RUNTIME_DIR
           weston --backend=headless-backend.so --socket=wl-mdm --width=1280 --height=1024 > $out/weston.log 2>&1 &
           sleep 3
+          WAYLAND_DISPLAY=wl-mdm DISPLAY= vulkaninfo --summary > $out/wayland-vulkaninfo.txt 2>&1 || true
           for r in opengl vulkan; do
             d=$(mktemp -d)
             echo '{"next_id":1,"items":[],"version":2,"settings":{"language":"en","language_asked":true,"helpers_asked":true,"extension_never_ask":true,"update_check":false,"torrent_dht":false,"torrent_lsd":false,"torrent_upnp":false,"torrent_incoming":false,"renderer":"'$r'"}}' > $d/downloads.json
-            (unset DISPLAY; WAYLAND_DISPLAY=wl-mdm MDM_DATA_DIR=$d MDM_OFFSCREEN=1 MDM_TEST_SOFTWARE_CARD=1 timeout 25 dbus-run-session -- target/release/misterdownloadmanager) || true
+            (unset DISPLAY; WAYLAND_DISPLAY=wl-mdm MDM_LOG=info,wgpu_hal=debug,wgpu_core=info,wgpu=debug,eframe=debug,egui_wgpu=debug VK_LOADER_DEBUG=error,warn MDM_DATA_DIR=$d MDM_OFFSCREEN=1 MDM_TEST_SOFTWARE_CARD=1 timeout 25 dbus-run-session -- target/release/misterdownloadmanager > $out/wayland-$r-stdout.txt 2>&1) || true
             cp $d/logs/mdm.log $out/wayland-$r.log 2>/dev/null || true
             echo "wayland $r: $(grep -h -m1 -o 'drawing with .* ms after start' $d/logs/mdm.log) / $(grep -h -m1 -o 'first frame drawn, [0-9]* ms' $d/logs/mdm.log)" | tee -a $out/results.txt
           done

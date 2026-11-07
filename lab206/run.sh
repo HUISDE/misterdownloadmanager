@@ -62,8 +62,7 @@ cpu() {
 mem() {
   if [ "$os" = Darwin ]; then
     local rss; rss=$(ps -o rss= -p "$1" | tr -d ' ')
-    local fp; fp=$(footprint -p "$1" 2>/dev/null | awk '/Footprint/ {print $(NF-1), $NF; exit}')
-    [ -z "$fp" ] && fp=$(vmmap --summary "$1" 2>/dev/null | awk '/Physical footprint:/ {print $3; exit}')
+    local fp; fp=$(vmmap --summary "$1" 2>/dev/null | awk '/^Physical footprint:/ {print $3; exit}')
     echo "RSS $((rss / 1024)) MB, physical footprint ${fp:-?}"
   else
     awk '/^Rss:/ {r=$2} /^Pss:/ {p=$2} /^Private_Clean:/ {pc=$2} /^Private_Dirty:/ {pd=$2}
@@ -144,8 +143,9 @@ one() { # name, renderer JSON, want, file, extra env…
   check "$name" "$d" "$want" "$file"
   stop "$d"
 }
-# The choice on a computer without a card's driver: OpenGL, and why.
-one no-card "\"$gpu\"" "drawing with OpenGL" no-adapter
+# The choice on a computer without a card's driver: OpenGL, and why (Linux: the runner has no
+# card; a Mac runner has Apple's paravirtual GPU, which draws).
+[ $gpu = vulkan ] && one no-card "\"$gpu\"" "drawing with OpenGL" no-adapter
 # The system's API there, by a card's start (the lab's software renderer taken for one).
 one "$gpu-draws" "\"$gpu\"" "drawing with $( [ $gpu = metal ] && echo Metal || echo Vulkan) on" "" MDM_TEST_SOFTWARE_CARD=1
 # No driver at all: the Vulkan loader finds none.

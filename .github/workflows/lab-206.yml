@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         # The heads again (logs, wgpu's own on Wayland); the bases are measured in run 42314796939.
-        os: [ubuntu-22.04, macos-latest]
+        os: [ubuntu-22.04]
         ref: [head]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150
@@ -79,15 +79,7 @@ jobs:
             ls -l target/dist | grep -v stage
           } | tee $out/sizes-${{ matrix.ref }}.txt
 
-      - name: Measure and check (Linux, X11 on Xvfb)
-        if: runner.os == 'Linux'
-        working-directory: src
-        run: |
-          out=$GITHUB_WORKSPACE/out
-          { vulkaninfo --summary 2>&1 | head -40; xvfb-run -a glxinfo -B 2>&1 | head -20; } > $out/drivers.txt || true
-          xvfb-run -a -s "-screen 0 1280x1024x24" dbus-run-session -- bash $GITHUB_WORKSPACE/lab/lab206/run.sh "$PWD/target/release/misterdownloadmanager" ${{ matrix.ref }} $out || true
-
-      - name: Wayland (weston, headless)
+      - name: Wayland (weston, headless), before the X11 run removes the Vulkan loader
         if: runner.os == 'Linux' && matrix.ref == 'head'
         working-directory: src
         run: |
@@ -103,6 +95,14 @@ jobs:
             cp $d/logs/mdm.log $out/wayland-$r.log 2>/dev/null || true
             echo "wayland $r: $(grep -h -m1 -o 'drawing with .* ms after start' $d/logs/mdm.log) / $(grep -h -m1 -o 'first frame drawn, [0-9]* ms' $d/logs/mdm.log)" | tee -a $out/results.txt
           done
+
+      - name: Measure and check (Linux, X11 on Xvfb)
+        if: runner.os == 'Linux'
+        working-directory: src
+        run: |
+          out=$GITHUB_WORKSPACE/out
+          { vulkaninfo --summary 2>&1 | head -40; xvfb-run -a glxinfo -B 2>&1 | head -20; } > $out/drivers.txt || true
+          xvfb-run -a -s "-screen 0 1280x1024x24" dbus-run-session -- bash $GITHUB_WORKSPACE/lab/lab206/run.sh "$PWD/target/release/misterdownloadmanager" ${{ matrix.ref }} $out || true
 
       - name: Measure and check (macOS)
         if: runner.os == 'macOS'

@@ -1689,8 +1689,9 @@ impl App {
             "add-trackers" if first.is_some() => self.run(Cmd::TorrentAddTrackers, first, ctx),
             // rss:rules opens it on its Download rules tab.
             "rss" => self.run(Cmd::RssFeeds(tab == "rules"), None, ctx),
-            // menu:torrent opens it with its Torrent submenu open.
-            "menu" if first.is_some() => {
+            // menu:torrent opens it with its Torrent submenu open. A number (menu:3) is the
+            // menu bar's, below, with downloads in the list or not.
+            "menu" if first.is_some() && !tab.starts_with(|c: char| c.is_ascii_digit()) => {
                 if let Some(id) = first {
                     self.selection.set(id);
                 }

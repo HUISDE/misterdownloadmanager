@@ -218,6 +218,9 @@ Everything below ships together, in one release, as version 0.3.0.
   ([#113](https://github.com/anefzaoui/misterdownloadmanager/issues/113))
 - ✅ The README's, the docs' and the website's screenshots are taken on a stock Windows (GitHub's
   runner), so the file icons in them are Windows' own
+- ✅ The help shows what it describes: pictures of each window, numbered where a step points at
+  one control, step strips for the usual flows, in light and dark, made from one shot list
+  ([#228](https://github.com/anefzaoui/misterdownloadmanager/issues/228))
 - ✅ Website in European Portuguese, and an [intended use](https://misterdownloadmanager.com/intended-use.html) page
 - ✅ Website: the [free IDM alternative](https://misterdownloadmanager.com/idm-alternative.html) page compares
   MDM with IDM and with nine other free download managers, each checked on its own site, with

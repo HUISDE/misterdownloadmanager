@@ -338,6 +338,15 @@ Each release's notes on GitHub come from its section here (`## [X.Y.Z]`, see
 
 ### Changed
 
+- **The help shows what it describes** ([#228](https://github.com/anefzaoui/misterdownloadmanager/issues/228)):
+  every guide and the main help pages now have pictures of the windows they explain, cropped to
+  what matters, numbered where a step points at one control, and step strips for the usual flows
+  (a download from the browser, a first download, a video, a torrent, a queue overnight). On the
+  website they follow its light or dark theme, keep their place while they load, and open larger
+  with a click; their descriptions and captions are translated with the page. The pictures are
+  made by a script from one list (`tools/shots/`), so they can all be taken again in one go.
+- **Developers: `/show menu:<n>` opens the menu bar's menu even with downloads in the list**; it
+  opened the first download's right-click menu instead.
 - **Developers: the rest of the engine tests no longer fail on a busy computer**
   ([#201](https://github.com/anefzaoui/misterdownloadmanager/issues/201)). Nine tests checked a
   time, a speed or a byte count that a starved CPU or a busy CI runner can't keep. Each now

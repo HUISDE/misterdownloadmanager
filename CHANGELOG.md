@@ -24,8 +24,8 @@ Each release's notes on GitHub come from its section here (`## [X.Y.Z]`, see
 
 - **Ready for WinGet and the AUR**: after this release, MDM goes into WinGet (`winget install
   AhmedNefzaoui.MisterDownloadManager`, for one user or everyone) and the AUR
-  (`misterdownloadmanager-bin`, the same files as the `.deb`); the Microsoft Store follows once
-  the installer is code-signed.
+  (`misterdownloadmanager-bin`, the same files as the `.deb`); the Microsoft Store follows
+  later.
 - **Cookies for video sites**
   ([#229](https://github.com/anefzaoui/misterdownloadmanager/issues/229)): Options → Sites Logins
   can let yt-dlp read a browser's cookies on this computer (Firefox, Chrome, Edge, Brave, Opera,

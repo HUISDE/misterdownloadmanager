@@ -135,7 +135,7 @@ above.
 | --- | --- |
 | **WinGet** (Windows 10 and 11) | `winget install AhmedNefzaoui.MisterDownloadManager` (for everyone: add `--scope machine`) |
 | **AUR** (Arch, Manjaro, EndeavourOS) | `yay -S misterdownloadmanager-bin`, or any AUR helper |
-| **Microsoft Store** | Later: the Store needs a code-signed installer first |
+| **Microsoft Store** | Later |
 
 WinGet runs the same installer as the download page; the AUR package holds the same files as
 the `.deb`.

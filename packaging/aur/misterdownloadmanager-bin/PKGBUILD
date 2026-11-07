@@ -1,4 +1,4 @@
-# Maintainer: Ahmed Nefzaoui <nefzaoui dot a at gmail dot com>
+# Maintainer: Ahmed Nefzaoui
 #
 # The release's .deb, unpacked: the same programs, desktop entry, icon and browser extension as
 # the .deb and .rpm (tools/installer/build-linux.sh), nothing compiled here. Kept in

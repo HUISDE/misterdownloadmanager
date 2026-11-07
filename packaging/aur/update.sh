@@ -3,7 +3,7 @@
 # version, the .deb's name and checksum (from the release's SHA256SUMS.txt), pkgrel 1, and
 # .SRCINFO again (needs makepkg, so Arch).
 #   packaging/aur/update.sh 0.3.0
-# The package-managers workflow runs it in an Arch container, then pushes the result to the AUR.
+# The package-managers workflow runs it in an Arch container.
 set -euo pipefail
 version="${1:?usage: update.sh <version, e.g. 0.3.0>}"
 version="${version#v}"

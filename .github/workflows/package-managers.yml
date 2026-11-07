@@ -1,15 +1,9 @@
 # WinGet and the AUR (packaging/README.md).
 # - On a pull request that changes packaging/: checks the WinGet manifests (winget validate) and
 #   builds the AUR package from its release with namcap. Nothing is sent anywhere.
-# - Run for a release (release.yml's publish job starts it, or Actions -> Package managers -> Run
-#   workflow with the tag): opens the winget-pkgs pull request and pushes the AUR package. Each
-#   is off until the maintainer turns it on with a repository variable, and needs its secret:
-#     WINGET_SUBMIT = true   WINGET_TOKEN         a classic token with the public_repo scope, of
-#                                                 the account whose winget-pkgs fork Komac uses
-#     AUR_SUBMIT = true      AUR_SSH_PRIVATE_KEY  the private SSH key of the AUR account that
-#                                                 maintains misterdownloadmanager-bin
-#   "Dry run" builds both and sends neither (no variable or secret needed for the AUR's). The AUR
-#   commit's e-mail address is the AUR_EMAIL variable, if set.
+# - Run for a release (release.yml's publish job starts it, or by hand with the tag): the
+#   winget-pkgs pull request and the AUR package. Off by default. "Dry run" builds both and
+#   sends neither.
 name: Package managers
 
 on:
@@ -87,10 +81,8 @@ jobs:
           echo "$KOMAC_SHA256  $f" | sha256sum -c -
           tar -xzf "$f" komac
 
-      # Komac reads the last version in winget-pkgs, puts the new installer in its place (its
-      # hash, both scopes and the ProductCode read from the installer) and opens the pull request
-      # from the token's fork of winget-pkgs. The package must be in winget-pkgs already (its first
-      # version goes in by hand: packaging/README.md).
+      # Komac reads the last version in winget-pkgs and puts the new installer in its place (its
+      # hash, both scopes and the ProductCode read from the installer).
       - name: The winget-pkgs pull request
         env:
           GITHUB_TOKEN: ${{ secrets.WINGET_TOKEN || github.token }}
@@ -131,11 +123,10 @@ jobs:
           TAG: ${{ inputs.tag }}
           AUR_KEY: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
         run: |
-          [ -n "$AUR_KEY" ] || { echo "::error::AUR_SSH_PRIVATE_KEY isn't set"; exit 1; }
+          [ -n "$AUR_KEY" ] || { echo "::error::no AUR key"; exit 1; }
           install -d -m 700 ~/.ssh
           printf '%s\n' "$AUR_KEY" > ~/.ssh/aur
           chmod 600 ~/.ssh/aur
-          # The AUR's host key, checked against the fingerprint aur.archlinux.org publishes.
           ssh-keyscan -t ed25519 aur.archlinux.org > ~/.ssh/known_hosts 2>/dev/null
           ssh-keygen -lf ~/.ssh/known_hosts | grep -q "SHA256:RFzBCUItH9LZS0cKB5UE6ceAYhBD5C8GeOBip8Z11+4" ||
             { echo "::error::aur.archlinux.org's host key isn't the published one"; exit 1; }

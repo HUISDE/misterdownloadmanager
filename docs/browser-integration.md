@@ -44,6 +44,15 @@ misterdownloadmanager-nmhost.exe --register
 
 This is for your Windows account only. `--unregister` undoes it. Then load the extension as above, from the zip's `extension` folder.
 
+### In the Flatpak {#flatpak}
+
+The Flatpak of MDM (Linux, [Flathub](getting-started.md#flatpak)) sets browser integration up at each start too, for the browsers installed from your distribution's packages or their makers' own: Firefox (and Zen, LibreWolf and its other forks, which read Firefox's folder), Google Chrome, Chromium, Microsoft Edge, Brave, Vivaldi and Opera. Add the extension from the stores as above.
+
+- **What it writes**: the helper's manifest in each browser's own folder for it (`~/.config/google-chrome/NativeMessagingHosts`, `~/.mozilla/native-messaging-hosts`, ...), naming a small script in MDM's Flatpak folder (`~/.var/app/com.misterdownloadmanager.MisterDownloadManager/data/misterdownloadmanager/browser-host/`) that starts the helper with `flatpak run`. The sandbox lets MDM see nothing else of your browsers.
+- **The folder has to be there first**: the sandbox can only write a browser's folder that already exists, and a browser makes it only when an add-on with a helper was set up before. If **Options → General → Test browser integration** says the browsers can't find MDM, see [The Flatpak can't set up browser integration](browser-help.md#flatpak-app).
+- **A browser that is itself a Flatpak** (Flathub's Firefox, Chrome, Chromium, Brave, Zen...) can't start a program outside its own sandbox, so it can't reach MDM's Flatpak. Test browser integration says so. Use the browser from your distribution's packages, or MDM's AppImage, `.deb` or `.rpm` with it.
+- Firefox as a Snap (Ubuntu's own) starts helpers through the desktop's portal, from `~/.mozilla/native-messaging-hosts`; it hasn't been tried with MDM's Flatpak yet.
+
 ## What it takes
 
 When you click a download, the extension checks MDM's Options:

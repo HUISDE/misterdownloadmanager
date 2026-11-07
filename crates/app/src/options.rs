@@ -2022,7 +2022,21 @@ impl OptionsDialog {
         // What to expect: Chrome-family browsers on Windows lock their cookies (Chrome 127 and
         // later's app-bound encryption); yt-dlp says so when it meets it, Options says so first.
         let chromium = on && !matches!(self.s.video_cookies.as_str(), "firefox" | "safari");
-        let (note, ink) = if cfg!(windows) && chromium {
+        // The Flatpak's sandbox hides the browsers' files (#148): yt-dlp reads a profile only
+        // from a folder chosen with "...", which the file chooser hands to it.
+        let (note, ink) = if on && crate::flatpak() {
+            (
+                // i18n: Options → Sites Logins → Cookies for video sites, in the Flatpak (Linux): its sandbox hides the browsers' files; "..." is the button that chooses the profile's folder
+                crate::i18n::t(
+                    "In the Flatpak, choose the browser profile's folder with \"...\": its sandbox hides the browsers' files.",
+                ),
+                if self.s.video_cookies_profile.trim().is_empty() {
+                    winui::ERROR()
+                } else {
+                    LIGHT_DISABLED()
+                },
+            )
+        } else if cfg!(windows) && chromium {
             (
                 // i18n: Options → Sites Logins → Cookies for video sites, a Chrome-like browser chosen on Windows
                 crate::i18n::t(
@@ -2829,7 +2843,9 @@ impl OptionsDialog {
                         let p = ui.painter().clone();
                         for (k, c) in checks.iter().enumerate() {
                             let y = o.y + 22.0 + k as f32 * 22.0;
-                            let (mark, color) = if c.ok {
+                            let (mark, color) = if c.note {
+                                ("\u{2022}", winui::MUTED())
+                            } else if c.ok {
                                 ("\u{2714}", winui::SUCCESS())
                             } else {
                                 ("\u{2716}", winui::ERROR())
@@ -2837,7 +2853,7 @@ impl OptionsDialog {
                             winui::text_in_window(ui, &p, o.x + 14.0, y, mark, color);
                             winui::text_in_window(ui, &p, o.x + 34.0, y, &c.text, LIGHT_TEXT());
                         }
-                        let first = checks.iter().find(|c| !c.ok);
+                        let first = checks.iter().find(|c| !c.ok && !c.note);
                         let y = h - 46.0;
                         // As wide as their labels in this language (#192), short of Close.
                         let [fix_at, set_up_at] = winui::button_row_from_left(
@@ -2863,7 +2879,7 @@ impl OptionsDialog {
                             {
                                 crate::help::open_page(&mdm_ipc::extension::help_doc(why));
                             }
-                            if c.why == Some("not-installed")
+                            if matches!(c.why, Some("not-installed" | "flatpak-app"))
                                 && mdm_ipc::portable_dir().is_none()
                                 && winui::button_light(
                                     ui,

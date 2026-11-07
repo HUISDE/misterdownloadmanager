@@ -228,6 +228,7 @@ fn apply(install: Install, file: &Path) -> Result<Next, String> {
             Ok(Next::Opened)
         }
         Install::Source => Err("built from source: update it from the repository".into()),
+        Install::Flatpak => Err("Flathub updates the Flatpak".into()),
     }
 }
 

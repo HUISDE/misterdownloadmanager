@@ -24,6 +24,9 @@ pub enum Install {
     Rpm,
     /// Linux, the plain programs.
     TarGz,
+    /// Linux, the Flatpak (Flathub's, or one built from packaging/flatpak): Flathub updates it,
+    /// never MDM itself.
+    Flatpak,
     /// Built here: never updated from a release.
     Source,
 }
@@ -31,6 +34,10 @@ pub enum Install {
 impl Install {
     /// This copy's, from where its program is.
     pub fn detect() -> Install {
+        // Whoever built it, a Flatpak is updated by Flatpak.
+        if mdm_ipc::flatpak::app_id().is_some() {
+            return Install::Flatpak;
+        }
         if cfg!(debug_assertions) {
             return Install::Source;
         }
@@ -80,11 +87,12 @@ impl Install {
             Install::Deb => "The .deb",
             Install::Rpm => "The .rpm",
             Install::TarGz => "The .tar.gz",
+            Install::Flatpak => "Flatpak (Flathub)",
             Install::Source => "Built from source",
         }
     }
 
-    pub const ALL: [Install; 9] = [
+    pub const ALL: [Install; 10] = [
         Install::Installer,
         Install::PortableZip,
         Install::PlainZip,
@@ -93,6 +101,7 @@ impl Install {
         Install::Deb,
         Install::Rpm,
         Install::TarGz,
+        Install::Flatpak,
         Install::Source,
     ];
 
@@ -111,9 +120,18 @@ impl Install {
             Install::Deb => "linux-x86_64-experimental.deb",
             Install::Rpm => "linux-x86_64-experimental.rpm",
             Install::TarGz => "linux-x86_64-experimental.tar.gz",
-            Install::Source => return None,
+            // Flathub's own updates.
+            Install::Flatpak | Install::Source => return None,
         };
         Some(format!("MisterDownloadManager-{version}-{tail}"))
+    }
+}
+
+impl Install {
+    /// Updated by a store rather than by MDM (Help → Check for updates says so, and nothing is
+    /// looked up): the store's name.
+    pub fn store(self) -> Option<&'static str> {
+        (self == Install::Flatpak).then_some("Flathub")
     }
 }
 

@@ -11,6 +11,7 @@ pub mod naming;
 pub mod net;
 pub mod pac;
 pub mod planner;
+pub mod sandbox;
 pub mod server;
 pub mod sites;
 mod sparse;

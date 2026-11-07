@@ -82,7 +82,24 @@ Browsers installed as a Flatpak or a Snap run in a sandbox, which decides whethe
 
   `gdbus call --session --dest org.freedesktop.impl.portal.PermissionStore --object-path /org/freedesktop/impl/portal/PermissionStore --method org.freedesktop.impl.portal.PermissionStore.Delete webextensions com.misterdownloadmanager.host`
 - **Chromium as a Snap** (Ubuntu's Chromium) starts MDM's helper inside its sandbox, where it can't reach MDM, so MDM doesn't list it in **Add Mister Download Manager to your browser**. Use Firefox, or Google Chrome from its own `.deb`.
-- **Flatpak browsers** (such as Zen's `app.zen_browser.zen`) can't start MDM's helper, so MDM doesn't list them either. Install the browser from your distribution's packages (or the browser maker's own `.deb`, `.rpm`, tarball or AppImage) to use browser integration.
+- **Flatpak browsers** (such as Zen's `app.zen_browser.zen`) can't start MDM's helper, so MDM doesn't list them either. Install the browser from your distribution's packages (or the browser maker's own `.deb`, `.rpm`, tarball or AppImage) to use browser integration. This holds for MDM's own Flatpak too: its helper is reached through `flatpak run`, which a Flatpak browser can't start.
+
+## Linux: the Flatpak can't set up browser integration {#flatpak-app}
+
+MDM's Flatpak may write only into a browser's own folder for helpers, and only when that folder is already there (the sandbox shows MDM nothing else of your browsers). A browser makes it the first time an add-on with a helper is set up, so it is often missing.
+
+1. Make the folder of each browser you use, in a terminal:
+   - Firefox, Zen, LibreWolf and Firefox's other forks: `mkdir -p ~/.mozilla/native-messaging-hosts`
+   - Google Chrome: `mkdir -p ~/.config/google-chrome/NativeMessagingHosts`
+   - Chromium: `mkdir -p ~/.config/chromium/NativeMessagingHosts`
+   - Microsoft Edge: `mkdir -p ~/.config/microsoft-edge/NativeMessagingHosts`
+   - Brave: `mkdir -p ~/.config/BraveSoftware/Brave-Browser/NativeMessagingHosts`
+   - Vivaldi: `mkdir -p ~/.config/vivaldi/NativeMessagingHosts`
+   - Opera: `mkdir -p ~/.config/opera/NativeMessagingHosts`
+2. Quit MDM (**File → Exit**) and start it again: it sets browser integration up at each start. (Its sandbox sees a new folder only after a restart.)
+3. Restart the browser.
+
+A browser that is itself a Flatpak can't reach MDM's Flatpak at all: see [Flatpak and Snap browsers](#linux-sandbox).
 
 ## Next steps
 

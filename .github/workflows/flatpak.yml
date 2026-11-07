@@ -1,0 +1,79 @@
+# The Flatpak (packaging/flatpak, #148): built from source with flatpak-builder on Ubuntu, checked
+# with Flathub's linter and AppStream's validator, and kept as the run's artifact. Nothing is
+# published. Runs for a change to the Flatpak's own files or to the crates it vendors.
+name: Flatpak
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "packaging/flatpak/**"
+      - "tools/flatpak/**"
+      - "Cargo.lock"
+      - "crates/ipc/src/flatpak.rs"
+      - ".github/workflows/flatpak.yml"
+  pull_request:
+    paths:
+      - "packaging/flatpak/**"
+      - "tools/flatpak/**"
+      - "Cargo.lock"
+      - "crates/ipc/src/flatpak.rs"
+      - ".github/workflows/flatpak.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: flatpak-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  flatpak:
+    runs-on: ubuntu-latest
+    # The release profile's whole-program optimisation takes most of it; the runtime, the SDK and
+    # the crates are fetched first.
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tools
+        timeout-minutes: 10
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y flatpak flatpak-builder python3-aiohttp python3-yaml \
+            python3-tomlkit desktop-file-utils
+
+      # The crates and git sources flatpak-builder fetched, for the next run of the same lock file.
+      - uses: actions/cache@v4
+        with:
+          path: target/flatpak/state/downloads
+          key: flatpak-downloads-${{ hashFiles('Cargo.lock') }}
+          restore-keys: flatpak-downloads-
+
+      - name: Build
+        run: tools/flatpak/build.sh
+
+      - name: Check
+        run: |
+          id=com.misterdownloadmanager.MisterDownloadManager
+          flatpak install --user -y --noninteractive flathub org.flatpak.Builder
+          lint() { flatpak run --command=flatpak-builder-lint --filesystem="$PWD" org.flatpak.Builder "$@"; }
+          desktop-file-validate packaging/flatpak/$id.desktop
+          flatpak run --command=appstreamcli --filesystem="$PWD" org.flatpak.Builder \
+            validate --no-net --explain packaging/flatpak/$id.metainfo.xml
+          lint manifest packaging/flatpak/$id.yml
+          # The screenshots are mirrored by Flathub's own build only: that check is left to it.
+          lint --exceptions repo target/flatpak/repo || true
+          lint --exceptions repo target/flatpak/repo 2>&1 | python3 -c '
+          import json, sys
+          errors = json.load(sys.stdin).get("errors", [])
+          left = [e for e in errors if "screenshots" not in e]
+          print("repo lint errors:", errors)
+          sys.exit(1 if left else 0)'
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: flatpak-bundle
+          path: target/flatpak/*.flatpak
+          if-no-files-found: error

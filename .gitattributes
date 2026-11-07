@@ -6,3 +6,8 @@ tools/installer/languages/*.isl text eol=crlf
 crates/*/tests/fixtures/** -text
 # Scripts that run inside Linux (mdm-lab copies them in from a Windows checkout).
 tools/lab/wsl/*.sh text eol=lf
+# The Flatpak: built on Linux, from a Windows checkout too.
+tools/flatpak/*.sh text eol=lf
+packaging/flatpak/*.yml text eol=lf
+packaging/flatpak/*.xml text eol=lf
+packaging/flatpak/*.desktop text eol=lf

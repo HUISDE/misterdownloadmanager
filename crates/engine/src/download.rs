@@ -280,6 +280,10 @@ pub enum Error {
     /// The save folder can't be reached or created (a removed drive, an offline share).
     #[error("the folder {} is not available (drive removed or network share offline?)", .0.display())]
     DestinationUnavailable(PathBuf),
+    /// In the Flatpak, a folder outside what its sandbox may write: what it saved there would be
+    /// gone when MDM closes (`sandbox::lost_on_exit`).
+    #[error("the Flatpak can't save to {}: save in Downloads, or choose the folder with the ... button", .0.display())]
+    OutsideSandbox(PathBuf),
     /// The drive or network share went away while downloading.
     #[error("the drive or network share is no longer available")]
     DriveGone,
@@ -351,6 +355,7 @@ impl Error {
                 | Error::DiskFull
                 | Error::TooBigForDrive { .. }
                 | Error::DestinationUnavailable(_)
+                | Error::OutsideSandbox(_)
                 | Error::DriveGone
                 | Error::PathTooLong(_)
                 | Error::Adapter(_)
@@ -1639,6 +1644,9 @@ async fn open_destination(
         Destination::File(p) => p.parent().unwrap_or(Path::new("")).to_owned(),
         Destination::Dir(dir) => dir.clone(),
     };
+    if crate::sandbox::lost_on_exit(&folder) {
+        return Err(Error::OutsideSandbox(folder));
+    }
     std::fs::create_dir_all(&folder).map_err(|_| Error::DestinationUnavailable(folder.clone()))?;
     if let Destination::File(p) = dest
         && !naming::path_fits(p)

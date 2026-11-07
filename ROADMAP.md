@@ -297,6 +297,9 @@ Everything below ships together, in one release, as version 0.3.0.
   MDM. Theme files can be added by anyone, and Base16 and pywal schemes imported
 - 🔄 Linux supported like Windows, no longer experimental: every change is now checked on Ubuntu
   (GNOME) as well as Windows, then on KDE, Cinnamon and Xfce ([#164](https://github.com/anefzaoui/misterdownloadmanager/issues/164))
+- 🔄 Flathub: the Flatpak is built from the source and checked (Flathub's linter, AppStream), and
+  MDM says in its windows what the sandbox can't do; it goes to Flathub once 0.3.0 is out
+  ([#148](https://github.com/anefzaoui/misterdownloadmanager/issues/148))
 - 🔄 Before the release: every screenshot taken again on Windows and Linux (smaller files, WebP),
   and every page of the docs, the README and the website brought up to date
   ([#186](https://github.com/anefzaoui/misterdownloadmanager/issues/186))

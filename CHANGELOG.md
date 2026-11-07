@@ -22,6 +22,14 @@ Each release's notes on GitHub come from its section here (`## [X.Y.Z]`, see
 
 ### Added
 
+- **Linux: a Flatpak, ready for Flathub**
+  ([#148](https://github.com/anefzaoui/misterdownloadmanager/issues/148)): built from the source
+  with `tools/flatpak/build.sh`, as `com.misterdownloadmanager.MisterDownloadManager`. In it, MDM
+  leaves its updates to Flathub (Help → Check for updates says so), sets browser integration up
+  for the browsers installed from the system's packages, and says where the sandbox stops it: a
+  browser that is itself a Flatpak (Test browser integration), waking the computer for a queue
+  (the Scheduler), choosing the default app for magnet links (Torrent settings), and folders
+  outside Downloads that weren't chosen with the file chooser (Download File Info).
 - **Cookies for video sites**
   ([#229](https://github.com/anefzaoui/misterdownloadmanager/issues/229)): Options → Sites Logins
   can let yt-dlp read a browser's cookies on this computer (Firefox, Chrome, Edge, Brave, Opera,

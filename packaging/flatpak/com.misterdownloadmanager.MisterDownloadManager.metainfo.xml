@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mister Download Manager's AppStream metadata (Flathub, software centres). Every release in
+     CHANGELOG.md has its <release> here, newest first (a test in crates/ipc/src/flatpak.rs). -->
+<component type="desktop-application">
+  <id>com.misterdownloadmanager.MisterDownloadManager</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>Mister Download Manager</name>
+  <summary>Download faster, resume, and catch downloads from the browser</summary>
+  <developer id="com.misterdownloadmanager">
+    <name>Ahmed Nefzaoui</name>
+  </developer>
+  <description>
+    <p>
+      Mister Download Manager speeds up downloads by fetching each file over several connections
+      at once, resumes them after a dropped connection or a restart, and takes over the downloads
+      you click in your browser. It is free and open source, with no ads, no trial and no sign-up.
+    </p>
+    <ul>
+      <li>Several connections per file, with servers' limits learned as it goes</li>
+      <li>Resume broken downloads, even days later</li>
+      <li>Browser integration for Firefox, Chrome, Edge, Brave, Opera and Vivaldi</li>
+      <li>Videos from web pages, image galleries, torrents and magnet links</li>
+      <li>Queues, a scheduler and a speed limiter</li>
+      <li>Categories that sort files into their own folders</li>
+      <li>86 languages, with right-to-left windows for Arabic, Hebrew and Persian</li>
+    </ul>
+    <p>
+      Browsers installed as a Flatpak or a Snap can't start the helper this sandboxed copy gives
+      browsers, so browser integration works with browsers installed from your distribution's
+      packages or their makers' own.
+    </p>
+  </description>
+  <launchable type="desktop-id">com.misterdownloadmanager.MisterDownloadManager.desktop</launchable>
+  <icon type="stock">com.misterdownloadmanager.MisterDownloadManager</icon>
+  <url type="homepage">https://misterdownloadmanager.com/</url>
+  <url type="bugtracker">https://github.com/anefzaoui/misterdownloadmanager/issues</url>
+  <url type="help">https://misterdownloadmanager.com/help/</url>
+  <url type="vcs-browser">https://github.com/anefzaoui/misterdownloadmanager</url>
+  <url type="contribute">https://github.com/anefzaoui/misterdownloadmanager/blob/main/CONTRIBUTING.md</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>The download list, with its categories and toolbar</caption>
+      <image>https://raw.githubusercontent.com/anefzaoui/misterdownloadmanager/main/packaging/flatpak/screenshots/main-light.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The same window in dark mode</caption>
+      <image>https://raw.githubusercontent.com/anefzaoui/misterdownloadmanager/main/packaging/flatpak/screenshots/main-dark.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>A download coming in over several connections</caption>
+      <image>https://raw.githubusercontent.com/anefzaoui/misterdownloadmanager/main/packaging/flatpak/screenshots/progress.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>The scheduler: queues that start and stop on their own</caption>
+      <image>https://raw.githubusercontent.com/anefzaoui/misterdownloadmanager/main/packaging/flatpak/screenshots/scheduler.png</image>
+    </screenshot>
+  </screenshots>
+  <categories>
+    <category>Network</category>
+    <category>FileTransfer</category>
+  </categories>
+  <keywords>
+    <keyword>download</keyword>
+    <keyword>download manager</keyword>
+    <keyword>accelerator</keyword>
+    <keyword>resume</keyword>
+    <keyword>torrent</keyword>
+    <keyword>video</keyword>
+  </keywords>
+  <provides>
+    <binary>misterdownloadmanager</binary>
+    <binary>misterdownloadmanager-cli</binary>
+    <binary>misterdownloadmanager-mcp</binary>
+  </provides>
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </supports>
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+  <branding>
+    <color type="primary" scheme_preference="light">#cfe4f8</color>
+    <color type="primary" scheme_preference="dark">#0f3a63</color>
+  </branding>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.2.4" date="2026-11-01">
+      <url type="details">https://github.com/anefzaoui/misterdownloadmanager/releases/tag/v0.2.4</url>
+    </release>
+    <release version="0.2.3" date="2026-11-01">
+      <url type="details">https://github.com/anefzaoui/misterdownloadmanager/releases/tag/v0.2.3</url>
+    </release>
+    <release version="0.2.2" date="2026-11-01">
+      <url type="details">https://github.com/anefzaoui/misterdownloadmanager/releases/tag/v0.2.2</url>
+    </release>
+    <release version="0.2.1" date="2026-10-31">
+      <url type="details">https://github.com/anefzaoui/misterdownloadmanager/releases/tag/v0.2.1</url>
+    </release>
+    <release version="0.2.0" date="2026-10-31">
+      <url type="details">https://github.com/anefzaoui/misterdownloadmanager/releases/tag/v0.2.0</url>
+    </release>
+    <release version="0.1.0" date="2026-10-30">
+      <url type="details">https://github.com/anefzaoui/misterdownloadmanager/releases/tag/v0.1.0</url>
+    </release>
+  </releases>
+</component>

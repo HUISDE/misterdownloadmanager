@@ -1,0 +1,81 @@
+# Mister Download Manager as a Flatpak, built from source (#148): `tools/flatpak/build.sh`
+# builds it from this checkout.
+id: com.misterdownloadmanager.MisterDownloadManager
+# The freedesktop runtime: MDM draws its own windows (egui, no GTK or Qt), and this runtime has all
+# it needs (X11, Wayland, OpenGL and Vulkan, fontconfig, PipeWire's and PulseAudio's paplay, gio,
+# gdbus, ffmpeg) with the smallest download. 26.08 is the current one.
+runtime: org.freedesktop.Platform
+runtime-version: '26.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+command: misterdownloadmanager
+finish-args:
+  # The windows: X11 (XWayland in a Wayland session), as MDM places its own menus and drop-down
+  # lists under what was clicked and Wayland doesn't let a program place windows (#50).
+  - --socket=x11
+  - --share=ipc
+  # Wayland itself, for those who start MDM with MDM_WAYLAND=1.
+  - --socket=wayland
+  # OpenGL, and Vulkan (View → Draw with).
+  - --device=dri
+  # Downloads, torrents, video pages, and the browser's helper reaching the app on 127.0.0.1.
+  - --share=network
+  # Options → Sounds (paplay).
+  - --socket=pulseaudio
+  # The default save folder and the categories' folders in it (Downloads/Compressed, ...). Other
+  # folders: chosen with the file chooser's portal, which lets MDM write there.
+  - --filesystem=xdg-download
+  # The icon in the notification area (StatusNotifierItem: KDE, GNOME's AppIndicator extension).
+  - --talk-name=org.kde.StatusNotifierWatcher
+  # Sign-in secrets kept in the desktop's keychain (Secret Service: GNOME Keyring, KWallet,
+  # KeePassXC), never in the settings file (#220).
+  - --talk-name=org.freedesktop.secrets
+  # Open folder: the file manager shows the downloaded file selected (#222).
+  - --talk-name=org.freedesktop.FileManager1
+  # Turn off the computer when the downloads are done (logind's PowerOff, Suspend, Hibernate: no
+  # portal does it). Keeping it awake while a woken queue runs uses the Inhibit portal first.
+  - --system-talk-name=org.freedesktop.login1
+  # Browser integration (browsers installed on the system, not as a Flatpak): MDM writes its
+  # helper's manifest into each browser's own folder for them, where it is there. Nothing else of
+  # the browsers is visible (crates/ipc/src/flatpak.rs keeps this list).
+  - --filesystem=xdg-config/google-chrome/NativeMessagingHosts
+  - --filesystem=xdg-config/chromium/NativeMessagingHosts
+  - --filesystem=xdg-config/microsoft-edge/NativeMessagingHosts
+  - --filesystem=xdg-config/BraveSoftware/Brave-Browser/NativeMessagingHosts
+  - --filesystem=xdg-config/vivaldi/NativeMessagingHosts
+  - --filesystem=xdg-config/opera/NativeMessagingHosts
+  - --filesystem=~/.mozilla/native-messaging-hosts
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin
+  env:
+    # Where cargo-sources.json's vendored crates are configured (flatpak-cargo-generator).
+    CARGO_HOME: /run/build/misterdownloadmanager/cargo
+    CARGO_NET_OFFLINE: 'true'
+    # The build machine's paths out of the programs (#25), as tools/installer/build-linux.sh.
+    RUSTFLAGS: --remap-path-prefix=/run/build/misterdownloadmanager=mdm --remap-path-prefix=/run/build/misterdownloadmanager/cargo=cargo
+modules:
+  - name: misterdownloadmanager
+    buildsystem: simple
+    build-commands:
+      - cargo --offline fetch --manifest-path Cargo.toml --verbose
+      - cargo --offline build --release --locked -p mdm-app -p mdm-nmhost -p mdm-cli -p mdm-mcp
+      - install -Dm755 -t /app/bin target/release/misterdownloadmanager target/release/misterdownloadmanager-nmhost
+        target/release/misterdownloadmanager-cli target/release/misterdownloadmanager-mcp
+      - install -Dm644 packaging/flatpak/${FLATPAK_ID}.desktop -t /app/share/applications
+      - install -Dm644 packaging/flatpak/${FLATPAK_ID}.metainfo.xml -t /app/share/metainfo
+      - for s in 64 128 256 512; do install -Dm644 packaging/flatpak/icons/$s.png /app/share/icons/hicolor/${s}x${s}/apps/${FLATPAK_ID}.png;
+        done
+      - install -Dm644 -t /app/share/licenses/${FLATPAK_ID} LICENSE ATTRIBUTION.md
+    sources:
+      # This checkout.
+      - type: dir
+        path: ../..
+        skip:
+          - target
+          - .git
+          - k
+          - notes
+          - .flatpak-builder
+      # The crates, vendored: tools/flatpak/cargo-sources.sh makes it from Cargo.lock.
+      - cargo-sources.json

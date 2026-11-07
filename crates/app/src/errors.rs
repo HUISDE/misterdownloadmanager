@@ -7,6 +7,14 @@ use mdm_engine::{Error, NetKind, Refusal};
 
 use crate::i18n::{fmt, ltr, t};
 
+/// In the Flatpak, why nothing may be saved in `folder` (its sandbox would forget it, #148);
+/// None anywhere else. For the downloads the engine doesn't write itself (torrents, videos,
+/// galleries).
+pub fn outside_sandbox(folder: &std::path::Path) -> Option<String> {
+    mdm_engine::sandbox::lost_on_exit(folder)
+        .then(|| describe(&Error::OutsideSandbox(folder.to_owned())))
+}
+
 /// The sentence the list, the progress window and Properties show for `e`.
 pub fn describe(e: &Error) -> String {
     match e {
@@ -56,6 +64,13 @@ pub fn describe(e: &Error) -> String {
         ),
         Error::DestinationUnavailable(path) => fmt(
             t("the folder {path} is not available (drive removed or network share offline?)"),
+            &[("path", &ltr(&path.display().to_string()))],
+        ),
+        Error::OutsideSandbox(path) => fmt(
+            t(
+                // i18n: why a download failed in the Flatpak (Linux): its sandbox can't keep files in that folder; "..." is the button that chooses the folder in Download File Info
+                "the Flatpak can't save to {path}: save in Downloads, or choose the folder with the ... button",
+            ),
             &[("path", &ltr(&path.display().to_string()))],
         ),
         Error::DriveGone => t("the drive or network share is no longer available").to_owned(),

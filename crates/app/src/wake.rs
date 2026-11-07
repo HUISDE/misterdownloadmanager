@@ -11,6 +11,8 @@
 //!   or a timer on an alarm clock without root or CAP_WAKE_ALARM.
 //! - macOS: `pmset schedule wake` and IOKit's scheduled power events need an administrator;
 //!   MDM never asks for one by itself, so the option says why.
+//! - The Flatpak (Linux): its sandbox has no way to the wake alarm, so the option says so; the
+//!   computer is still kept awake while the queue runs (the Inhibit portal).
 //!
 //! While a queue with the option runs, the computer is kept from sleeping (Windows: a power
 //! request; Linux: logind's sleep and idle inhibitor; macOS: `caffeinate`), so a computer woken
@@ -43,6 +45,9 @@ pub enum Support {
     NoAlarm,
     /// macOS: only an administrator can schedule a wake.
     MacAdmin,
+    /// Linux, the Flatpak: its sandbox can't reach the wake alarm (/sys is read-only there).
+    #[cfg_attr(not(target_os = "linux"), allow(dead_code))]
+    Sandboxed,
 }
 
 impl Support {
@@ -132,7 +137,8 @@ pub fn support() -> Support {
 }
 
 /// An off-screen test run (MDM_OFFSCREEN) may play another system's answer with MDM_TEST_WAKE
-/// (`timers-off`, `battery-off`, `not-on-battery`, `needs-admin`, `no-alarm`, `mac-admin`), so
+/// (`timers-off`, `battery-off`, `not-on-battery`, `needs-admin`, `no-alarm`, `mac-admin`,
+/// `sandboxed`), so
 /// every state of the Scheduler's line can be shown and checked on one computer.
 fn test_support() -> Option<Support> {
     if !crate::offscreen() {
@@ -145,6 +151,7 @@ fn test_support() -> Option<Support> {
         "needs-admin" => Support::NeedsAdmin,
         "no-alarm" => Support::NoAlarm,
         "mac-admin" => Support::MacAdmin,
+        "sandboxed" => Support::Sandboxed,
         _ => return None,
     })
 }

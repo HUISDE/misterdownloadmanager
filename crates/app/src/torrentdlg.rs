@@ -1112,13 +1112,26 @@ impl TorrentSettings {
                     o.x + 462.0,
                     ("torrent-settings", 8),
                 );
-                winui::checkbox(
+                // The Flatpak's sandbox can't choose the system's default apps: its desktop entry
+                // offers MDM for both, and the system's settings choose (#148).
+                let sandboxed = crate::flatpak();
+                // Shown off there (the setting is kept, for a data folder carried elsewhere).
+                let mut shown = self.assoc && !sandboxed;
+                let assoc = winui::checkbox(
                     ui,
                     pos2(o.x + 14.0, o.y + 108.0),
-                    &mut self.assoc,
+                    &mut shown,
                     "Open magnet links and .torrent files with Mister Download Manager",
-                    true,
+                    !sandboxed,
                 );
+                if !sandboxed {
+                    self.assoc = shown;
+                }
+                let choose = crate::i18n::mark(
+                    // i18n: Torrent settings, under (and on hovering) the greyed switch that makes MDM open magnet links and .torrent files, in the Flatpak (Linux)
+                    "In the Flatpak, choose Mister Download Manager for them in your system's default apps settings.",
+                );
+                winui::why_disabled(assoc, sandboxed, choose);
                 winui::fit(
                     ui,
                     &p,
@@ -1126,7 +1139,9 @@ impl TorrentSettings {
                     o.y + 136.0,
                     // What the switch does is the system's: Windows asks per account, macOS and
                     // Linux register MDM as the handler.
-                    if cfg!(windows) {
+                    if sandboxed {
+                        crate::i18n::t(choose)
+                    } else if cfg!(windows) {
                         crate::i18n::t(
                             "For your Windows account only. Another app chosen in \"Open with\" stays first.",
                         )

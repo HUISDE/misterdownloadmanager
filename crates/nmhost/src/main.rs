@@ -475,6 +475,8 @@ fn deliver(cmd: &mdm_ipc::Command) -> Result<(), Undelivered> {
     };
     let mut child = start_detached(&app)
         .map_err(|e| Undelivered::NotRunning(format!("cannot start {}: {e}", app.display())))?;
+    // In a Flatpak, `child` is flatpak-spawn, ended with this host's sandbox; the app it asked
+    // the portal for runs on in its own (start_detached).
     #[cfg(windows)]
     win32::allow_foreground(child.id());
     let started = std::time::Instant::now();
@@ -498,9 +500,28 @@ fn deliver(cmd: &mdm_ipc::Command) -> Result<(), Undelivered> {
 /// Start the app outside the browser's reach: browsers end a host's whole process tree (on
 /// Windows a job object, elsewhere its process group) once it has answered, which would end an
 /// app this host started along with it (MDN, "Native messaging": closing the native app).
+///
+/// In a Flatpak, the sandbox the browser started this host in ends with it, and every process in
+/// it: the app is started in a sandbox of its own through Flatpak's portal (`flatpak-spawn`, in
+/// the runtime), with the `MDM_*` settings this host was given (a test's data folder).
 fn start_detached(app: &std::path::Path) -> io::Result<std::process::Child> {
     use std::process::{Command, Stdio};
-    let mut cmd = Command::new(app);
+    let mut cmd = if mdm_ipc::flatpak::app_id().is_some() {
+        let mut spawn = Command::new("flatpak-spawn");
+        for (k, v) in std::env::vars_os() {
+            if k.to_string_lossy().starts_with("MDM_") {
+                let mut pair = std::ffi::OsString::from("--env=");
+                pair.push(&k);
+                pair.push("=");
+                pair.push(&v);
+                spawn.arg(pair);
+            }
+        }
+        spawn.arg(app);
+        spawn
+    } else {
+        Command::new(app)
+    };
     // The browser's message pipes are this host's standard streams: never the app's.
     cmd.stdin(Stdio::null())
         .stdout(Stdio::null())
@@ -569,26 +590,50 @@ fn serve() -> io::Result<()> {
     Ok(())
 }
 
+/// The program the manifests name: this one, or in a Flatpak the script that starts it through
+/// Flatpak (`flatpak_script`), as the browsers outside the sandbox can't start this path.
+fn host_program() -> Result<PathBuf, String> {
+    match mdm_ipc::flatpak::app_id() {
+        Some(_) => mdm_ipc::data_dir()
+            .map(|d| mdm_ipc::flatpak::host_script_path(&d))
+            .ok_or_else(|| "no data folder".into()),
+        None => std::env::current_exe().map_err(|e| e.to_string()),
+    }
+}
+
 /// The manifest Chromium browsers read: the host may serve our extension's origin only.
-fn chromium_manifest() -> Result<serde_json::Value, String> {
-    Ok(serde_json::json!({
+fn chromium_manifest(program: &std::path::Path) -> serde_json::Value {
+    serde_json::json!({
         "name": HOST_NAME,
         "description": "Mister Download Manager",
-        "path": std::env::current_exe().map_err(|e| e.to_string())?,
+        "path": program,
         "type": "stdio",
         "allowed_origins": chromium_ids().into_iter().map(origin).collect::<Vec<_>>(),
-    }))
+    })
 }
 
 /// Firefox's manifest: the same host, allowed for our add-on ID instead of an origin.
-fn firefox_manifest() -> Result<serde_json::Value, String> {
-    Ok(serde_json::json!({
+fn firefox_manifest(program: &std::path::Path) -> serde_json::Value {
+    serde_json::json!({
         "name": HOST_NAME,
         "description": "Mister Download Manager",
-        "path": std::env::current_exe().map_err(|e| e.to_string())?,
+        "path": program,
         "type": "stdio",
         "allowed_extensions": [FIREFOX_ID],
-    }))
+    })
+}
+
+/// Flatpak: the script the manifests name, in the app's data folder (`~/.var/app/<id>/data/...`,
+/// the same path outside the sandbox), written again at each registration.
+#[cfg(not(windows))]
+fn flatpak_script(app_id: &str, path: &std::path::Path) -> Result<(), String> {
+    use std::os::unix::fs::PermissionsExt;
+    let at = |e: std::io::Error| format!("{}: {e}", path.display());
+    if let Some(dir) = path.parent() {
+        std::fs::create_dir_all(dir).map_err(at)?;
+    }
+    std::fs::write(path, mdm_ipc::flatpak::host_script(app_id)).map_err(at)?;
+    std::fs::set_permissions(path, std::fs::Permissions::from_mode(0o755)).map_err(at)
 }
 
 fn write_json(path: &std::path::Path, value: &serde_json::Value) -> Result<(), String> {
@@ -629,8 +674,9 @@ fn our_caller(args: &[String]) -> bool {
 fn register(all_users: bool) -> Result<(), String> {
     portable_refused()?;
     let root = if all_users { "HKLM" } else { "HKCU" };
+    let program = host_program()?;
     let path = exe_dir()?.join(format!("{HOST_NAME}.json"));
-    write_json(&path, &chromium_manifest()?)?;
+    write_json(&path, &chromium_manifest(&program))?;
     for key in REGISTRY_KEYS {
         reg(&[
             "add",
@@ -644,7 +690,7 @@ fn register(all_users: bool) -> Result<(), String> {
         ])?;
     }
     let ff_path = exe_dir()?.join(format!("{HOST_NAME}.firefox.json"));
-    write_json(&ff_path, &firefox_manifest()?)?;
+    write_json(&ff_path, &firefox_manifest(&program))?;
     reg(&[
         "add",
         &format!(r"{root}\{FIREFOX_KEY}\{HOST_NAME}"),
@@ -712,15 +758,26 @@ fn reg(args: &[&str]) -> Result<(), String> {
 
 /// Linux and macOS: the folders the browsers there read host manifests from, for one user (in
 /// the home folder) or for everyone, each with whether it is Firefox's (`mdm_ipc::browsers`).
+///
+/// In a Flatpak: the browsers' folders its sandbox may write, where they are there
+/// (`mdm_ipc::flatpak`), for this user only.
 #[cfg(not(windows))]
 fn host_dirs(all_users: bool) -> Vec<(PathBuf, bool)> {
     let home = PathBuf::from(std::env::var_os("HOME").unwrap_or_default());
-    let config = std::env::var_os("XDG_CONFIG_HOME")
-        .map(PathBuf::from)
-        .filter(|p| p.is_absolute())
-        .unwrap_or_else(|| home.join(".config"));
-    mdm_ipc::browsers::host_dirs(&home, &config, cfg!(target_os = "macos"), all_users)
-        .into_iter()
+    let dirs = if mdm_ipc::flatpak::app_id().is_some() {
+        if all_users {
+            return Vec::new();
+        }
+        let config = mdm_ipc::flatpak::host_config_dir(&home);
+        mdm_ipc::flatpak::native_host_dirs(&home, &config)
+    } else {
+        let config = std::env::var_os("XDG_CONFIG_HOME")
+            .map(PathBuf::from)
+            .filter(|p| p.is_absolute())
+            .unwrap_or_else(|| home.join(".config"));
+        mdm_ipc::browsers::host_dirs(&home, &config, cfg!(target_os = "macos"), all_users)
+    };
+    dirs.into_iter()
         .map(|(d, f)| (d, f == mdm_ipc::browsers::Family::Gecko))
         .collect()
 }
@@ -756,7 +813,11 @@ fn chrome_external_dir(all_users: bool) -> Option<PathBuf> {
 #[cfg(not(windows))]
 fn register(all_users: bool) -> Result<(), String> {
     portable_refused()?;
-    let (chromium, firefox) = (chromium_manifest()?, firefox_manifest()?);
+    let program = host_program()?;
+    if let Some(id) = mdm_ipc::flatpak::app_id() {
+        flatpak_script(id, &program)?;
+    }
+    let (chromium, firefox) = (chromium_manifest(&program), firefox_manifest(&program));
     let dirs = host_dirs(all_users);
     // One browser's folder that can't be written doesn't keep the others from theirs.
     let mut failed = Vec::new();
@@ -772,6 +833,13 @@ fn register(all_users: bool) -> Result<(), String> {
     }
     if dirs.is_empty() {
         println!("registered {HOST_NAME} for no browser: none found");
+        // The sandbox sees a browser's folder only when it is there (packaging/flatpak).
+        if mdm_ipc::flatpak::app_id().is_some() {
+            println!(
+                "in the Flatpak: create your browser's NativeMessagingHosts folder (or \
+                 ~/.mozilla/native-messaging-hosts), then start Mister Download Manager again"
+            );
+        }
     }
     if !failed.is_empty() {
         return Err(failed.join("; "));
@@ -794,6 +862,11 @@ fn unregister(all_users: bool) -> Result<(), String> {
     }
     if let Some(dir) = chrome_external_dir(all_users) {
         let _ = std::fs::remove_file(dir.join(format!("{STORE_ID}.json")));
+    }
+    if mdm_ipc::flatpak::app_id().is_some()
+        && let Ok(script) = host_program()
+    {
+        let _ = std::fs::remove_file(script);
     }
     println!("unregistered {HOST_NAME}");
     Ok(())
@@ -835,7 +908,7 @@ mod tests {
     /// served: the manifest's allowed_origins and the host's own caller check agree.
     #[test]
     fn store_and_unpacked_extensions_both_allowed() {
-        let manifest = chromium_manifest().unwrap();
+        let manifest = chromium_manifest(&host_program().unwrap());
         for id in [
             "ejoleppdfgjdndddcjoehopknmlglojp",
             "oogbclbbninliongijffeeggalppliok",
@@ -853,6 +926,23 @@ mod tests {
         assert!(!our_caller(&[
             "chrome-extension://aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/".into()
         ]));
+    }
+
+    /// Both manifests name the program given (in a Flatpak, the script that starts the host
+    /// through Flatpak, mdm_ipc::flatpak).
+    #[test]
+    fn manifests_name_the_program_given() {
+        let script = std::path::Path::new(
+            "/home/u/.var/app/com.misterdownloadmanager.MisterDownloadManager/data/             misterdownloadmanager/browser-host/misterdownloadmanager-nmhost",
+        );
+        for m in [chromium_manifest(script), firefox_manifest(script)] {
+            assert_eq!(m["path"], serde_json::json!(script), "{m}");
+            assert_eq!(m["name"], HOST_NAME);
+        }
+        assert_eq!(
+            firefox_manifest(script)["allowed_extensions"][0],
+            FIREFOX_ID
+        );
     }
 
     #[test]

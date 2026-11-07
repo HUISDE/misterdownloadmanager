@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Name=Mister Download Manager
+GenericName=Download Manager
+Comment=Download files faster, resume them, and catch them from the browser
+Exec=misterdownloadmanager %U
+Icon=com.misterdownloadmanager.MisterDownloadManager
+Terminal=false
+Categories=Network;FileTransfer;
+Keywords=download;accelerator;resume;torrent;magnet;video;queue;scheduler;
+MimeType=x-scheme-handler/magnet;application/x-bittorrent;
+StartupNotify=true
+StartupWMClass=misterdownloadmanager

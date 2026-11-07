@@ -752,6 +752,9 @@ impl Run {
                         .await
                         .map_err(|e| crate::errors::torrent(&e))?;
                 } else {
+                    if let Some(why) = crate::errors::outside_sandbox(&spec2.folder) {
+                        return Err(why);
+                    }
                     let file = torrent_file(&spec2.hash).ok_or(crate::i18n::t("no data folder"))?;
                     let bytes = std::fs::read(&file).map_err(|_| {
                         // i18n: an error: the copy of the .torrent file the app keeps is missing

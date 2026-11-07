@@ -397,6 +397,9 @@ pub struct Check {
     pub ok: bool,
     pub text: String,
     pub why: Option<&'static str>,
+    /// Not a check: something to know (the Flatpak's sandbox), drawn apart and never the
+    /// problem to fix.
+    pub note: bool,
 }
 
 /// The checks in the order a connection needs them; the first failing one is what to fix.
@@ -405,7 +408,11 @@ pub fn checks(settings: &crate::settings::Settings) -> Vec<Check> {
         ok,
         text: crate::i18n::t(text).to_owned(),
         why: (!ok).then_some(why).flatten(),
+        note: false,
     };
+    // The Flatpak (#148): its helper is reached through Flatpak, from the browsers' folders that
+    // are there (browser-help.md#flatpak-app says how to make one).
+    let sandboxed = crate::flatpak();
     let mut out = vec![
         check(
             settings.advanced_integration,
@@ -423,7 +430,11 @@ pub fn checks(settings: &crate::settings::Settings) -> Vec<Check> {
             registered(),
             // i18n: a check of Test browser integration: the browsers find MDM's helper program
             "The browsers can find Mister Download Manager",
-            Some("not-installed"),
+            Some(if sandboxed {
+                "flatpak-app"
+            } else {
+                "not-installed"
+            }),
         ),
     ];
     let seen = mdm_ipc::extension::seen_browsers();
@@ -434,6 +445,18 @@ pub fn checks(settings: &crate::settings::Settings) -> Vec<Check> {
             "No browser's extension has connected yet",
             None,
         ));
+    }
+    if sandboxed {
+        out.push(Check {
+            ok: false,
+            text: crate::i18n::t(
+                // i18n: a line of Test browser integration in the Flatpak (Linux): a browser that is itself a Flatpak can't start MDM's helper
+                "A browser installed as a Flatpak can't reach this copy",
+            )
+            .to_owned(),
+            why: None,
+            note: true,
+        });
     }
     for (browser, version) in seen {
         let name = if browser.is_empty() {
@@ -458,6 +481,7 @@ pub fn checks(settings: &crate::settings::Settings) -> Vec<Check> {
             ok: true,
             text,
             why: None,
+            note: false,
         });
     }
     out

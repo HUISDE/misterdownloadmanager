@@ -5,6 +5,10 @@
 //! settings daemon's XSETTINGS through x11rb) and the
 //! crash reports (at the end): signals and Mach exceptions through crash-handler, thread and
 //! process ids through libc.
+//!
+//! In the Flatpak (Linux, the Flathub build, `packaging/flatpak/`, #148) a few of these go
+//! through the desktop's portals instead (starting with the session, keeping the computer
+//! awake), and what the sandbox keeps out of reach says why where it shows ([`in_flatpak`]).
 
 use std::path::{Path, PathBuf};
 use std::process::{Command, Stdio};
@@ -15,6 +19,14 @@ pub fn program() -> Option<PathBuf> {
     std::env::var_os("APPIMAGE")
         .map(PathBuf::from)
         .or_else(|| std::env::current_exe().ok())
+}
+
+/// Linux: this copy runs in the Flatpak's sandbox (`/.flatpak-info`, mdm_ipc::flatpak). Its
+/// updates are Flathub's, and its sandbox decides what it can reach: the folders its manifest
+/// grants or the file chooser hands it, the browsers' host folders that are there, the desktop's
+/// portals. Never on macOS.
+pub fn in_flatpak() -> bool {
+    mdm_ipc::flatpak::app_id().is_some()
 }
 
 /// Run a tool quietly, without waiting for it.
@@ -42,6 +54,10 @@ fn startup_file() -> Option<PathBuf> {
 }
 
 pub fn run_at_startup() -> bool {
+    #[cfg(target_os = "linux")]
+    if in_flatpak() {
+        return portal::autostart_marker().is_some_and(|f| f.is_file());
+    }
     startup_file().is_some_and(|f| f.is_file())
 }
 
@@ -121,6 +137,13 @@ fn entry_program(text: &str, macos: bool) -> Option<String> {
 }
 
 pub fn set_run_at_startup(on: bool) {
+    // The Flatpak's sandbox can't write the session's autostart folder: the Background portal
+    // writes its entry (`flatpak run ... /startup`), asking the person first on some desktops.
+    #[cfg(target_os = "linux")]
+    if in_flatpak() {
+        portal::set_autostart(on);
+        return;
+    }
     let (Some(file), Some(exe)) = (startup_file(), program()) else {
         return;
     };
@@ -138,6 +161,10 @@ pub fn set_run_at_startup(on: bool) {
 /// The startup entry written again with its argument when it was written without (by 0.3.0 or
 /// earlier) for this very program (#226).
 pub fn update_run_at_startup() {
+    // The portal's entry has always passed /startup.
+    if in_flatpak() {
+        return;
+    }
     let (Some(file), Some(exe)) = (startup_file(), program()) else {
         return;
     };
@@ -200,6 +227,16 @@ fn register_command() -> Option<Command> {
 /// user or for everyone (Options → General → Test browser integration).
 pub fn host_registered() -> bool {
     let home = PathBuf::from(std::env::var_os("HOME").unwrap_or_default());
+    // The Flatpak: the script the manifests name, and a manifest in a browser's folder its
+    // sandbox may write (crates/nmhost writes both).
+    if in_flatpak() {
+        let script = mdm_ipc::data_dir().map(|d| mdm_ipc::flatpak::host_script_path(&d));
+        let config = mdm_ipc::flatpak::host_config_dir(&home);
+        return script.is_some_and(|s| s.is_file())
+            && mdm_ipc::flatpak::native_host_dirs(&home, &config)
+                .iter()
+                .any(|(d, _)| d.join("com.misterdownloadmanager.host.json").is_file());
+    }
     let config = std::env::var_os("XDG_CONFIG_HOME")
         .map(PathBuf::from)
         .filter(|p| p.is_absolute())
@@ -245,14 +282,20 @@ pub fn os_version() -> String {
         .unwrap_or_default();
         return format!("macOS {v}").trim_end().to_owned();
     }
-    std::fs::read_to_string("/etc/os-release")
-        .ok()
-        .and_then(|t| {
+    let pretty = |file: &str| {
+        std::fs::read_to_string(file).ok().and_then(|t| {
             t.lines()
                 .find_map(|l| l.strip_prefix("PRETTY_NAME="))
                 .map(|v| v.trim_matches('"').to_owned())
         })
-        .unwrap_or_else(|| "Linux".into())
+    };
+    // In the Flatpak, /etc/os-release is the runtime's ("Freedesktop SDK"): the system's is
+    // /run/host/os-release.
+    if in_flatpak() {
+        let host = pretty("/run/host/os-release").unwrap_or_else(|| "Linux".into());
+        return format!("{host} (Flatpak)");
+    }
+    pretty("/etc/os-release").unwrap_or_else(|| "Linux".into())
 }
 
 /// How long the file manager has to answer ShowItems before its folder is opened instead: one
@@ -307,8 +350,11 @@ pub fn show_in_folder(path: &Path) {
 /// Linux records it with xdg-mime for the desktop entry the packages install (turning it off
 /// leaves the choice to the desktop's settings). Not on macOS yet: it hands links to an app as
 /// open-URL events, which the app doesn't receive.
+///
+/// In the Flatpak, its desktop entry names both types (packaging/flatpak), and the system's
+/// settings choose the default: its sandbox can't (Torrent settings says so).
 pub fn set_torrent_handlers(on: bool) {
-    if on && !cfg!(target_os = "macos") {
+    if on && !cfg!(target_os = "macos") && !in_flatpak() {
         spawn(Command::new("xdg-mime").args([
             "default",
             "misterdownloadmanager.desktop",
@@ -1305,6 +1351,11 @@ pub fn crash_now() {
 /// /Applications or ~/Applications), the command on the PATH on Linux. The browser extension's
 /// offer (extension.rs) opens its page in each.
 pub fn browsers() -> Vec<(String, PathBuf)> {
+    // The Flatpak sees the runtime's programs, not the system's, and can't start one: the offer
+    // has one row, the system's browser, opened through the portal.
+    if in_flatpak() {
+        return Vec::new();
+    }
     let home = PathBuf::from(std::env::var_os("HOME").unwrap_or_default());
     let found = |names: &[&str], dirs: &[PathBuf]| {
         names
@@ -1997,6 +2048,10 @@ pub fn wake_support() -> crate::wake::Support {
     #[cfg(target_os = "linux")]
     {
         use crate::wake::Support;
+        // The sandbox has /sys read-only, whatever the administrator allows.
+        if in_flatpak() {
+            return Support::Sandboxed;
+        }
         let path = Path::new(WAKEALARM);
         if !path.exists() {
             return Support::NoAlarm;
@@ -2110,16 +2165,26 @@ pub fn wake_at(at: Option<i64>) -> Result<(), String> {
 /// session may take it without a password. False when logind refused, or didn't answer within
 /// 25 s. Called on wake::Holder's thread, never the window's: logind can be slow right after a
 /// resume.
+///
+/// In the Flatpak, the Inhibit portal first (the desktop's own: GNOME's session, KDE's power
+/// management), then logind as outside.
 #[cfg(target_os = "linux")]
 pub fn keep_awake(reason: Option<&str>) -> bool {
     use std::sync::Mutex;
     static LOCK: Mutex<Option<zbus::zvariant::OwnedFd>> = Mutex::new(None);
     let mut held = LOCK.lock().unwrap_or_else(|e| e.into_inner());
-    // Closing the descriptor ends the inhibitor.
+    // Closing the descriptor ends the inhibitor; closing the portal's request ends its own.
     *held = None;
+    portal::uninhibit();
     let Some(reason) = reason else {
         return true;
     };
+    if in_flatpak() {
+        match portal::inhibit(reason) {
+            Ok(()) => return true,
+            Err(e) => tracing::warn!("wake: the Inhibit portal refused ({e}); logind instead"),
+        }
+    }
     let take = || -> zbus::Result<zbus::zvariant::OwnedFd> {
         let conn = zbus::blocking::connection::Builder::system()?
             .method_timeout(std::time::Duration::from_secs(25))
@@ -2168,4 +2233,180 @@ pub fn keep_awake(reason: Option<&str>) -> bool {
         return held.is_some();
     }
     true
+}
+
+/// Shut down, sleep or hibernate (`verb`: logind's `PowerOff`, `Suspend`, `Hibernate`) through
+/// logind, as `systemctl` does: the Flatpak has no `systemctl` and no portal for it (its manifest
+/// lets it talk to logind). `interactive`: polkit may ask for a password where it wants one.
+#[cfg(target_os = "linux")]
+pub fn turn_off(verb: &str) -> Result<(), String> {
+    let call = || -> zbus::Result<()> {
+        let conn = zbus::blocking::connection::Builder::system()?
+            .method_timeout(std::time::Duration::from_secs(25))
+            .build()?;
+        let logind = zbus::blocking::Proxy::new(
+            &conn,
+            "org.freedesktop.login1",
+            "/org/freedesktop/login1",
+            "org.freedesktop.login1.Manager",
+        )?;
+        logind.call::<_, _, ()>(verb, &(true,))
+    };
+    call().map_err(|e| e.to_string())
+}
+
+/// The desktop's portals the Flatpak goes through where its sandbox can't do a thing itself:
+/// Background (starting with the session) and Inhibit (keeping the computer awake).
+#[cfg(target_os = "linux")]
+mod portal {
+    use std::collections::HashMap;
+    use std::sync::Mutex;
+    use std::time::Duration;
+
+    use zbus::blocking::{Connection, Proxy};
+    use zbus::zvariant::{OwnedObjectPath, OwnedValue, Value};
+
+    const DEST: &str = "org.freedesktop.portal.Desktop";
+    const PATH: &str = "/org/freedesktop/portal/desktop";
+    /// The person may be asked (GNOME asks once whether MDM may run in the background).
+    const ANSWER: Duration = Duration::from_secs(120);
+
+    fn session() -> zbus::Result<Connection> {
+        zbus::blocking::connection::Builder::session()?
+            .method_timeout(Duration::from_secs(25))
+            .build()
+    }
+
+    /// A handle token of our own, so the request's path is known before the call (the portal
+    /// answers on it; listening first can't miss the answer).
+    fn token() -> String {
+        static N: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(0);
+        format!(
+            "mdm{}_{}",
+            std::process::id(),
+            N.fetch_add(1, std::sync::atomic::Ordering::Relaxed)
+        )
+    }
+
+    /// The path the portal's Request for `token` has on `conn`.
+    fn request_path(conn: &Connection, token: &str) -> zbus::Result<OwnedObjectPath> {
+        let sender = conn
+            .unique_name()
+            .map(|n| n.trim_start_matches(':').replace('.', "_"))
+            .unwrap_or_default();
+        Ok(OwnedObjectPath::try_from(format!(
+            "{PATH}/request/{sender}/{token}"
+        ))?)
+    }
+
+    /// The file that says the portal's autostart entry is MDM's (the sandbox can't read the
+    /// session's autostart folder).
+    pub fn autostart_marker() -> Option<std::path::PathBuf> {
+        mdm_ipc::data_dir().map(|d| d.join("autostart-portal"))
+    }
+
+    /// Ask the Background portal for an autostart entry (`on`) or none, on a thread of its own
+    /// (it may wait for the person's answer); the marker follows what it granted.
+    pub fn set_autostart(on: bool) {
+        let _ =
+            std::thread::Builder::new()
+                .name("autostart".into())
+                .spawn(move || match background(on) {
+                    Ok(granted) => {
+                        if let Some(f) = autostart_marker() {
+                            let _ = if granted {
+                                std::fs::write(&f, b"1")
+                            } else {
+                                std::fs::remove_file(&f)
+                            };
+                        }
+                        tracing::info!(
+                            "startup: the Background portal answered autostart={granted}"
+                        );
+                    }
+                    Err(e) => tracing::warn!("startup: the Background portal failed ({e})"),
+                });
+    }
+
+    /// RequestBackground with `autostart`: whether autostart is granted.
+    fn background(autostart: bool) -> Result<bool, String> {
+        let conn = session().map_err(|e| e.to_string())?;
+        let token = token();
+        let path = request_path(&conn, &token).map_err(|e| e.to_string())?;
+        let request = Proxy::new(&conn, DEST, path, "org.freedesktop.portal.Request")
+            .map_err(|e| e.to_string())?;
+        let answers = request
+            .receive_signal("Response")
+            .map_err(|e| e.to_string())?;
+        let mut options: HashMap<&str, Value> = HashMap::new();
+        options.insert("handle_token", Value::from(token.as_str()));
+        options.insert(
+            "reason",
+            Value::from(crate::i18n::t(
+                // i18n: the desktop asks whether MDM may start with the session (the Flatpak, Linux): MDM's reason, shown in that question
+                "Start Mister Download Manager with the session, waiting in the notification area",
+            )),
+        );
+        options.insert("autostart", Value::from(autostart));
+        options.insert(
+            "commandline",
+            Value::from(vec!["misterdownloadmanager", mdm_ipc::STARTUP]),
+        );
+        options.insert("dbus-activatable", Value::from(false));
+        let portal = Proxy::new(&conn, DEST, PATH, "org.freedesktop.portal.Background")
+            .map_err(|e| e.to_string())?;
+        portal
+            .call::<_, _, OwnedObjectPath>("RequestBackground", &("", options))
+            .map_err(|e| e.to_string())?;
+        // The answer, on a thread that waits for it (the blocking iterator has no time limit).
+        let (tx, rx) = std::sync::mpsc::channel();
+        std::thread::spawn(move || {
+            let mut answers = answers;
+            if let Some(m) = answers.next() {
+                let _ = tx.send(m);
+            }
+        });
+        let m = rx
+            .recv_timeout(ANSWER)
+            .map_err(|_| "no answer".to_owned())?;
+        let (code, results): (u32, HashMap<String, OwnedValue>) =
+            m.body().deserialize().map_err(|e| e.to_string())?;
+        if code != 0 {
+            return Ok(false);
+        }
+        Ok(results
+            .get("autostart")
+            .and_then(|v| bool::try_from(v).ok())
+            .unwrap_or(false))
+    }
+
+    /// The Inhibit portal's request while it keeps the computer awake (closing it, or the
+    /// connection, ends it).
+    static HELD: Mutex<Option<(Connection, OwnedObjectPath)>> = Mutex::new(None);
+
+    /// Keep the computer from sleeping (suspend 4, idle 8) for `reason`.
+    pub fn inhibit(reason: &str) -> Result<(), String> {
+        let conn = session().map_err(|e| e.to_string())?;
+        let mut options: HashMap<&str, Value> = HashMap::new();
+        let token = token();
+        options.insert("handle_token", Value::from(token.as_str()));
+        options.insert("reason", Value::from(reason));
+        let portal = Proxy::new(&conn, DEST, PATH, "org.freedesktop.portal.Inhibit")
+            .map_err(|e| e.to_string())?;
+        let handle = portal
+            .call::<_, _, OwnedObjectPath>("Inhibit", &("", 4u32 | 8u32, options))
+            .map_err(|e| e.to_string())?;
+        *HELD.lock().unwrap_or_else(|e| e.into_inner()) = Some((conn, handle));
+        Ok(())
+    }
+
+    /// End the portal's inhibitor, if MDM holds one.
+    pub fn uninhibit() {
+        let held = HELD.lock().unwrap_or_else(|e| e.into_inner()).take();
+        if let Some((conn, handle)) = held
+            && let Ok(request) = Proxy::new(&conn, DEST, handle, "org.freedesktop.portal.Request")
+        {
+            let _ = request.call::<_, _, ()>("Close", &());
+        }
+    }
 }

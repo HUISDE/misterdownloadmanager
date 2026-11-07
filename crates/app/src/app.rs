@@ -3100,6 +3100,12 @@ impl App {
             .file_stem()
             .map(|s| s.to_string_lossy().into_owned())
             .unwrap_or_else(|| "video".into());
+        if let Some(why) = crate::errors::outside_sandbox(&folder) {
+            item.status = Status::Error;
+            item.error = Some(why);
+            self.dirty = true;
+            return;
+        }
         let _ = std::fs::create_dir_all(&folder);
         let started = mdm_tools::video::VideoJob::start(
             &tool.exe,
@@ -3190,6 +3196,12 @@ impl App {
             limit: spec.limit,
             rate,
         };
+        if let Some(why) = crate::errors::outside_sandbox(&item.dest) {
+            item.status = Status::Error;
+            item.error = Some(why);
+            self.dirty = true;
+            return;
+        }
         let started = mdm_tools::gallery::GalleryJob::start(
             &tool.exe,
             item.url.as_str(),
@@ -6859,7 +6871,10 @@ impl App {
         let again = self
             .update_checked_this_run
             .is_some_and(|t| now - t >= crate::help::CHECK_EVERY);
+        // A copy a store updates (the Flatpak: Flathub) never looks.
+        let store = mdm_tools::update::Install::detect().store().is_some();
         if self.auto_update.is_none()
+            && !store
             && self.settings.update_check
             // Off-screen test runs check only when told where (MDM_UPDATE_FEED: their own feed).
             && (!crate::offscreen() || std::env::var_os("MDM_UPDATE_FEED").is_some())
@@ -6885,7 +6900,7 @@ impl App {
             self.raise_options = false;
         }
         // Until the check at start is due.
-        if self.update_checked_this_run.is_none() && self.settings.update_check {
+        if self.update_checked_this_run.is_none() && self.settings.update_check && !store {
             ctx.request_repaint_after(crate::help::CHECK_AFTER_START);
         }
         let done = self

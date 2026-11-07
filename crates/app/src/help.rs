@@ -270,6 +270,9 @@ pub struct Updates {
     status: Option<UpdateStatus>,
     /// Update now pressed by a test (`/show update-now`, feature `test-update`).
     press: bool,
+    /// The store that updates this copy (the Flatpak: Flathub): nothing is looked up, the window
+    /// says where its updates come from.
+    store: Option<&'static str>,
 }
 
 #[derive(Clone, Debug)]
@@ -287,12 +290,14 @@ impl Updates {
     }
 
     pub fn check(rt: &tokio::runtime::Handle, ctx: &egui::Context) -> Self {
+        let store = mdm_tools::update::Install::detect().store();
         Updates {
-            slot: Some(check(rt, ctx)),
+            slot: store.is_none().then(|| check(rt, ctx)),
             result: None,
             job: None,
             status: None,
             press: false,
+            store,
         }
     }
 
@@ -304,7 +309,59 @@ impl Updates {
             job: None,
             status: None,
             press: false,
+            store: None,
         }
+    }
+
+    /// A copy a store updates (the Flatpak): where its updates come from, and OK.
+    fn from_store(ctx: &egui::Context, store: &str) -> Outcome<bool> {
+        window(
+            ctx,
+            "updates",
+            "Check for updates",
+            [440.0, 112.0],
+            false,
+            winui::BG(),
+            |ui, o| {
+                let p = ui.painter().clone();
+                let right = o.x + 429.0;
+                let line = crate::i18n::fmt(
+                    crate::i18n::t(
+                        // i18n: Help → Check for updates in the Flatpak (Linux): {store} = Flathub; "flatpak update" is a command, kept as it is
+                        "This copy comes from {store}, which keeps it up to date: update it in your software centre, or with flatpak update in a terminal.",
+                    ),
+                    &[("store", store)],
+                );
+                winui::paragraph(
+                    &p,
+                    o.x + 11.0,
+                    o.y + 24.0,
+                    &line,
+                    winui::TEXT(),
+                    right,
+                    13.0,
+                );
+                let have = crate::i18n::fmt(
+                    crate::i18n::t("You have version {version}."),
+                    &[("version", VERSION)],
+                );
+                winui::text(&p, o.x + 11.0, o.y + 72.0, &have, winui::MUTED());
+                let ok = winui::button(
+                    ui,
+                    r(o, 429.0 - 73.0, 112.0 - 32.0, 73.0, 21.0),
+                    "OK",
+                    ButtonKind::Default,
+                    false,
+                    None,
+                )
+                .clicked();
+                if ok || winui::escape_pressed(ui) || winui::enter_pressed(ui) {
+                    Outcome::Closed
+                } else {
+                    Outcome::Open
+                }
+            },
+        )
     }
 
     /// `weekly`: the automatic check (its switch is here, under the answer). `Done(true)`:
@@ -315,6 +372,9 @@ impl Updates {
         rt: &tokio::runtime::Handle,
         weekly: &mut bool,
     ) -> Outcome<bool> {
+        if let Some(store) = self.store {
+            return Self::from_store(ctx, store);
+        }
         if let Some(r) = self.slot.as_ref().and_then(|s| s.lock().unwrap().take()) {
             self.result = Some(r);
             self.slot = None;
@@ -1241,7 +1301,7 @@ mod tests {
     fn linked_docs() -> Vec<String> {
         let mut docs = vec![mdm_ipc::extension::GUIDE_DOC.to_owned()];
         // The sections Options' Test browser integration opens (extension::checks' reasons).
-        for why in ["options", "not-installed"] {
+        for why in ["options", "not-installed", "flatpak-app"] {
             docs.push(mdm_ipc::extension::help_doc(why));
         }
         let calls = regex::Regex::new(r#"(?:open_page|HelpPage)\(\s*"([^"]+)""#).unwrap();

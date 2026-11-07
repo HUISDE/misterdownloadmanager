@@ -96,6 +96,16 @@ pub fn offscreen() -> bool {
     *ON.get_or_init(|| std::env::var_os("MDM_OFFSCREEN").is_some_and(|v| v == "1"))
 }
 
+/// Running as the Flatpak (Linux, the Flathub build, #148): Flathub updates it, and its sandbox
+/// keeps a few things out of reach, each saying so where it shows (unix.rs).
+pub fn flatpak() -> bool {
+    #[cfg(target_os = "linux")]
+    return crate::unix::in_flatpak();
+    // Flatpak is Linux's alone.
+    #[cfg(not(target_os = "linux"))]
+    false
+}
+
 /// The clipboard's text, if any. Never read in an off-screen run ([`offscreen`]): its windows
 /// open from scripts, and the clipboard belongs to the person at the computer (Add URL's
 /// address came from it, and was fetched).

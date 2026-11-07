@@ -34,6 +34,21 @@ Browser integration is set up by MDM itself at each start on Linux and macOS (th
 
 In a Wayland session (GNOME, KDE Plasma and others), MDM's windows run through XWayland when it is there: Wayland doesn't let a program place its own windows, so MDM's menus and drop-down lists would open in the middle of the screen. To run on Wayland itself anyway, start it with `MDM_WAYLAND=1 misterdownloadmanager`.
 
+### Flatpak
+
+MDM is coming to [Flathub](https://flathub.org) as `com.misterdownloadmanager.MisterDownloadManager`. Until it is there, you can build the same Flatpak from the source code: `tools/flatpak/build.sh --install` (it needs `flatpak` and `flatpak-builder`), then start it from your menu, or with `flatpak run com.misterdownloadmanager.MisterDownloadManager`.
+
+The Flatpak runs in a sandbox, which changes a few things:
+
+- **Updates come from Flathub**, through your software centre or `flatpak update`. MDM doesn't look for updates itself: **Help → Check for updates** says so.
+- **Where files go**: your **Downloads** folder and the categories' folders in it, as in the other builds. To save somewhere else, choose the folder with the **...** button next to **Save As**: the file chooser lets MDM write there. A folder typed by hand outside **Downloads** can't be used, as the sandbox would lose what is saved there when MDM closes, so **Start Download** says so instead.
+- **Browser integration** works with browsers installed from your distribution's packages or their makers' own (Firefox, Chrome, Chromium, Edge, Brave, Vivaldi, Opera), not with a browser that is itself a Flatpak. See [Browser integration in the Flatpak](browser-integration.md#flatpak).
+- **Starting with the session** (Options → General) goes through the desktop, which may ask you once whether MDM may run in the background.
+- **Waking the computer for a queue** isn't possible: the sandbox can't set the computer's wake alarm, and the Scheduler says so. A queue that runs still keeps the computer awake until it is done, and **Turn off computer when done** works.
+- **Opening magnet links and .torrent files with MDM** is chosen in your system's settings (default apps), not in MDM's **Torrent settings**.
+- **Cookies for video sites** (Options → Sites Logins) read a browser profile only from a folder you choose with its **...** button.
+- The command line and the AI assistants' server are in the Flatpak too: `flatpak run --command=misterdownloadmanager-cli com.misterdownloadmanager.MisterDownloadManager get <address>`, and `--command=misterdownloadmanager-mcp`.
+
 ## Install with the setup
 
 1. Run `MisterDownloadManager-<version>-setup.exe`.

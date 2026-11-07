@@ -61,7 +61,9 @@ One egui window painted to fixed pixel coordinates, plus one immediate viewport 
 toolbar, key and IPC commands into actions. Each dialog is its own module and returns an
 `Outcome` (open, closed, done with a value). Windows-only calls are confined to `win32.rs` and
 their Linux and macOS counterparts to `unix.rs` (starting with the session, the browsers' host,
-sounds, show in folder, the crash handler); every other file is safe, portable Rust. Fonts come from the system:
+sounds, show in folder, the crash handler); every other file is safe, portable Rust. In the Flatpak
+(`packaging/flatpak/`), `unix.rs` goes through the desktop's portals where the sandbox can't act
+itself, and `mdm_ipc::flatpak` gives the browsers a script that starts the host with `flatpak run`. Fonts come from the system:
 Windows' Fonts folder, macOS's system fonts, fontconfig on Linux (`theme.rs`).
 
 Every colour and size a control is drawn with comes from the active theme (#45): `palette.rs`

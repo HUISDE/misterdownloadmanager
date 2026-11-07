@@ -1199,8 +1199,19 @@ impl FileInfo {
                         || dest.file_name().is_none()
                         || folder()
                 };
+                // In the Flatpak, a folder its sandbox would forget (#148): held back too.
+                let lost = || {
+                    self.dest()
+                        .parent()
+                        .is_some_and(mdm_engine::sandbox::lost_on_exit)
+                };
                 let blocked = if self.url_bad {
                     Some("Invalid address")
+                } else if lost() {
+                    // i18n: why Start Download is greyed in Download File Info (Linux, the Flatpak): its sandbox can't keep files in the folder typed; "..." is the button that chooses the folder
+                    Some(crate::i18n::mark(
+                        "The Flatpak can't save there: save in Downloads, or choose the folder with the ... button",
+                    ))
                 } else if name_bad {
                     // i18n: why Start Download is greyed in Download File Info
                     Some(crate::i18n::mark("Type the file's name in Save As"))
@@ -2008,6 +2019,22 @@ impl TurnOffCountdown {
         // to delay it (inhibitors).
         #[cfg(target_os = "linux")]
         {
+            // The Flatpak has no systemctl: logind itself, as systemctl asks it (programs that
+            // delay it are waited for there, forced or not).
+            if crate::flatpak() {
+                let verb = match self.mode {
+                    TurnOff::ShutDown => "PowerOff",
+                    TurnOff::Hibernate => "Hibernate",
+                    TurnOff::Sleep => "Suspend",
+                };
+                // On a thread of its own, as run_or_tell (polkit may ask for a password first).
+                std::thread::spawn(move || {
+                    if let Err(e) = crate::unix::turn_off(verb) {
+                        tell_turn_off_failed(e);
+                    }
+                });
+                return;
+            }
             let verb = match self.mode {
                 TurnOff::ShutDown => "poweroff",
                 TurnOff::Hibernate => "hibernate",

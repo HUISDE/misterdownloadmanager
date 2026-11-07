@@ -8,6 +8,7 @@ pub mod api;
 pub mod browsers;
 pub mod capture;
 pub mod extension;
+pub mod flatpak;
 
 use std::io::{BufRead, BufReader, Write};
 use std::net::{Ipv4Addr, SocketAddr, TcpListener, TcpStream};

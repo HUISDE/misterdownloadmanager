@@ -140,6 +140,9 @@
 	7z and RAR archives need 7-Zip, which isn't installed	7z and RAR archives need 7-Zip, which isn't installed
 #. text in a download's progress window
 	<< Hide details	<< Hide details
+#. text in extension.rs
+#. a line of Test browser integration in the Flatpak (Linux): a browser that is itself a Flatpak can't start MDM's helper
+	A browser installed as a Flatpak can't reach this copy	A browser installed as a Flatpak can't reach this copy
 #. text in the Options window
 #. Options → Accounts: what these accounts are, and the services' rule against sharing
 	A debrid service downloads a file host's link with your own paid account and gives MDM a direct link. Use only your own account: sharing an account or its links breaks the services' terms and can get it suspended. Downloads the browser already started stay as they are.	A debrid service downloads a file host's link with your own paid account and gives MDM a direct link. Use only your own account: sharing an account or its links breaks the services' terms and can get it suspended. Downloads the browser already started stay as they are.
@@ -1372,7 +1375,6 @@
 #. a country's name (where a download's server is)
 	Hong Kong	Hong Kong
 #. text in the Scheduler window
-#. link after why the computer can't be woken (Linux, macOS): opens the guide's page that shows how an administrator can allow it
 	How to allow it	How to allow it
 #. button in the Options window
 #. button in Test browser integration: open the help page's section for the problem
@@ -1404,6 +1406,12 @@
 	In a queue	In a queue
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 	In the categories: the selected category's menu	In the categories: the selected category's menu
+#. text in the Add torrent window
+#. Torrent settings, under (and on hovering) the greyed switch that makes MDM open magnet links and .torrent files, in the Flatpak (Linux)
+	In the Flatpak, choose Mister Download Manager for them in your system's default apps settings.	In the Flatpak, choose Mister Download Manager for them in your system's default apps settings.
+#. text in the Options window
+#. Options → Sites Logins → Cookies for video sites, in the Flatpak (Linux): its sandbox hides the browsers' files; "..." is the button that chooses the profile's folder
+	In the Flatpak, choose the browser profile's folder with "...": its sandbox hides the browsers' files.	In the Flatpak, choose the browser profile's folder with "...": its sandbox hides the browsers' files.
 #. text in the Options window
 #. Options → Accounts: the account's sign-in is in the system's keyring (Linux), which is locked now; MDM never unlocks it
 	in the locked keyring	in the locked keyring
@@ -2072,7 +2080,7 @@
 #. text in the Link grabber window
 #. Link grabber, a link's status: the server hasn't the file; {status} is the HTTP code (404)
 	Offline ({status})	Offline ({status})
-#. button in the Batch download window; button in categories.rs; text in the Checksum window; button in a dialog box; text in extracting archives (a download's log, the Archive password window); text in the Help menu's windows (About, updates, shortcuts, Tell a friend); button in the Help menu's windows (About, updates, shortcuts, Tell a friend); button in langpick.rs; button in the Options window; button in a download's Properties window; button in the Scheduler window; button in the Add torrent window
+#. button in the Batch download window; button in categories.rs; text in the Checksum window; button in a dialog box; text in extracting archives (a download's log, the Archive password window); button in the Help menu's windows (About, updates, shortcuts, Tell a friend); text in the Help menu's windows (About, updates, shortcuts, Tell a friend); button in langpick.rs; button in the Options window; button in a download's Properties window; button in the Scheduler window; button in the Add torrent window
 	OK	OK
 #. text in countries.rs
 #. a country's name (where a download's server is)
@@ -2732,6 +2740,9 @@
 	Start downloading immediately while displaying "Download File Info" dialog	Start downloading immediately while displaying "Download File Info" dialog
 #. text in the tray icon's menu
 	Start main download queue	Start main download queue
+#. text in unix.rs
+#. the desktop asks whether MDM may start with the session (the Flatpak, Linux): MDM's reason, shown in that question
+	Start Mister Download Manager with the session, waiting in the notification area	Start Mister Download Manager with the session, waiting in the notification area
 #. text in a download's progress window
 	Start positions and download progress by connections	Start positions and download progress by connections
 #. checkbox in a dialog box
@@ -2993,6 +3004,15 @@
 #. {error} = an error message (keep the braces as they are)
 	The files could not be chosen: {error}	The files could not be chosen: {error}
 #. text in a dialog box
+#. why Start Download is greyed in Download File Info (Linux, the Flatpak): its sandbox can't keep files in the folder typed; "..." is the button that chooses the folder
+	The Flatpak can't save there: save in Downloads, or choose the folder with the ... button	The Flatpak can't save there: save in Downloads, or choose the folder with the ... button
+#. text in errors.rs
+#. why a download failed in the Flatpak (Linux): its sandbox can't keep files in that folder; "..." is the button that chooses the folder in Download File Info
+	the Flatpak can't save to {path}: save in Downloads, or choose the folder with the ... button	the Flatpak can't save to {path}: save in Downloads, or choose the folder with the ... button
+#. text in the Scheduler window
+#. the Scheduler, under "Wake the computer to run this queue" (Linux, the Flatpak from Flathub): its sandbox keeps programs from setting the wake alarm
+	The Flatpak's sandbox doesn't let programs wake the computer	The Flatpak's sandbox doesn't let programs wake the computer
+#. text in a dialog box
 #. {error} = an error message (keep the braces as they are)
 	The folder could not be created: {error}	The folder could not be created: {error}
 #. text in errors.rs
@@ -3113,6 +3133,9 @@
 #. text in whereis.rs
 #. where a download's server is: on this computer or the local network (no country)
 	this computer or the local network	this computer or the local network
+#. text in the Help menu's windows (About, updates, shortcuts, Tell a friend)
+#. Help → Check for updates in the Flatpak (Linux): {store} = Flathub; "flatpak update" is a command, kept as it is
+	This copy comes from {store}, which keeps it up to date: update it in your software centre, or with flatpak update in a terminal.	This copy comes from {store}, which keeps it up to date: update it in your software centre, or with flatpak update in a terminal.
 #. text in the Scheduler window
 #. tooltip on the Scheduler's date when it is in the past
 	This date has passed: the queue will not start	This date has passed: the queue will not start

@@ -891,10 +891,11 @@ impl Scheduler {
         // The line under it: a problem (in the error colour when it stops the wake), else when
         // the computer wakes.
         let (note, link, error): (String, Option<&str>, bool) = match &support {
-            Support::NeedsAdmin | Support::NoAlarm | Support::MacAdmin => (
+            Support::NeedsAdmin | Support::NoAlarm | Support::MacAdmin | Support::Sandboxed => (
                 crate::i18n::t(support_reason(&support).unwrap_or("")).to_owned(),
                 // i18n: link after why the computer can't be woken (Linux, macOS): opens the guide's page that shows how an administrator can allow it
-                (support != Support::NoAlarm).then_some(crate::i18n::mark("How to allow it")),
+                matches!(support, Support::NeedsAdmin | Support::MacAdmin)
+                    .then_some(crate::i18n::mark("How to allow it")),
                 false,
             ),
             _ if !(f.wake && f.start_at_on) => (String::new(), None, false),
@@ -1381,6 +1382,10 @@ fn support_reason(s: &crate::wake::Support) -> Option<&'static str> {
         Support::MacAdmin => {
             // i18n: the Scheduler, under "Wake the computer to run this queue" (macOS): scheduling a wake needs an administrator's password
             crate::i18n::mark("On macOS, only an administrator can schedule a wake")
+        }
+        Support::Sandboxed => {
+            // i18n: the Scheduler, under "Wake the computer to run this queue" (Linux, the Flatpak from Flathub): its sandbox keeps programs from setting the wake alarm
+            crate::i18n::mark("The Flatpak's sandbox doesn't let programs wake the computer")
         }
     })
 }

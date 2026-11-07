@@ -84,6 +84,8 @@ then signs out and in again. The setting stays after a restart. The computer has
 
 A user's systemd timer can't wake the computer, and `rtcwake` needs root, so without this setting MDM can't wake the computer. MDM never asks for an administrator's password.
 
+MDM's Flatpak can't wake the computer even then: its sandbox can't reach the wake alarm, and the option is greyed with the reason under it. A queue it runs still keeps the computer awake until it is done.
+
 ### macOS
 
 On macOS only an administrator can schedule a wake, so the option is greyed. MDM doesn't ask for an administrator's password. An administrator can have the Mac wake every day a minute before the queue starts, for example at 10:59 PM for a queue that starts at 11:00 PM:

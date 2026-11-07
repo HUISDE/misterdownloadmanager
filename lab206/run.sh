@@ -49,7 +49,7 @@ start() { # data folder, extra env… (the program's own output kept beside the 
 why() {
   { echo "== $1"; ls -la "$1" "$1/logs" 2>&1; ps aux | grep -i misterdown | grep -v grep; tail -30 "$out/logs/stdout-$(basename "$1").txt"; } >> "$out/logs/why.txt" 2>&1
 }
-keep_log() { cp "$1"/logs/*.log "$out/logs/$2.log" 2>/dev/null; }
+keep_log() { cp "$1/logs/mdm.log" "$out/logs/$2.log" 2>/dev/null; cp "$1/logs/monitor.log" "$out/logs/$2-monitor.log" 2>/dev/null; true; }
 
 # CPU time of a process in clock ticks (Linux) or seconds (macOS, as ps says it).
 cpu() {
@@ -101,7 +101,7 @@ measure() { # label, renderer JSON, extra env…
   local sorted; sorted=$(printf '%s\n' "${times[@]}" | sort -n | tr '\n' ' ')
   local med; med=$(printf '%s\n' "${times[@]}" | sort -n | sed -n 3p)
   say "$ref $label: first frame, 5 warm starts: $sorted(median $med ms)"
-  say "$ref $label: $(log_of "$d" | grep -m1 -o 'drawing with [^,]*, [0-9]* ms after start')"
+  say "$ref $label: $(log_of "$d" | grep -m1 -o 'drawing with .*, [0-9]* ms after start')"
   local pid; pid=$(pid_of)
   sleep 15
   say "$ref $label: window open, idle $(idle "$pid" 30); $(mem "$pid")"
@@ -126,7 +126,7 @@ fi
 # ---- The fallbacks ---------------------------------------------------------------------------
 check() { # name, data folder, what the log must have, what the failure file must start with ("" none)
   local name=$1 d=$2 want=$3 file=$4
-  local got; got=$(log_of "$d" | grep -m1 -o 'drawing with [^,]*, [0-9]* ms after start.*' | cut -c1-260)
+  local got; got=$(log_of "$d" | grep -m1 -o 'drawing with .* ms after start.*' | cut -c1-300)
   local f; f=$(head -1 "$d/$gpu-failed.txt" 2>/dev/null)
   local ok=PASS
   log_of "$d" | grep -q "$want" || ok=FAIL

@@ -21,8 +21,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-22.04, macos-latest]
-        ref: [base, head]
+        # Linux's head again (its logs); the other three are measured in run 42314796939.
+        os: [ubuntu-22.04]
+        ref: [head]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150
     steps:
@@ -98,8 +99,8 @@ jobs:
             d=$(mktemp -d)
             echo '{"next_id":1,"items":[],"version":2,"settings":{"language":"en","language_asked":true,"helpers_asked":true,"extension_never_ask":true,"update_check":false,"torrent_dht":false,"torrent_lsd":false,"torrent_upnp":false,"torrent_incoming":false,"renderer":"'$r'"}}' > $d/downloads.json
             (unset DISPLAY; WAYLAND_DISPLAY=wl-mdm MDM_DATA_DIR=$d MDM_OFFSCREEN=1 MDM_TEST_SOFTWARE_CARD=1 timeout 25 dbus-run-session -- target/release/misterdownloadmanager) || true
-            cp $d/logs/*.log $out/wayland-$r.log 2>/dev/null
-            echo "wayland $r: $(grep -h -m1 -o 'drawing with [^,]*, [0-9]* ms after start' $d/logs/*.log) / $(grep -h -m1 -o 'first frame drawn, [0-9]* ms' $d/logs/*.log) / $(grep -h -m1 -io 'wayland[^ ]*' $d/logs/*.log)" | tee -a $out/results.txt
+            cp $d/logs/mdm.log $out/wayland-$r.log 2>/dev/null || true
+            echo "wayland $r: $(grep -h -m1 -o 'drawing with .* ms after start' $d/logs/mdm.log) / $(grep -h -m1 -o 'first frame drawn, [0-9]* ms' $d/logs/mdm.log)" | tee -a $out/results.txt
           done
 
       - name: Measure and check (macOS)

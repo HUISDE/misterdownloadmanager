@@ -13,6 +13,8 @@ work=$(mktemp -d)
 export MDM_OFFSCREEN=1 MDM_OFFSCREEN_AT=0,0
 if [ "$os" = Darwin ]; then gpu=metal; else gpu=vulkan; fi
 res="$out/results.txt"
+# `timeout` (GNU) isn't on macOS: perl's alarm does the same there.
+command -v timeout >/dev/null || timeout() { local t=$1; shift; perl -e 'alarm shift; exec @ARGV' "$t" "$@"; }
 say() { echo "$*" | tee -a "$res"; }
 
 # A fresh data folder with these settings: renderer (JSON: null or "vulkan"…), language, dark.

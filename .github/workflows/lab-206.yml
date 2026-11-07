@@ -22,7 +22,7 @@ jobs:
       fail-fast: false
       matrix:
         # The heads again (logs, wgpu's own on Wayland); the bases are measured in run 42314796939.
-        os: [ubuntu-22.04]
+        os: [macos-latest]
         ref: [head]
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150

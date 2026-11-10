@@ -135,7 +135,7 @@ jobs:
       - name: Upload the programs to sign
         id: programs-unsigned
         if: steps.signpath.outputs.enabled == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: windows-programs-unsigned
           path: ${{ runner.temp }}/signpath/programs/*
@@ -164,7 +164,7 @@ jobs:
       - name: Upload the installer to sign
         id: installer-unsigned
         if: steps.signpath.outputs.enabled == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: windows-installer-unsigned
           path: target/dist/*-setup.exe

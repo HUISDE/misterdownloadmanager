@@ -503,6 +503,8 @@ These ship in a later version, when they're ready.
 - 🔄 In English, the list's dates on the system's 12- or 24-hour clock
   ([#392](https://github.com/anefzaoui/misterdownloadmanager/issues/392)): in review
 - 🔄 Help: when an antivirus or VirusTotal flags MDM
+- 🔄 Windows builds signed through SignPath when its token is set: the programs, the installer
+  and its uninstaller; in review
 - 🔄 Linux, what's left ([#164](https://github.com/anefzaoui/misterdownloadmanager/issues/164)):
   screen readers (Orca) reading MDM's windows; browsers installed as a Flatpak (Firefox from
   Flathub may reach MDM through the desktop, as the Snap does: to check); native Wayland windows

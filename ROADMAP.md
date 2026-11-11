@@ -561,6 +561,9 @@ These ship in a later version, when they're ready.
 
 ### Bugs being looked into
 
+- 🔄 Windows 10: a black band above the progress window's title bar, clicks landing above its buttons
+  ([#620](https://github.com/anefzaoui/misterdownloadmanager/issues/620)): the progress window and
+  the style themes' dialogs are framed as on Windows 11, without a hidden title bar; fix in review
 - 🔄 Windows: the window stopping on a stalled system while it checked its title bar's colours
   ([#633](https://github.com/anefzaoui/misterdownloadmanager/issues/633),
   [#583](https://github.com/anefzaoui/misterdownloadmanager/issues/583)): the colours are now set

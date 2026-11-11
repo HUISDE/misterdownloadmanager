@@ -840,7 +840,7 @@
 #. message or event log entry in the main window
 #. event log entry after Recheck: {have} and {total} are sizes ("1.2 GB of 4 GB there")
 #, machine
-	Checked: {have} of {total} there	已检查：{have} / {total}
+	Checked: {have} of {total} there	已检查：{total} 中已有 {have}
 #. message or event log entry in the main window
 #. event log entry: a torrent's files are being read and checked again (Recheck)
 #, machine
@@ -2416,7 +2416,7 @@
 	Main download queue	主下载队列
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
-	Make everything larger / smaller (View → Interface size)	放大/缩小所有内容（视图 → 界面大小）
+	Make everything larger / smaller (View → Interface size)	放大/缩小所有内容（“视图”→“界面大小”）
 #. what a keyboard shortcut does in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
 	Make the selection longer or shorter	扩大或缩小选区
@@ -2505,7 +2505,7 @@
 #. text in the Options window
 #. Options → Remote → Pair a device: the remote control isn't listening (no network, port taken): the Remote page says why
 #, machine
-	MDM can't be reached on the network now: Options → Remote says why.	现在无法通过网络访问 MDM：原因见“选项 → 远程”。
+	MDM can't be reached on the network now: Options → Remote says why.	现在无法通过网络访问 MDM：原因见“选项”→“远程”。
 #. text in remote.rs
 #. remote control page (on a phone): the address typed isn't one MDM downloads (not http, https, ftp or magnet)
 #, machine
@@ -2530,7 +2530,7 @@
 #. text in remote.rs
 #. remote control page (on a phone): no pairing code is shown in MDM; "Pair a device" is MDM's button
 #, machine
-	MDM shows no code now. Click Pair a device there first.	MDM 现在没有显示代码。请先点击“配对设备”。
+	MDM shows no code now. Click Pair a device there first.	MDM 现在没有显示配对码。请先点击“配对设备”。
 #. text in whereis.rs
 #. how far a download's server is, by its round trip (60 to 150 ms)
 #, machine
@@ -2879,7 +2879,7 @@
 #. text in the Add torrent window
 #. a magnet link's lookup, after 30 seconds without a peer
 #, machine
-	No peers yet. Few people may share this torrent, or a firewall, a VPN or the network may be blocking BitTorrent.	暂无节点。分享此种子的人可能很少，或防火墙、VPN 或网络正在阻止 BitTorrent。
+	No peers yet. Few people may share this torrent, or a firewall, a VPN or the network may be blocking BitTorrent.	暂无节点。分享此种子的人可能很少，也可能是防火墙、VPN 或网络在阻止 BitTorrent。
 #. text in the Options window
 #, machine
 	No proxy/socks	无代理/SOCKS
@@ -2971,7 +2971,7 @@
 	Not now	暂不
 #. text in helpers.rs
 #, machine
-	Not now? Get them later from Tasks → Download video from a page.	暂不？稍后可从“任务 → 从页面下载视频”获取。
+	Not now? Get them later from Tasks → Download video from a page.	暂不？稍后可从“任务”→“从页面下载视频”获取。
 #. text in a download's Properties window
 #, machine
 	not one server (peers, or a helper's)	非单一服务器（节点或帮助程序）
@@ -3046,11 +3046,11 @@
 #. text in remote.rs
 #. remote control page (on a phone): how to pair; "Options", "Remote" and "Pair a device" are MDM's dialog, tab and button
 #, machine
-	On the computer, open Options, then Remote, and click Pair a device. Enter the code it shows.	在电脑上，打开“选项”，然后选择“远程”，再点击“配对设备”。输入显示的代码。
+	On the computer, open Options, then Remote, and click Pair a device. Enter the code it shows.	在电脑上，打开“选项”，然后选择“远程”，再点击“配对设备”。输入显示的配对码。
 #. text in the Options window
 #. Options → Remote → Pair a device: how to pair
 #, machine
-	On the phone, scan this code with the camera, or open the address and enter the code.	在手机上，用相机扫描此代码，或打开地址并输入代码。
+	On the phone, scan this code with the camera, or open the address and enter the code.	在手机上，用相机扫描此配对码，或打开地址并输入配对码。
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites, a Chrome-like browser chosen on Windows
 #, machine
@@ -4191,7 +4191,7 @@
 #. text in the Options window
 #. \\n starts a new line: break lines where they fit the translation
 #, machine
-	Tasks → Link grabber, or the browser's "Download all links": a split\narchive's volumes are one package, the other links of a page another.	任务 → 链接抓取器，或浏览器的“下载所有链接”：拆分\n压缩包的分卷算一个包，页面的其他链接算另一个包。
+	Tasks → Link grabber, or the browser's "Download all links": a split\narchive's volumes are one package, the other links of a page another.	“任务”→“链接抓取器”，或浏览器的“下载所有链接”：拆分\n压缩包的分卷算一个包，页面的其他链接算另一个包。
 #. window title in the Help menu's windows (About, updates, shortcuts, Tell a friend)
 #, machine
 	Tell a friend	推荐给朋友
@@ -5301,7 +5301,7 @@
 	yt-dlp found no cookies of {browser} on this computer. Check the browser and its profile in Options → Sites Logins.	yt-dlp 在此计算机上未找到 {browser} 的 Cookie。请在“选项”→“站点登录”中检查浏览器及其配置文件。
 #. message or event log entry in the main window
 #, machine
-	yt-dlp is not installed (Tasks → Download video from a page installs it)	未安装 yt-dlp（可通过“任务 → 从页面下载视频”安装）
+	yt-dlp is not installed (Tasks → Download video from a page installs it)	未安装 yt-dlp（可通过“任务”→“从页面下载视频”安装）
 #. text in the Options window
 #. Options → Sites Logins → Cookies for video sites: the tooltip of its choices
 #, machine
@@ -5813,7 +5813,7 @@ extension	Open it	打开地址
 #. text in the browser extension
 #. help under the pairing boxes; Options, Remote and Pair a device are the app's window, tab and button; keep misterdownloadmanager-cli pair as it is
 #, machine
-extension	Open its address once and accept its certificate, then enter a code from its Options, Remote, Pair a device (or misterdownloadmanager-cli pair).	请先打开其地址并接受证书，然后输入其“选项”→“远程”→“配对设备”中显示的代码（或 misterdownloadmanager-cli pair）。
+extension	Open its address once and accept its certificate, then enter a code from its Options, Remote, Pair a device (or misterdownloadmanager-cli pair).	请先打开其地址并接受证书，然后输入其“选项”→“远程”→“配对设备”中显示的配对码（或 misterdownloadmanager-cli pair）。
 #. text in the browser extension
 #. button in the toolbar button's popup; keep the name Mister Download Manager as it is
 #, machine

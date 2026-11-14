@@ -78,12 +78,16 @@ pub struct TorrentDialog {
     /// Download in order (#39).
     in_order: bool,
     /// Asking to create a missing folder.
-    asking: Option<(crate::dialogs::CreateFolder, ())>,
+    asking: crate::dialogs::FolderGate<()>,
     /// Asking whether to use files of the torrent's names already in the folder (#40).
-    asking_files: Option<(crate::dialogs::ExistingFiles, ())>,
+    asking_files: crate::dialogs::FilesGate<()>,
     /// A .torrent on the web (#39, Add URL or the browser): the request it is fetched with
     /// (the browser's cookies). One typed in the box goes as MDM's own downloads do.
     remote: Option<crate::torrents::Remote>,
+    /// Rename row (`Rename`: main name + extension).
+    rename: crate::torrent_rename::TorrentRenamePlugin,
+    /// The clipboard's magnet link, read off the window's thread (#661).
+    clip: crate::clipboard::Prefill,
 }
 
 /// The category of a torrent: its largest file's.
@@ -206,7 +210,7 @@ impl TorrentDialog {
 
     /// `source`: a magnet link, a .torrent path or a .torrent's web address (`remote`: how to
     /// ask for it) to look up at once, or None (the clipboard's magnet, if any, is offered and
-    /// looked up).
+    /// looked up on the frame it comes: the clipboard is read off the window's thread).
     #[allow(clippy::too_many_arguments)]
     pub fn new(
         source: Option<String>,
@@ -218,12 +222,12 @@ impl TorrentDialog {
         rt: &tokio::runtime::Handle,
         ctx: &egui::Context,
     ) -> Self {
-        let source = source.unwrap_or_else(|| {
-            crate::clipboard_text()
-                .filter(|t| Source::magnet(t).is_some())
-                .map(|t| t.trim().to_owned())
-                .unwrap_or_default()
-        });
+        let clip = if source.is_none() {
+            crate::clipboard::Prefill::ask()
+        } else {
+            Default::default()
+        };
+        let source = source.unwrap_or_default();
         let folder = category_folder(Category::Torrents, &downloads, &category_dirs);
         let mut d = TorrentDialog {
             source,
@@ -247,14 +251,26 @@ impl TorrentDialog {
             focused: false,
             start_now: None,
             in_order: false,
-            asking: None,
-            asking_files: None,
+            asking: Default::default(),
+            asking_files: Default::default(),
             remote,
+            rename: Default::default(),
+            clip,
         };
         if !d.source.is_empty() {
             d.look_up(rt, ctx);
         }
         d
+    }
+
+    /// The clipboard's magnet link in the box, when it holds one and the box is still empty
+    /// (nothing typed meanwhile); whether it was put there (and is to be looked up).
+    fn fill_from_clipboard(&mut self, clip: &str) -> bool {
+        let fill = self.source.is_empty() && Source::magnet(clip).is_some();
+        if fill {
+            clip.trim().clone_into(&mut self.source);
+        }
+        fill
     }
 
     fn look_up(&mut self, rt: &tokio::runtime::Handle, ctx: &egui::Context) {
@@ -334,6 +350,7 @@ impl TorrentDialog {
         self.started = Some(Instant::now());
         self.progress = Some(progress);
         self.meta = None;
+        self.rename.clear();
         self.rows = Default::default();
         self.error = None;
     }
@@ -343,6 +360,11 @@ impl TorrentDialog {
         ctx: &egui::Context,
         rt: &tokio::runtime::Handle,
     ) -> Outcome<TorrentAdd> {
+        if let Some(clip) = self.clip.take()
+            && self.fill_from_clipboard(&clip)
+        {
+            self.look_up(rt, ctx);
+        }
         let looked = self.lookup.as_ref().and_then(|s| s.lock().unwrap().take());
         if let Some(res) = looked {
             self.lookup = None;
@@ -354,6 +376,7 @@ impl TorrentDialog {
                 }
                 Ok(meta) => {
                     self.chosen = meta.files.iter().map(|f| !f.padding).collect();
+                    self.rename.on_meta_loaded(&meta);
                     self.tree = build_tree(&meta);
                     // Open the first two levels; deeper folders start closed.
                     self.open = self.tree.iter().map(|n| n.depth < 2).collect();
@@ -374,7 +397,7 @@ impl TorrentDialog {
             ctx,
             "add-torrent",
             "Add torrent",
-            [600.0, 460.0],
+            [600.0, 488.0],
             false,
             winui::BG(),
             |ui, o| self.body(ui, o, rt),
@@ -382,11 +405,13 @@ impl TorrentDialog {
         let folder = crate::dialogs::resolve_path(&self.folder);
         let out = crate::dialogs::ensure_folder(ctx, &mut self.asking, out, &folder);
         // Then: files of the torrent's names already there would be written into (#40).
+        // Looked for off the window's thread (#743), with what the torrent holds as it is now.
         let meta = &self.meta;
-        let out = crate::dialogs::ensure_files_free(ctx, &mut self.asking_files, out, || {
-            meta.as_ref()
-                .map_or_else(Vec::new, |m| m.existing_in(&folder))
-        });
+        let out =
+            crate::dialogs::ensure_files_free(ctx, &mut self.asking_files, out, &folder, || {
+                let (meta, there) = (meta.clone(), folder.clone());
+                move || meta.map_or_else(Vec::new, |m| m.existing_in(&there))
+            });
         match out {
             Outcome::Open => Outcome::Open,
             Outcome::Closed => Outcome::Closed,
@@ -435,8 +460,9 @@ impl TorrentDialog {
         // i18n: noun: label before the torrent file or magnet link
         let source_label = crate::i18n::t("Torrent");
         let folder_label = crate::i18n::t("Save to");
+        let rename_label = crate::torrent_rename::TorrentRenamePlugin::label();
         // The fields start after the longer label (German "Speichern unter").
-        let fx = winui::label_column(&p, 11.0, &[source_label, folder_label], 70.0);
+        let fx = winui::label_column(&p, 11.0, &[source_label, folder_label, rename_label], 70.0);
         text(&p, o.x + 11.0, o.y + 23.0, source_label, winui::TEXT());
         let edit = winui::edit(
             ui,
@@ -463,9 +489,8 @@ impl TorrentDialog {
             let kind = crate::i18n::t("Torrent files").to_owned();
             let title = crate::i18n::t("Open torrent file").to_owned();
             winui::start_pick(ui.ctx(), "torrent-file", move || {
-                rfd::FileDialog::new()
+                crate::winui::file_dialog(&title)
                     .add_filter(kind, &["torrent"])
-                    .set_title(title)
                     .pick_file()
             });
         }
@@ -504,6 +529,8 @@ impl TorrentDialog {
         }
 
         // Status: looking up (with a spinner and the seconds) / name and size / what went wrong.
+        let rename_err = self.rename.candidate_error();
+        let shown_err = self.error.as_deref().or(rename_err.as_deref());
         let line = o.y + 50.0;
         if busy {
             spinner(ui, pos2(o.x + 18.0, line - 4.0), 6.0);
@@ -518,7 +545,7 @@ impl TorrentDialog {
                 crate::i18n::t("Reading the torrent...").to_owned()
             };
             text(&p, o.x + 31.0, line, &msg, winui::TEXT());
-        } else if let Some(e) = &self.error {
+        } else if let Some(e) = shown_err {
             let (rect, cut) = winui::text_fit(&p, o.x + 11.0, line, e, winui::ERROR(), o.x + 589.0);
             if cut {
                 winui::full_on_hover(ui, rect, "torrent-error", e);
@@ -641,15 +668,24 @@ impl TorrentDialog {
             self.folder = d.display().to_string();
             self.folder_edited = true;
         }
+        // Rename row (`Rename`: main name + extension) below `Save to` (#517).
+        if self
+            .rename
+            .draw(ui, &p, o, fx, 389.0, has, busy, &mut self.meta)
+            && let Some(m) = &self.meta
+        {
+            self.tree = build_tree(m);
+        }
         if let Some(m) = &self.meta {
-            let goes = m.folder_in(&crate::dialogs::resolve_path(&self.folder));
+            let goes =
+                crate::torrents::dest_for(m, &crate::dialogs::resolve_path(&self.folder), None);
             let s = crate::i18n::fmt(
                 // i18n: {folder} = the folder the torrent's files are saved in
                 crate::i18n::t("Files go to: {folder}"),
                 &[("folder", &crate::i18n::ltr(&goes.display().to_string()))],
             );
             let (rect, cut) =
-                winui::text_fit(&p, o.x + fx, o.y + 402.0, &s, winui::MUTED(), o.x + 589.0);
+                winui::text_fit(&p, o.x + fx, o.y + 430.0, &s, winui::MUTED(), o.x + 589.0);
             if cut {
                 winui::full_on_hover(ui, rect, "torrent-goes", &s);
             }
@@ -669,17 +705,21 @@ impl TorrentDialog {
         // its right-click menu). Its caption stops before the buttons.
         winui::checkbox_until(
             ui,
-            pos2(o.x + 14.0, o.y + 432.0),
+            pos2(o.x + 14.0, o.y + 460.0),
             &mut self.in_order,
             // i18n: Add torrent, a checkbox: download the files from their start, to watch a video while it downloads
             "Download in order",
             has,
             Some(o.x + now_at.0),
         );
-        let ready = has && count > 0 && !self.folder.trim().is_empty() && !busy;
+        let ready = has
+            && count > 0
+            && !self.folder.trim().is_empty()
+            && !busy
+            && self.rename.candidate_error().is_none();
         let now = winui::button(
             ui,
-            r(o, now_at.0, 428.0, now_at.1, 21.0),
+            r(o, now_at.0, 456.0, now_at.1, 21.0),
             "Download Now",
             kind(ready, true),
             false,
@@ -689,7 +729,7 @@ impl TorrentDialog {
             || (ready && winui::enter_pressed(ui));
         let later = winui::button(
             ui,
-            r(o, later_at.0, 428.0, later_at.1, 21.0),
+            r(o, later_at.0, 456.0, later_at.1, 21.0),
             // i18n: button: add it now, start downloading later
             "Later",
             kind(ready, false),
@@ -699,7 +739,7 @@ impl TorrentDialog {
         .clicked();
         let cancel = winui::button(
             ui,
-            r(o, cancel_at.0, 428.0, cancel_at.1, 21.0),
+            r(o, cancel_at.0, 456.0, cancel_at.1, 21.0),
             "Cancel",
             ButtonKind::Normal,
             false,
